@@ -3,12 +3,14 @@ package gwent
 import scala.collection.mutable.ArrayBuffer
 
 
-class Player(val name: String, var gemsCounter: Int, var deck: ArrayBuffer[Card], var hand: ArrayBuffer[Card]){
-  def playCard(card:Card): Unit ={
-    hand-= card
+class Player(val name: String, var gemsCounter: Int, var deck: ArrayBuffer[Card],
+             var hand: ArrayBuffer[Card]) extends GamePlayer {
+  override def playCard(card: Card): Unit = {
+    hand -= card
   }
-  def getCard(card:Card):Unit ={
-    hand+=card
-    deck-=card
+
+  override def getCard(card: Card): Unit = {
+    hand += card
+    deck -= card
   }
 }
