@@ -10,7 +10,7 @@ class Player(val name: String, var gemsCounter: Int, var deck: ArrayBuffer[Card]
   }
 
   override def getCard(card: Card): Unit = {
-    hand += card
     deck -= card
+    hand.append(card)
   }
 }
