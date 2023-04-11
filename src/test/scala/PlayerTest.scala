@@ -44,14 +44,14 @@ class PlayerTest extends FunSuite {
 
   test("Todo jugador debe ser capaz de jugar una carta"){
     assertEquals(firstPlayer.hand,handArray)
-    firstPlayer.playCard(vernonRoche)
+    firstPlayer.playCard(vernonRoche,firstPlayer.hand)
     assertEquals(firstPlayer.hand,ArrayBuffer(geraltOfRivia))
   }
 
   test("Todo jugador debe ser capaz de robar una carta de su mazo"){
     assertEquals(firstPlayer.hand, handArray)
     assertEquals(firstPlayer.deck, deckArray)
-    firstPlayer.getCard(papimicky)
+    firstPlayer.getCard(papimicky,firstPlayer.hand,firstPlayer.deck)
     assertEquals(firstPlayer.hand, ArrayBuffer(vernonRoche, geraltOfRivia, papimicky))
     assertEquals(firstPlayer.deck, ArrayBuffer(kingFoltest, sunnyday))
   }
