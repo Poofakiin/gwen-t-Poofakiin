@@ -21,8 +21,12 @@ class Player(val name: String, var gemsCounter: Int, var deck: ArrayBuffer[Card]
    * @param card the Card that´s going to be played.
    * @param hand the hand of cards.
    */
-  override def playCard(card: Card, hand: ArrayBuffer[Card]): Unit = {
-    hand-=card
+  override def playCard(card: Card): Unit = {
+    /* utilizar el metodo indexOf, cambiar el if y utilizar el remove
+    */
+    if(this.hand.contains(card)) {
+      this.hand -= card
+    }
   }
 
   /** Adds a card to the player's hand and removes it from their deck.
@@ -31,7 +35,13 @@ class Player(val name: String, var gemsCounter: Int, var deck: ArrayBuffer[Card]
    * @param hand the hand of cards.
    * @param deck the deck of cards.
    */
-  override def getCard(card: Card, hand: ArrayBuffer[Card], deck: ArrayBuffer[Card]): Unit = {
+  override def getCard(): Unit = {
+    /* agregar un metodo shuffle
+    */
+    if(this.deck.size>0){
+      hand.append(deck[0])
+
+    }
     deck -= card
     hand.append(card)
   }
