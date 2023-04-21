@@ -1,5 +1,8 @@
 package cl.uchile.dcc
-package gwent
+package cl.uchile.dcc.gwent.players
+
+import cl.uchile.dcc.gwent.players.GamePlayer
+
 import scala.collection.mutable.ArrayBuffer
 
 /** A class that describes a Player in the game.

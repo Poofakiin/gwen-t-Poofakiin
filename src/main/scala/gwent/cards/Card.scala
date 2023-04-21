@@ -1,5 +1,5 @@
 package cl.uchile.dcc
-package gwent
+package gwent.cards
 
 /** A class that represents any type of Card.
  * 
@@ -11,5 +11,5 @@ package gwent
  * @constructor Creates a new card with specified name and type.
  *
  */
-class Card(val name: String, var cardType: String) {
+abstract class Card(val name: String, var cardType: String) {
 }

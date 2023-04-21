@@ -1,5 +1,5 @@
 package cl.uchile.dcc
-package gwent
+package gwent.cards.unitcards
 
 /** A class that represents a unit type of card in the Gwent game.
  *
@@ -10,5 +10,5 @@ package gwent
  *
  * @param attackPower the attack power of the unit card.
  */
-abstract class UnitCard(name: String,cardType: String, var attackPower: Int) extends Card(name,cardType) {
+abstract class UnitCard(name: String,cardType="Unit Card", var attackPower: Int, val specialAbility: String) extends AbstractCardCard(name,cardType) {
 }

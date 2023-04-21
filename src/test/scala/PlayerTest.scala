@@ -1,9 +1,8 @@
 package cl.uchile.dcc
 import munit.FunSuite
 import cl.uchile.dcc.gwent.Card
-import cl.uchile.dcc.gwent.Player
-import cl.uchile.dcc.gwent.UnitCard
-import cl.uchile.dcc.gwent.WeatherCard
+import cl.uchile.dcc.gwent.players.Player
+import cl.uchile.dcc.gwent.cards.weathercards.WeatherCard
 
 import scala.collection.mutable.ArrayBuffer
 
@@ -55,5 +54,4 @@ class PlayerTest extends FunSuite {
     assertEquals(firstPlayer.hand, ArrayBuffer(vernonRoche, geraltOfRivia, papimicky))
     assertEquals(firstPlayer.deck, ArrayBuffer(kingFoltest, sunnyday))
   }
-
 }
