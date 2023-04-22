@@ -1,5 +1,7 @@
 package cl.uchile.dcc
 package gwent.cards.unitcards
+import gwent.cards.unitcards.effects._
+
 
 class CloseCombatCard(name: String, cardType:String = "Unit Card", attackPower: Int, specialAbility: SpecialAbility) extends UnitCard(name,cardType, attackPower, specialAbility) {
   
@@ -15,8 +17,16 @@ class CloseCombatCard(name: String, cardType:String = "Unit Card", attackPower: 
     else{
       false
     }
+  }
 
-    override hashCode():Int = {
-      Object.hash(classOf[CloseCombatCard],name, cardType, attackPower, specialAbility)
+    override def hashCode():Int = {
+      val prime = 31
+      var result= 1
+      result = prime * result + classOf[CloseCombatCard].##
+      result = prime * result + name.##
+      result = prime * result + cardType.##
+      result = prime * result + attackPower.##
+      result = prime * result + specialAbility.##
+      result
     }
 }

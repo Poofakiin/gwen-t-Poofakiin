@@ -1,5 +1,6 @@
 package cl.uchile.dcc
 package gwent.cards.weathercards
+import gwent.cards.Card
 
 /** A class that represents a weather type card in the Gwent game
  *
@@ -9,5 +10,5 @@ package gwent.cards.weathercards
  * @param cardType the type of the weather card.
  *
  */
-abstract class WeatherCard(name:String,cardType = "Weather Card") extends Card(name,cardType) {
+abstract class WeatherCard(name:String,cardType: String = "Weather Card") extends Card(name,cardType) {
 }

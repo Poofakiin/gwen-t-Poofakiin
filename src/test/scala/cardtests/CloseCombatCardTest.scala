@@ -1,14 +1,19 @@
 package cl.uchile.dcc
-import munit.FunSuite
-import cl.uchile.dcc.gwent.Card
+package cardtests
 
-class CardTest extends FunSuite {
+import cl.uchile.dcc.gwent.cards.unitcards.CloseCombatCard
+import munit.FunSuite
+
+class CloseCombatCardTest extends FunSuite {
+
+
+
   val firstName = "Vernon Roche"
   val secondName = "Geralt of Rivia"
   val cardType = "Hero"
 
-  var vernonRoche = new Card(firstName,cardType)
-  var geraltOfRivia = new Card(secondName, cardType)
+  var vernonRoche = new
+  var geraltOfRivia = new CloseCombatCard(secondName)
   test("Una carta debe tener su nombre propio"){
     assertEquals(vernonRoche.name, firstName)
     assertEquals(geraltOfRivia.name, secondName)

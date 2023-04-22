@@ -1,5 +1,6 @@
 package cl.uchile.dcc
 package cl.uchile.dcc.gwent.players
+import gwent.cards.Card
 
 import scala.collection.mutable.ArrayBuffer
 
@@ -25,7 +26,9 @@ trait GamePlayer {
    * @param hand the hand of cards.
    * @param deck the deck of cards.
    */
-  def getCard(): Unit
+  def drawCard(): Unit
   
   def shuffleDeck(): Unit
+  
+  def  canDrawCard(): Boolean
 }

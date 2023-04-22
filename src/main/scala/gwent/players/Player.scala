@@ -1,9 +1,12 @@
 package cl.uchile.dcc
 package cl.uchile.dcc.gwent.players
 
+
 import cl.uchile.dcc.gwent.players.GamePlayer
+
 import scala.util.Random
 import scala.collection.mutable.ArrayBuffer
+import gwent.cards.Card
 
 /** A class that describes a Player in the game.
  *
@@ -22,10 +25,8 @@ class Player(val name: String, var gemsCounter: Int, var deck: ArrayBuffer[Card]
    * @param hand the hand of cards.
    */
   def playCard(card: Card): Unit = {
-    /* utilizar el metodo indexOf, cambiar el if y utilizar el remove
-    */
-    if(this.hand.indexOf(card)>=0) {
-      this.hand.remove(this.hand.indexOf(card))
+    if(this.hand.exists(y => {y == card})) {
+      this.hand -= card
     }
     else{
       ()
@@ -38,13 +39,17 @@ class Player(val name: String, var gemsCounter: Int, var deck: ArrayBuffer[Card]
    * @param hand the hand of cards.
    * @param deck the deck of cards.
    */
-  def getCard(): Unit = {
-    if(this.deck.size>0){
-      this.hand.append(deck[0])
-      this.deck.remove(0)
+
+  def canDrawCard(): Boolean = {
+    this.deck.nonEmpty && this.hand.size < 10
+  }
+  def drawCard(): Unit = {
+    if(canDrawCard()){
+      this.hand += this.deck.head
+      this.deck.tails
     }
-    else{
-      ()
+    else if(this.deck.nonEmpty){
+      this.deck.tails
     }
   }
 
@@ -65,8 +70,15 @@ class Player(val name: String, var gemsCounter: Int, var deck: ArrayBuffer[Card]
       false
     }
 
-    override hashCode():Int = {
-      Object.hash(classOf[Player],name, gemsCounter, hand, deck)
-    }
+  }
+  override def hashCode():Int = {
+    val prime = 31
+    var result= 1
+    result = prime * result + classOf[Player].##
+    result = prime * result + name.##
+    result = prime * result + gemsCounter.##
+    result = prime * result + hand.##
+    result = prime * result + deck.##
+    result
   }
 }

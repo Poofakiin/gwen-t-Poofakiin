@@ -1,8 +1,9 @@
 package cl.uchile.dcc
-import munit.FunSuite
-import cl.uchile.dcc.gwent.Card
+package playertests
+
 import cl.uchile.dcc.gwent.players.Player
-import cl.uchile.dcc.gwent.cards.weathercards.WeatherCard
+
+import munit.FunSuite
 
 import scala.collection.mutable.ArrayBuffer
 
