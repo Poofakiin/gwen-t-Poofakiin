@@ -51,4 +51,22 @@ class Player(val name: String, var gemsCounter: Int, var deck: ArrayBuffer[Card]
   def shuffleDeck(): Unit = {
     Random.shuffle(this.deck)
   }
+
+  override def equals(obj: Any): Boolean = {
+    if(obj.isInstanceOf[Player]){
+      val other = obj.asInstanceOf[Player]
+      (this eq other) ||
+        (other.name == this.name &&
+          other.gemsCounter == this.gemsCounter &&
+          other.hand == this.hand &&
+          other.deck == this.deck)
+    }
+    else{
+      false
+    }
+
+    override hashCode():Int = {
+      Object.hash(classOf[Player],name, gemsCounter, hand, deck)
+    }
+  }
 }
