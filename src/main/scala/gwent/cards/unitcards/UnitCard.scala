@@ -7,8 +7,7 @@ package gwent.cards.unitcards
  *
  * @param name the name of the unit card.
  * @param cardType the type of the unit card.
- *
  * @param attackPower the attack power of the unit card.
  */
-abstract class UnitCard(name: String,cardType="Unit Card", var attackPower: Int, val specialAbility: String) extends AbstractCardCard(name,cardType) {
+abstract class UnitCard(name: String,cardType="Unit Card", var attackPower: Int, val specialAbility: SpecialAbility) extends Card(name,cardType) {
 }

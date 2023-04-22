@@ -26,4 +26,6 @@ trait GamePlayer {
    * @param deck the deck of cards.
    */
   def getCard(): Unit
+  
+  def shuffleDeck(): Unit
 }

@@ -2,7 +2,7 @@ package cl.uchile.dcc
 package cl.uchile.dcc.gwent.players
 
 import cl.uchile.dcc.gwent.players.GamePlayer
-
+import scala.util.Random
 import scala.collection.mutable.ArrayBuffer
 
 /** A class that describes a Player in the game.
@@ -21,11 +21,14 @@ class Player(val name: String, var gemsCounter: Int, var deck: ArrayBuffer[Card]
    * @param card the Card that´s going to be played.
    * @param hand the hand of cards.
    */
-  override def playCard(card: Card): Unit = {
+  def playCard(card: Card): Unit = {
     /* utilizar el metodo indexOf, cambiar el if y utilizar el remove
     */
-    if(this.hand.contains(card)) {
-      this.hand -= card
+    if(this.hand.indexOf(card)>=0) {
+      this.hand.remove(this.hand.indexOf(card))
+    }
+    else{
+      ()
     }
   }
 
@@ -35,14 +38,17 @@ class Player(val name: String, var gemsCounter: Int, var deck: ArrayBuffer[Card]
    * @param hand the hand of cards.
    * @param deck the deck of cards.
    */
-  override def getCard(): Unit = {
-    /* agregar un metodo shuffle
-    */
+  def getCard(): Unit = {
     if(this.deck.size>0){
-      hand.append(deck[0])
-
+      this.hand.append(deck[0])
+      this.deck.remove(0)
     }
-    deck -= card
-    hand.append(card)
+    else{
+      ()
+    }
+  }
+
+  def shuffleDeck(): Unit = {
+    Random.shuffle(this.deck)
   }
 }
