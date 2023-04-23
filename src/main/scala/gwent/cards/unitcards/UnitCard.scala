@@ -14,9 +14,13 @@ import gwent.cards.ICard
 abstract class UnitCard(val name: String, var attackPower: Int) extends ICard{
   protected var _specialAbility: Option[SpecialAbility] = None
   var cardType: String = "Unit Card"
+  
   def this(name: String, attackPower: Int, specialAbility: SpecialAbility)={
     this(name,attackPower)
     _specialAbility = Some(specialAbility)
+  }
+  def getSpecialAbility(): Option[SpecialAbility] ={ 
+    _specialAbility
   }
 }
 

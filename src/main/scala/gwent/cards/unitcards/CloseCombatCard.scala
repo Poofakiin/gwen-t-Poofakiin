@@ -8,10 +8,7 @@ class CloseCombatCard(name: String, attackPower: Int) extends UnitCard(name, att
     this(name,attackPower)
     _specialAbility = Some(specialAbility)
   }
-
-  def getSpecialAbility(): Unit ={
-    this.cardType
-  }
+  
   override def equals(obj: Any): Boolean = {
     if(obj.isInstanceOf[CloseCombatCard]){
       val other = obj.asInstanceOf[CloseCombatCard]
