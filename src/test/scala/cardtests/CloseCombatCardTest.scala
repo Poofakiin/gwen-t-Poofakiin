@@ -4,6 +4,7 @@ package cardtests
 import gwent.cards.unitcards._
 import gwent.cards.unitcards.effects._
 import munit.FunSuite
+import munit.Clue.generate
 
 class CloseCombatCardTest extends FunSuite {
 
@@ -12,9 +13,9 @@ class CloseCombatCardTest extends FunSuite {
   val firstName = "Vernon Roche"
   val secondName = "Geralt of Rivia"
   val cardType = "Hero"
-  val closeBond = new CloseBond()
+  val closeBond: Option[CloseBond] = Some(new CloseBond())
 
-  var geraltOfRivia: CloseCombatCard = new CloseCombatCard(secondName,2,closeBond)
+  var geraltOfRivia = new CloseCombatCard(secondName,2, closeBond)
 
   test("Una carta debe tener su nombre propio"){
     assertEquals(geraltOfRivia.name, firstName)

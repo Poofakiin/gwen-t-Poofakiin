@@ -1,6 +1,6 @@
 package cl.uchile.dcc
 package cl.uchile.dcc.gwent.players
-import gwent.cards.Card
+import gwent.cards.ICard
 
 import scala.collection.mutable.ArrayBuffer
 
@@ -11,14 +11,14 @@ import scala.collection.mutable.ArrayBuffer
 trait GamePlayer {
   val name: String
   var gemsCounter: Int
-  var deck: ArrayBuffer[Card]
-  var hand: ArrayBuffer[Card]
+  var deck: ArrayBuffer[ICard]
+  var hand: ArrayBuffer[ICard]
   /** Pick a certain card of a hand of cards and remove it from the hand.
    *
    * @param card the Card that´s going to be played.
    * @param hand the hand of cards.
    */
-  def playCard(card: Card): Unit
+  def playCard(card: ICard): Unit
 
   /** Pick a certain card of a deck of cards and adds it to a hand of cards.
    *

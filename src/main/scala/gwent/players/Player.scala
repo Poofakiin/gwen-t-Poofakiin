@@ -6,7 +6,7 @@ import cl.uchile.dcc.gwent.players.GamePlayer
 
 import scala.util.Random
 import scala.collection.mutable.ArrayBuffer
-import gwent.cards.Card
+import gwent.cards.ICard
 
 /** A class that describes a Player in the game.
  *
@@ -17,14 +17,14 @@ import gwent.cards.Card
  * @param deck the deck of card of the player.
  * @param hand the hand of cards of the player.
  */
-class Player(val name: String, var gemsCounter: Int, var deck: ArrayBuffer[Card],
-             var hand: ArrayBuffer[Card]) extends GamePlayer {
+class Player(val name: String, var gemsCounter: Int, var deck: ArrayBuffer[ICard],
+             var hand: ArrayBuffer[ICard]) extends GamePlayer {
   /** Picks a certain card and removes it from the player's hand.
    *
    * @param card the Card that´s going to be played.
    * @param hand the hand of cards.
    */
-  def playCard(card: Card): Unit = {
+  def playCard(card: ICard): Unit = {
     if(this.hand.exists(y => {y == card})) {
       this.hand -= card
     }

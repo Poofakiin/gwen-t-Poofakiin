@@ -3,7 +3,7 @@ package gwent.cards.unitcards
 import gwent.cards.unitcards.effects._
 
 
-class SiegeCard (name: String, attackPower: Int, specialAbility: Option[SpecialAbility] = None) extends UnitCard(name, attackPower, specialAbility){
+class SiegeCard (name: String, attackPower: Int, specialAbility: Option[Some[CloseBond]] = None) extends UnitCard(name, attackPower, specialAbility){
 
   override def equals(obj: Any): Boolean = {
     if (obj.isInstanceOf[SiegeCard]) {

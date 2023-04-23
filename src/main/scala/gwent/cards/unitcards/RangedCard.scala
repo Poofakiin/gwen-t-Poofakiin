@@ -3,8 +3,8 @@ package gwent.cards.unitcards
 import gwent.cards.unitcards.effects._
 
 
-class RangedCard (name: String, attackPower: Int, specialAbility: Option[SpecialAbility] = None) extends UnitCard(name, attackPower, specialAbility){
-  
+class RangedCard (name: String, attackPower: Int, specialAbility: Option[Some[CloseBond]] = None) extends UnitCard(name, attackPower, specialAbility){
+
   override def equals(obj: Any): Boolean = {
     if (obj.isInstanceOf[RangedCard]) {
       val other = obj.asInstanceOf[RangedCard]

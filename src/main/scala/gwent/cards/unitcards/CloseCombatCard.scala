@@ -3,7 +3,7 @@ package gwent.cards.unitcards
 import gwent.cards.unitcards.effects._
 
 
-class CloseCombatCard(name: String, attackPower: Int, specialAbility: Option[SpecialAbility] = None) extends UnitCard(name, attackPower, specialAbility) {
+class CloseCombatCard(name: String, attackPower: Int, specialAbility: Option[Some[CloseBond]] = None) extends UnitCard(name, attackPower, specialAbility) {
 
   def getSpecialAbility(): Unit ={
     this.cardType
