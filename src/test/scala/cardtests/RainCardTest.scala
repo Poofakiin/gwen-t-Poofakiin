@@ -13,8 +13,8 @@ class RainCardTest extends FunSuite {
   val secondCardAttkPwr: Int = 2
 
 
-  val moralboost: SpecialAbility = new MoralBoost()
-  val closeBond:SpecialAbility = new CloseBond()
+  val moralboost: ISpecialAbility = new MoralBoost()
+  val closeBond: ISpecialAbility = new CloseBond()
 
   var card1: CloseCombatCard = _
   var card2: CloseCombatCard = _
@@ -25,16 +25,28 @@ class RainCardTest extends FunSuite {
     card2 = new CloseCombatCard(secondCardName,secondCardAttkPwr, moralboost)
     card3 = new CloseCombatCard(firstCardName,firstCardAttkPwr)
   }
-  test("A CloseCombatCard should be created with a name") {
+  test("A CloseCombatCard with special ability should be created with a name") {
     assertEquals(card1.name, firstCardName)
   }
 
-  test("A CloseCombatCard should hace a card type and it should be Unit Card") {
+  test("A CloseCombatCard without special ability should be created with a name") {
+    assertEquals(card3.name, firstCardName)
+  }
+
+  test("A CloseCombatCard with special ability should hace a card type and it should be Unit Card") {
     assertEquals(card1.cardType, "Unit Card")
   }
 
-  test("A CloseCombatCard should be created with an attack power value") {
+  test("A CloseCombatCard without special ability should hace a card type and it should be Unit Card") {
+    assertEquals(card3.cardType, "Unit Card")
+  }
+
+  test("A CloseCombatCard with special ability should be created with an attack power value") {
     assertEquals(card1.attackPower, firstCardAttkPwr)
+  }
+
+  test("A CloseCombatCard without special ability should be created with an attack power value") {
+    assertEquals(card3.attackPower, firstCardAttkPwr)
   }
 
   test("If the CloseCombatCard constructor is used with the third variable SpecialAbility, then the card should have a special ability") {

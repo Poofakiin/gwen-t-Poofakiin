@@ -1,7 +1,8 @@
 package cl.uchile.dcc
 package gwent.cards.unitcards.effects
 
-class MoralBoost() extends SpecialAbility("Moral Boost"){
+class MoralBoost() extends ISpecialAbility{
+  val name: String = "Moral Boost"
   override def useAbility(): Unit = {
     ()
   }

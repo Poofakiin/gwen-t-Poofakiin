@@ -13,5 +13,5 @@ package gwent.cards
  */
 trait ICard {
   val name: String
-  var cardType: String
+  val cardType: String
 }

@@ -1,7 +1,8 @@
 package cl.uchile.dcc
 package gwent.cards.unitcards.effects
 
-class CloseBond() extends SpecialAbility("Close Bond"){
+class CloseBond() extends ISpecialAbility{
+  val name:String = "Close Bond"
   override def useAbility(): Unit = {
     ()
   }

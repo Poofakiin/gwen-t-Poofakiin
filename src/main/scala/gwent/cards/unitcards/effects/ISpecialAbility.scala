@@ -1,6 +1,7 @@
 package cl.uchile.dcc
 package gwent.cards.unitcards.effects
 
-abstract class SpecialAbility(val name: String){
+trait ISpecialAbility {
+  val name: String
   def useAbility(): Unit
 }

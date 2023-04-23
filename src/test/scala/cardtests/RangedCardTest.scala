@@ -13,8 +13,8 @@ class RangedCardTest extends FunSuite{
   val secondCardAttkPwr: Int = 5
 
 
-  val moralboost: SpecialAbility = new MoralBoost()
-  val closeBond:SpecialAbility = new CloseBond()
+  val moralboost: ISpecialAbility = new MoralBoost()
+  val closeBond: ISpecialAbility = new CloseBond()
 
   var card1: RangedCard = _
   var card2: RangedCard = _
@@ -25,16 +25,28 @@ class RangedCardTest extends FunSuite{
     card2 = new RangedCard(secondCardName,secondCardAttkPwr, moralboost)
     card3 = new RangedCard(firstCardName,firstCardAttkPwr)
   }
-  test("A RangedCard should be created with a name") {
+  test("A RangedCard with special ability should be created with a name") {
     assertEquals(card1.name, firstCardName)
   }
 
-  test("A RangedCard should hace a card type and it should be Unit Card") {
+  test("A RangedCard without special ability should be created with a name") {
+    assertEquals(card3.name, firstCardName)
+  }
+
+  test("A RangedCard with special ability should hace a card type and it should be Unit Card") {
     assertEquals(card1.cardType, "Unit Card")
   }
 
-  test("A RangedCard should be created with an attack power value") {
+  test("A RangedCard without special ability should hace a card type and it should be Unit Card") {
+    assertEquals(card3.cardType, "Unit Card")
+  }
+
+  test("A RangedCard with special ability should be created with an attack power value") {
     assertEquals(card1.attackPower, firstCardAttkPwr)
+  }
+
+  test("A RangedCard without special ability should be created with an attack power value") {
+    assertEquals(card3.attackPower, firstCardAttkPwr)
   }
 
   test("If the RangedCard constructor is used with the third variable"+

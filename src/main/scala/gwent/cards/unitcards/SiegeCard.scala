@@ -1,11 +1,11 @@
 package cl.uchile.dcc
 package gwent.cards.unitcards
 import gwent.cards.unitcards.effects._
-import gwent.cards.unitcards.UnitCard
+import gwent.cards.unitcards.AbstractUnitCard
 
 
-class SiegeCard (name: String, attackPower: Int) extends UnitCard(name, attackPower){
-  def this(name:String, attackPower: Int, specialAbility: SpecialAbility)={
+class SiegeCard (name: String, attackPower: Int) extends AbstractUnitCard(name, attackPower){
+  def this(name:String, attackPower: Int, specialAbility: ISpecialAbility)={
     this(name,attackPower)
     _specialAbility = Some(specialAbility)
   }

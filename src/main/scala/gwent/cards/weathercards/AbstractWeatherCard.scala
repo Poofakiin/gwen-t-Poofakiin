@@ -10,5 +10,5 @@ import gwent.cards.ICard
  * @param cardType the type of the weather card.
  *
  */
-abstract class WeatherCard(val name:String,var cardType: String = "Weather Card") extends ICard {
+abstract class AbstractWeatherCard(val name:String, val cardType: String = "Weather Card") extends ICard {
 }

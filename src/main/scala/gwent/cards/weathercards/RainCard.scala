@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package gwent.cards.weathercards
 
-class RainCard(name: String, cardType: String = "Weather Card") extends WeatherCard(name,cardType) {
+class RainCard(name: String, cardType: String = "Weather Card") extends AbstractWeatherCard(name,cardType) {
   override def equals(obj: Any): Boolean = {
     if (obj.isInstanceOf[RainCard]) {
       val other = obj.asInstanceOf[RainCard]

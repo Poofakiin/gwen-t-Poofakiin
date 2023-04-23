@@ -3,8 +3,8 @@ package gwent.cards.unitcards
 import gwent.cards.unitcards.effects._
 
 
-class RangedCard (name: String, attackPower: Int) extends UnitCard(name, attackPower){
-  def this(name:String, attackPower: Int, specialAbility: SpecialAbility)={
+class RangedCard (name: String, attackPower: Int) extends AbstractUnitCard(name, attackPower){
+  def this(name:String, attackPower: Int, specialAbility: ISpecialAbility)={
     this(name,attackPower)
     _specialAbility = Some(specialAbility)
   }

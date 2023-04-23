@@ -13,8 +13,8 @@ class SiegeCardTest extends FunSuite {
   val secondCardAttkPwr: Int = 1
 
 
-  val moralboost: SpecialAbility = new MoralBoost()
-  val closeBond:SpecialAbility = new CloseBond()
+  val moralboost: ISpecialAbility = new MoralBoost()
+  val closeBond: ISpecialAbility = new CloseBond()
 
   var card1: SiegeCard = _
   var card2: SiegeCard = _
@@ -25,17 +25,30 @@ class SiegeCardTest extends FunSuite {
     card2 = new SiegeCard(secondCardName,secondCardAttkPwr, moralboost)
     card3 = new SiegeCard(firstCardName,firstCardAttkPwr)
   }
-  test("A SiegeCard should be created with a name") {
+  test("A SiegeCard with special ability should be created with a name") {
     assertEquals(card1.name, firstCardName)
   }
 
-  test("A SiegeCard should hace a card type and it should be Unit Card") {
+  test("A SiegeCard without special ability should be created with a name") {
+    assertEquals(card3.name, firstCardName)
+  }
+
+  test("A SiegeCard with special ability should hace a card type and it should be Unit Card") {
     assertEquals(card1.cardType, "Unit Card")
   }
 
-  test("A SiegeCard should be created with an attack power value") {
+  test("A SiegeCard without special ability should hace a card type and it should be Unit Card") {
+    assertEquals(card3.cardType, "Unit Card")
+  }
+
+  test("A SiegeCard with special ability should be created with an attack power value") {
     assertEquals(card1.attackPower, firstCardAttkPwr)
   }
+
+  test("A SiegeCard without special ability should be created with an attack power value") {
+    assertEquals(card3.attackPower, firstCardAttkPwr)
+  }
+
 
   test("If the SiegeCard constructor is used with the third variable SpecialAbility,"+
     "then the card should have a special ability") {
