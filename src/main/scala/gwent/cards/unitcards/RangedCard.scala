@@ -3,7 +3,11 @@ package gwent.cards.unitcards
 import gwent.cards.unitcards.effects._
 
 
-class RangedCard (name: String, attackPower: Int, specialAbility: Option[Some[CloseBond]] = None) extends UnitCard(name, attackPower, specialAbility){
+class RangedCard (name: String, attackPower: Int) extends UnitCard(name, attackPower){
+  def this(name:String, attackPower: Int, specialAbility: SpecialAbility)={
+    this(name,attackPower)
+    _specialAbility = Some(specialAbility)
+  }
 
   override def equals(obj: Any): Boolean = {
     if (obj.isInstanceOf[RangedCard]) {
@@ -12,7 +16,7 @@ class RangedCard (name: String, attackPower: Int, specialAbility: Option[Some[Cl
         (other.name == this.name &&
           other.cardType == this.cardType &&
           other.attackPower == this.attackPower &&
-          other.specialAbility == this.specialAbility)
+          other._specialAbility == this._specialAbility)
     }
     else {
       false
@@ -26,7 +30,7 @@ class RangedCard (name: String, attackPower: Int, specialAbility: Option[Some[Cl
     result = prime * result + name.##
     result = prime * result + cardType.##
     result = prime * result + attackPower.##
-    result = prime * result + specialAbility.##
+    result = prime * result + _specialAbility.##
     result
   }
 }

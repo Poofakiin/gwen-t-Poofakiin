@@ -1,9 +1,14 @@
 package cl.uchile.dcc
 package gwent.cards.unitcards
 import gwent.cards.unitcards.effects._
+import gwent.cards.unitcards.UnitCard
 
 
-class SiegeCard (name: String, attackPower: Int, specialAbility: Option[Some[CloseBond]] = None) extends UnitCard(name, attackPower, specialAbility){
+class SiegeCard (name: String, attackPower: Int) extends UnitCard(name, attackPower){
+  def this(name:String, attackPower: Int, specialAbility: SpecialAbility)={
+    this(name,attackPower)
+    _specialAbility = Some(specialAbility)
+  }
 
   override def equals(obj: Any): Boolean = {
     if (obj.isInstanceOf[SiegeCard]) {
@@ -12,7 +17,7 @@ class SiegeCard (name: String, attackPower: Int, specialAbility: Option[Some[Clo
         (other.name == this.name &&
           other.cardType == this.cardType &&
           other.attackPower == this.attackPower &&
-          other.specialAbility == this.specialAbility)
+          other._specialAbility == this._specialAbility)
     }
     else {
       false
@@ -25,7 +30,7 @@ class SiegeCard (name: String, attackPower: Int, specialAbility: Option[Some[Clo
     result = prime * result + name.##
     result = prime * result + cardType.##
     result = prime * result + attackPower.##
-    result = prime * result + specialAbility.##
+    result = prime * result + _specialAbility.##
     result
   }
 }

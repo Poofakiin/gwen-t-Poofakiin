@@ -13,7 +13,7 @@ class CloseCombatCardTest extends FunSuite {
   val firstName = "Vernon Roche"
   val secondName = "Geralt of Rivia"
   val cardType = "Hero"
-  val closeBond: Option[CloseBond] = Some(new CloseBond())
+  val closeBond= new CloseBond()
 
   var geraltOfRivia = new CloseCombatCard(secondName,2, closeBond)
 

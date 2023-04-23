@@ -3,7 +3,11 @@ package gwent.cards.unitcards
 import gwent.cards.unitcards.effects._
 
 
-class CloseCombatCard(name: String, attackPower: Int, specialAbility: Option[Some[CloseBond]] = None) extends UnitCard(name, attackPower, specialAbility) {
+class CloseCombatCard(name: String, attackPower: Int) extends UnitCard(name, attackPower) {
+  def this(name:String, attackPower: Int, specialAbility: SpecialAbility)={
+    this(name,attackPower)
+    _specialAbility = Some(specialAbility)
+  }
 
   def getSpecialAbility(): Unit ={
     this.cardType
@@ -15,7 +19,7 @@ class CloseCombatCard(name: String, attackPower: Int, specialAbility: Option[Som
         (other.name == this.name &&
           other.cardType == this.cardType &&
           other.attackPower == this.attackPower &&
-          other.specialAbility == this.specialAbility)
+          other._specialAbility == this._specialAbility)
     }
     else{
       false
@@ -29,7 +33,7 @@ class CloseCombatCard(name: String, attackPower: Int, specialAbility: Option[Som
       result = prime * result + name.##
       result = prime * result + cardType.##
       result = prime * result + attackPower.##
-      result = prime * result + specialAbility.##
+      result = prime * result + _specialAbility.##
       result
     }
 }

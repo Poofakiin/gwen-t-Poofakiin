@@ -11,7 +11,12 @@ import gwent.cards.ICard
  * @param cardType the type of the unit card.
  * @param attackPower the attack power of the unit card.
  */
-abstract class UnitCard(val name: String, var attackPower: Int, val specialAbility: Option[Some[CloseBond]] = None) extends ICard{
+abstract class UnitCard(val name: String, var attackPower: Int) extends ICard{
+  protected var _specialAbility: Option[SpecialAbility] = None
   var cardType: String = "Unit Card"
+  def this(name: String, attackPower: Int, specialAbility: SpecialAbility)={
+    this(name,attackPower)
+    _specialAbility = Some(specialAbility)
+  }
 }
 
