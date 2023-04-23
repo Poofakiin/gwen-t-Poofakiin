@@ -1,15 +1,16 @@
 package cl.uchile.dcc
-package gwent.cards.unitcards.effects
+package gwent.cards.weathercards.weathertype
 
-class MoralBoost() extends ISpecialAbility{
-  val name: String = "Moral Boost"
-  override def useAbility(): Unit = {
+class Fog extends IWeatherType{
+  val name: String = "Fog"
 
+  override def affectWeather(): Unit = {
+    ()
   }
 
   override def equals(obj: Any): Boolean = {
-    if (obj.isInstanceOf[MoralBoost]) {
-      val other = obj.asInstanceOf[MoralBoost]
+    if (obj.isInstanceOf[Fog]) {
+      val other = obj.asInstanceOf[Fog]
       (this eq other) ||
         (other.name == this.name)
     }
@@ -20,8 +21,9 @@ class MoralBoost() extends ISpecialAbility{
   override def hashCode():Int = {
     val prime = 31
     var result= 1
-    result = prime * result + classOf[MoralBoost].##
+    result = prime * result + classOf[Fog].##
     result = prime * result + name.##
     result
   }
+
 }

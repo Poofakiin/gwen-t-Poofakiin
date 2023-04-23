@@ -4,7 +4,7 @@ package gwent.cards.unitcards.effects
 class CloseBond() extends ISpecialAbility{
   val name:String = "Close Bond"
   override def useAbility(): Unit = {
-    ()
+    
   }
 
   override def equals(obj: Any): Boolean = {

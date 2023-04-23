@@ -1,17 +1,16 @@
 package cl.uchile.dcc
 package gwent.cards.weathercards
 
-import weathertype.Rain
+import weathertype.Fog
 import weathertype.IWeatherType
 
-
-class RainCard() extends AbstractWeatherCard() {
+class FogCard extends AbstractWeatherCard() {
   val name = "Rain Card"
-  val weatherType = new Rain()
+  val weatherType: IWeatherType = new Fog()
 
   override def equals(obj: Any): Boolean = {
-    if (obj.isInstanceOf[RainCard]) {
-      val other = obj.asInstanceOf[RainCard]
+    if (obj.isInstanceOf[FogCard]) {
+      val other = obj.asInstanceOf[FogCard]
       (this eq other) ||
         (other.name == this.name &&
           other.cardType == this.cardType &&
@@ -24,7 +23,7 @@ class RainCard() extends AbstractWeatherCard() {
   override def hashCode():Int = {
     val prime = 31
     var result= 1
-    result = prime * result + classOf[RainCard].##
+    result = prime * result + classOf[FogCard].##
     result = prime * result + name.##
     result = prime * result + cardType.##
     result = prime * result + weatherType.##

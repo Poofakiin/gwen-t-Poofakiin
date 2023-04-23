@@ -1,5 +1,5 @@
 package cl.uchile.dcc
-package playertests
+package gwent.players
 
 import cl.uchile.dcc.gwent.players.Player
 

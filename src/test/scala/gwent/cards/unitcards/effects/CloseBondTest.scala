@@ -1,7 +1,8 @@
 package cl.uchile.dcc
-package effectstests
+package gwent.cards.unitcards.effects
 
-import gwent.cards.unitcards.effects._
+import gwent.cards.unitcards.effects.*
+
 import munit.FunSuite
 
 
