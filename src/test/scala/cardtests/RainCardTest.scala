@@ -59,22 +59,26 @@ class RainCardTest extends FunSuite {
   }
 
   test("A CloseCombatCard with a special ability should be equal to another "+
-    "card of the same class with the same attributes"){
+    "card of the same class with the same attributes and it should have the same hashcode"){
 
     var sameAsCard1: CloseCombatCard = new CloseCombatCard(firstCardName,firstCardAttkPwr,closeBond)
     assertEquals(card1, sameAsCard1)
     assertEquals(sameAsCard1, card1)
+    assertEquals(card1.hashCode(),sameAsCard1.hashCode())
     assertNotEquals(card1, card2)
     assertNotEquals(card2, card1)
+    assertNotEquals(card1.hashCode(),card2.hashCode())
   }
 
   test("A CloseCombatCard without a special ability should be equal to another "+
-    "card of the same class with the same attributes"){
-    var sameAsCard3: CloseCombatCard = new CloseCombatCard(firstCardName,firstCardAttkPwr)
+    "card of the same class with the same attributes and it should have the same hashcode") {
+    var sameAsCard3: CloseCombatCard = new CloseCombatCard(firstCardName, firstCardAttkPwr)
     assertEquals(card3, sameAsCard3)
-    assertEquals(sameAsCard3,card3)
+    assertEquals(sameAsCard3, card3)
+    assertEquals(card3.hashCode(), sameAsCard3.hashCode())
     assertNotEquals(card3, card2)
-    assertNotEquals(card2,card3)
+    assertNotEquals(card2, card3)
+    assertNotEquals(card3.hashCode(), card2.hashCode())
   }
 
   test("A CloseCombatCard without a special ability should not be equal to "+
