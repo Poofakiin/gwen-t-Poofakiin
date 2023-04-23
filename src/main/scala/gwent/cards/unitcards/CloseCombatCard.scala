@@ -3,8 +3,11 @@ package gwent.cards.unitcards
 import gwent.cards.unitcards.effects._
 
 
-class CloseCombatCard(name: String, cardType:String = "Unit Card", attackPower: Int, specialAbility: SpecialAbility) extends UnitCard(name,cardType, attackPower, specialAbility) {
-  
+class CloseCombatCard(name: String, attackPower: Int, specialAbility: Option[SpecialAbility] = None) extends UnitCard(name, attackPower, specialAbility) {
+
+  def getSpecialAbility(): Unit ={
+    this.cardType
+  }
   override def equals(obj: Any): Boolean = {
     if(obj.isInstanceOf[CloseCombatCard]){
       val other = obj.asInstanceOf[CloseCombatCard]

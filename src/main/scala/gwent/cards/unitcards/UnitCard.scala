@@ -11,5 +11,6 @@ import gwent.cards.Card
  * @param cardType the type of the unit card.
  * @param attackPower the attack power of the unit card.
  */
-abstract class UnitCard(name: String,cardType: String = "Unit Card", var attackPower: Int, val specialAbility: SpecialAbility) extends Card(name,cardType) {
+abstract class UnitCard(name: String, var attackPower: Int, val specialAbility: Option[SpecialAbility] = None) extends Card(name,"Unit") {
 }
+

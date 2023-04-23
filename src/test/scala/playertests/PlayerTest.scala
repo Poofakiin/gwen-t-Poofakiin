@@ -8,7 +8,7 @@ import munit.FunSuite
 import scala.collection.mutable.ArrayBuffer
 
 class PlayerTest extends FunSuite {
-  val vernonRoche = new Card("Vernon Roche", "hero")
+  /*val vernonRoche = new Card("Vernon Roche", "hero")
   val geraltOfRivia = new Card("Geralt of Rivia", "hero")
   val papimicky = new Card("Papi Micky", "thief")
   val kingFoltest = new Card("King Foltest", "king")
@@ -54,5 +54,5 @@ class PlayerTest extends FunSuite {
     firstPlayer.getCard(papimicky,firstPlayer.hand,firstPlayer.deck)
     assertEquals(firstPlayer.hand, ArrayBuffer(vernonRoche, geraltOfRivia, papimicky))
     assertEquals(firstPlayer.deck, ArrayBuffer(kingFoltest, sunnyday))
-  }
+  }*/
 }

@@ -1,7 +1,8 @@
 package cl.uchile.dcc
 package cardtests
 
-import cl.uchile.dcc.gwent.cards.unitcards.CloseCombatCard
+import gwent.cards.unitcards._
+import gwent.cards.unitcards.effects._
 import munit.FunSuite
 
 class CloseCombatCardTest extends FunSuite {
@@ -11,15 +12,16 @@ class CloseCombatCardTest extends FunSuite {
   val firstName = "Vernon Roche"
   val secondName = "Geralt of Rivia"
   val cardType = "Hero"
+  val closeBond = new CloseBond()
 
-  var vernonRoche = new
-  var geraltOfRivia = new CloseCombatCard(secondName)
+  var geraltOfRivia: CloseCombatCard = new CloseCombatCard(secondName,2,closeBond)
+
   test("Una carta debe tener su nombre propio"){
-    assertEquals(vernonRoche.name, firstName)
+    assertEquals(geraltOfRivia.name, firstName)
     assertEquals(geraltOfRivia.name, secondName)
   }
   test("Una Carta debe tener una clasificacion que la identifica"){
-    assertEquals(vernonRoche.cardType, cardType)
+    assertEquals(geraltOfRivia.cardType, cardType)
     assertEquals(geraltOfRivia.cardType, cardType)
   }
 }
