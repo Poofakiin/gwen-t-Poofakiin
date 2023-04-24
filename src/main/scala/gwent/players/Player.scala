@@ -18,70 +18,70 @@ import gwent.cards.ICard
  */
 class Player(val name: String, var gemsCounter: Int, var deck: ArrayBuffer[ICard],
              var hand: ArrayBuffer[ICard]) extends GamePlayer {
-  /** Picks a certain card and removes it from the player's hand.
-   *
-   * @param card the Card that´s going to be played.
-   * @param hand the hand of cards.
-   */
-  def canPlayCard(card: ICard): Boolean ={
-    this.hand.exists(y => {y == card})
-  }
-
-  def playCard(card: ICard): Unit = {
-    if(canPlayCard(card)) {
-      this.hand -= card
-    }
-    else{
-      ()
-    }
-  }
-
-  /** Adds a card to the player's hand and removes it from their deck.
-   *
-   * @param card the Card that´s going to be added to the hand.
-   * @param hand the hand of cards.
-   * @param deck the deck of cards.
-   */
-
-  def canDrawCard(): Boolean = {
-    this.deck.nonEmpty && this.hand.size < 10
-  }
-  def drawCard(): Unit = {
-    if(canDrawCard()){
-      this.hand += this.deck.head
-      this.deck -= this.deck.head
-    }
-    else if(this.deck.nonEmpty){
-      this.deck -= this.deck.head
-    }
-  }
-
-  def shuffleDeck(): Unit = {
-    this.deck = Random.shuffle(this.deck)
-  }
-
-  override def equals(obj: Any): Boolean = {
-    if(obj.isInstanceOf[Player]){
-      val other = obj.asInstanceOf[Player]
-      (this eq other) ||
-        (other.name == this.name &&
-          other.gemsCounter == this.gemsCounter &&
-          other.hand.sameElements(this.hand) &&
-          other.deck.sameElements(this.deck))
-    }
-    else{
-      false
+    /** Picks a certain card and removes it from the player's hand.
+     *
+     * @param card the Card that´s going to be played.
+     * @param hand the hand of cards.
+     */
+    def canPlayCard(card: ICard): Boolean ={
+        this.hand.exists(y => {y == card})
     }
 
-  }
-  override def hashCode():Int = {
-    val prime = 31
-    var result= 1
-    result = prime * result + classOf[Player].##
-    result = prime * result + name.##
-    result = prime * result + gemsCounter.##
-    result = prime * result + hand.##
-    result = prime * result + deck.##
-    result
-  }
+    def playCard(card: ICard): Unit = {
+        if(canPlayCard(card)) {
+            this.hand -= card
+        }
+        else{
+            ()
+        }
+    }
+
+    /** Adds a card to the player's hand and removes it from their deck.
+     *
+     * @param card the Card that´s going to be added to the hand.
+     * @param hand the hand of cards.
+     * @param deck the deck of cards.
+     */
+
+    def canDrawCard(): Boolean = {
+        this.deck.nonEmpty && this.hand.size < 10
+    }
+    def drawCard(): Unit = {
+        if(canDrawCard()){
+            this.hand += this.deck.head
+            this.deck -= this.deck.head
+        }
+        else if(this.deck.nonEmpty){
+            this.deck -= this.deck.head
+        }
+    }
+
+    def shuffleDeck(): Unit = {
+        this.deck = Random.shuffle(this.deck)
+    }
+
+    override def equals(obj: Any): Boolean = {
+        if(obj.isInstanceOf[Player]){
+            val other = obj.asInstanceOf[Player]
+            (this eq other) ||
+                (other.name == this.name &&
+                    other.gemsCounter == this.gemsCounter &&
+                    other.hand.sameElements(this.hand) &&
+                    other.deck.sameElements(this.deck))
+        }
+        else{
+            false
+        }
+
+    }
+    override def hashCode():Int = {
+        val prime = 31
+        var result= 1
+        result = prime * result + classOf[Player].##
+        result = prime * result + name.##
+        result = prime * result + gemsCounter.##
+        result = prime * result + hand.##
+        result = prime * result + deck.##
+        result
+    }
 }

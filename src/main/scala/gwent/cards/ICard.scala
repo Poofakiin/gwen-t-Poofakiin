@@ -1,17 +1,18 @@
 package cl.uchile.dcc
 package gwent.cards
 
-/** A class that represents any type of Card.
- *
- * The card is defined by its name and type.
- *
- * @param name the name of the card.
- * @param cardType the type of the card.
- *
- * @constructor Creates a new card with specified name and type.
+/**
+ * Represents a card in the gwent game.
+ * This trait defines the properties that all cards have in common, such as their name and type.
  *
  */
 trait ICard {
-  val name: String
-  val cardType: String
+    /**
+     * The name of the card.
+     */
+    val name: String
+    /**
+     * The type of the card.
+     */
+    val cardType: String
 }

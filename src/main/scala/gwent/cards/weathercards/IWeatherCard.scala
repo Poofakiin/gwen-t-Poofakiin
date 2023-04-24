@@ -5,8 +5,8 @@ import gwent.cards.ICard
 import weathertype.IWeatherType
 
 trait IWeatherCard extends ICard{
-  val name:String
-  val cardType: String
-  val weatherType: IWeatherType
-  def getWeatherType(): IWeatherType
+    val name:String
+    val cardType: String
+    val weatherType: IWeatherType
+    def getWeatherType(): IWeatherType
 }
