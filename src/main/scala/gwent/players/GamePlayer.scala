@@ -1,5 +1,5 @@
 package cl.uchile.dcc
-package cl.uchile.dcc.gwent.players
+package gwent.players
 import gwent.cards.ICard
 
 import scala.collection.mutable.ArrayBuffer
@@ -31,4 +31,6 @@ trait GamePlayer {
   def shuffleDeck(): Unit
   
   def  canDrawCard(): Boolean
+
+  def canPlayCard(card: ICard): Boolean
 }
