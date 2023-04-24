@@ -1,8 +1,7 @@
 package cl.uchile.dcc
 package gwent.cards.weathercards
 
-import weathertype.Rain
-import weathertype.IWeatherType
+import weathertype._
 
 /** A class that represent a Rain card in the game Gwent
  *

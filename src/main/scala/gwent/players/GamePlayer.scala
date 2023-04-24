@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package gwent.players
-import gwent.cards.ICard
 
+import gwent.cards.ICard
 import scala.collection.mutable.ArrayBuffer
 
 /** Represents a player in the gwent game.

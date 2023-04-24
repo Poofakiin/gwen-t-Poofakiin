@@ -1,9 +1,7 @@
 package cl.uchile.dcc
 package gwent.cards.weathercards
 
-import weathertype.Fog
-import weathertype.IWeatherType
-
+import weathertype._
 /** A class that represent a Fog card in the game Gwent
  *
  * Fog cards have a name, a cardType and a weather type.

@@ -1,5 +1,6 @@
 package cl.uchile.dcc
 package gwent.cards.weathercards
+
 import gwent.cards.ICard
 import weathertype.IWeatherType
 

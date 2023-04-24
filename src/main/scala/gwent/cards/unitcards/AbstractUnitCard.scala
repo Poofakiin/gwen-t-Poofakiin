@@ -1,7 +1,6 @@
 package cl.uchile.dcc
 package gwent.cards.unitcards
-import gwent.cards.unitcards.effects._
-import gwent.cards.unitcards.IUnitCard
+import effects._
 
 /** A class that represents an unit type of card in the Gwent game.
  *

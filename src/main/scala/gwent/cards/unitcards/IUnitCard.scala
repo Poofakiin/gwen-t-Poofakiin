@@ -1,6 +1,7 @@
 package cl.uchile.dcc
 package gwent.cards.unitcards
-import gwent.cards.unitcards.effects._
+
+import effects._
 import gwent.cards.ICard
 
 /**

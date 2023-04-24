@@ -2,7 +2,6 @@ package cl.uchile.dcc
 package gwent.players
 
 
-import scala.math.Ordering.ordered
 import scala.util.Random
 import scala.collection.mutable.ArrayBuffer
 import gwent.cards.ICard

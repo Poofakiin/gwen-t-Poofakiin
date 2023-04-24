@@ -1,6 +1,6 @@
 package cl.uchile.dcc
 package gwent.cards.unitcards
-import gwent.cards.unitcards.effects._
+import effects._
 
 /** A class that represent a Close Combat card in the game Gwent
  *
