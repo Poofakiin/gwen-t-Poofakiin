@@ -3,7 +3,8 @@ package gwent.cards
 
 /**
  * Represents a card in the gwent game.
- * This trait defines the properties that all cards have in common, such as their name and type.
+ * This trait defines the properties that all cards have in common,
+ * such as their name and cardtype.
  *
  */
 trait ICard {

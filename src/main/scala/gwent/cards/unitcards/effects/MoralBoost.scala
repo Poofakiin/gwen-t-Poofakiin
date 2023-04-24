@@ -26,8 +26,7 @@ class MoralBoost() extends ISpecialAbility{
     /** Checks if this MoralBoost is equal to another object.
      *
      * @param obj The object to compare to.
-     * @return true if the object is a MoralBoost and has the same name
-     * card type, attack power, and special ability (if any), false otherwise.
+     * @return true if the object is a MoralBoost and has the same name, false otherwise.
      */
     override def equals(obj: Any): Boolean = {
         if (obj.isInstanceOf[MoralBoost]) {

@@ -23,7 +23,7 @@ class RainCard() extends AbstractWeatherCard() {
      *
      * @param obj The object to compare to.
      * @return true if the object is a RainCard and has the same name
-     * card type, attack power, and special ability (if any), false otherwise.
+     * card type and weather Type, false otherwise.
      */
     override def equals(obj: Any): Boolean = {
         if (obj.isInstanceOf[RainCard]) {

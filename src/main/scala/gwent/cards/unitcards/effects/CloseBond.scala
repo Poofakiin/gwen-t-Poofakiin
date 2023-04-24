@@ -24,8 +24,7 @@ class CloseBond() extends ISpecialAbility{
     /** Checks if this CloseBond is equal to another object.
      *
      * @param obj The object to compare to.
-     * @return true if the object is a CloseBond and has the same name
-     * card type, attack power, and special ability (if any), false otherwise.
+     * @return true if the object is a CloseBond and has the same name, false otherwise.
      */
     override def equals(obj: Any): Boolean = {
         if (obj.isInstanceOf[CloseBond]) {
