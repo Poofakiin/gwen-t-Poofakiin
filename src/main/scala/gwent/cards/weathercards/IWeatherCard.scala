@@ -9,5 +9,4 @@ trait IWeatherCard extends ICard{
   val cardType: String
   val weatherType: IWeatherType
   def getWeatherType(): IWeatherType
-  def useWeatherType(): Unit
 }

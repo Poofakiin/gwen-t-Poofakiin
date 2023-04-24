@@ -5,7 +5,7 @@ import weathertype.Fog
 import weathertype.IWeatherType
 
 class FogCard extends AbstractWeatherCard() {
-  val name = "Rain Card"
+  val name = "Fog Card"
   val weatherType: IWeatherType = new Fog()
 
   override def equals(obj: Any): Boolean = {

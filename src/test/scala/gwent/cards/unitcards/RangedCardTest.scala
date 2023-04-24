@@ -1,9 +1,7 @@
 package cl.uchile.dcc
 package gwent.cards.unitcards
 
-import gwent.cards.unitcards.*
-import gwent.cards.unitcards.effects.*
-
+import effects._
 import munit.FunSuite
 
 class RangedCardTest extends FunSuite{

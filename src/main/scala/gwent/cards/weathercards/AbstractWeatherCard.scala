@@ -19,31 +19,4 @@ abstract class AbstractWeatherCard() extends IWeatherCard {
   override def getWeatherType(): IWeatherType = {
     this.weatherType
   }
-
-  override def useWeatherType(): Unit = {
-    this.weatherType.affectWeather()
-  }
-
-
-  override def equals(obj: Any): Boolean = {
-    if (obj.isInstanceOf[AbstractWeatherCard]) {
-      val other = obj.asInstanceOf[AbstractWeatherCard]
-      (this eq other) ||
-        (other.name == this.name &&
-          other.cardType == this.cardType &&
-          other.weatherType == this.weatherType)
-    }
-    else {
-      false
-    }
-  }
-  override def hashCode():Int = {
-    val prime = 31
-    var result= 1
-    result = prime * result + classOf[AbstractWeatherCard].##
-    result = prime * result + name.##
-    result = prime * result + cardType.##
-    result = prime * result + weatherType.##
-    result
-  }
 }
