@@ -14,7 +14,7 @@ import scala.collection.mutable.ArrayBuffer
  * @param cardCollection its the card array
  */
 class Hand (cardCollection: ArrayBuffer[ICard]) extends AbstractCardGroup(cardCollection){
-    
+
     /**
      * the limit card of the array, for a deck it will always be 10
      */
@@ -26,8 +26,8 @@ class Hand (cardCollection: ArrayBuffer[ICard]) extends AbstractCardGroup(cardCo
      * @return true if the object is a Player and has the same cardCollection and limitCards.
      */
     override def equals(obj: Any): Boolean = {
-        if(obj.isInstanceOf[Deck]){
-            val other = obj.asInstanceOf[Deck]
+        if(obj.isInstanceOf[Hand]){
+            val other = obj.asInstanceOf[Hand]
             (this eq other) ||
                 (other.cardCollection.sameElements(this.cardCollection) &&
                     other.limitCards == this.limitCards)
