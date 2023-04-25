@@ -6,15 +6,23 @@ import gwent.players.cardgroups.AbstractCardGroup
 
 import scala.collection.mutable.ArrayBuffer
 
-class Hand (cardCollection: ArrayBuffer[ICard]) extends AbstractCardGroup(cardCollection){
 
+/** A class that represent a Deck in the game Gwent
+ *
+ * Deck have a card array and a car limit
+ *
+ * @param cardCollection its the card array
+ */
+class Hand (cardCollection: ArrayBuffer[ICard]) extends AbstractCardGroup(cardCollection){
+    /**
+     * the limit card of the array, for a deck it will always be 10
+     */
     val limitCards: Int = 10
 
-    /** Checks if this Player is equal to another object.
+    /** Checks if this Hand is equal to another object.
      *
      * @param obj The object to compare to.
-     * @return true if the object is a Player and has the same name, gemscounter
-     * deck and hand.
+     * @return true if the object is a Player and has the same cardCollection and limitCards.
      */
     override def equals(obj: Any): Boolean = {
         if(obj.isInstanceOf[Deck]){
@@ -29,9 +37,9 @@ class Hand (cardCollection: ArrayBuffer[ICard]) extends AbstractCardGroup(cardCo
 
     }
 
-    /** Returns the hash code of this Player.
+    /** Returns the hash code of this Deck.
      *
-     * @return The hash code of this Player.
+     * @return The hash code of this Deck.
      */
     override def hashCode():Int = {
         val prime = 31

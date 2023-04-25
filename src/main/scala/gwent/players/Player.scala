@@ -69,11 +69,7 @@ class Player(val name: String, var gemsCounter: Int, var deck: Deck,
             this.deck.takeCard(this.deck.cardCollection.head)
         }
     }
-
-    /** Randomly shuffles the cards in the deck to change their order.
-     * This method uses the Random.shuffle method to shuffle the cards in the deck
-     * in a random order.
-     */
+    
 
     /** Checks if this Player is equal to another object.
      *
