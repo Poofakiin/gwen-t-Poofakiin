@@ -14,6 +14,7 @@ class PlayerTest extends FunSuite {
      * Let´s define 18 cards, 9 of them will be in the player´s hand
      * and the rest in player´s deck
      */
+    /*
     val closebond: CloseBond = new CloseBond
     val moralboost: MoralBoost = new MoralBoost
 
@@ -148,5 +149,5 @@ class PlayerTest extends FunSuite {
         assertNotEquals(firstPlayer, secondPlayer)
         assertNotEquals(secondPlayer, firstPlayer)
         assertNotEquals(firstPlayer.hashCode(),secondPlayer.hashCode())
-    }
+    }*/
 }

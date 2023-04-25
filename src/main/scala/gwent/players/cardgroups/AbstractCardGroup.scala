@@ -22,7 +22,7 @@ abstract class AbstractCardGroup(var cardCollection: ArrayBuffer[ICard]) extends
      * @return true if the card collection size its equals to the limit card, false otherwise.
      */
     override def itsFull(): Boolean = {
-        this.cardCollection.size > limitCards
+        this.cardCollection.size >= limitCards
     }
 
     /** Verify if a given card is in the card collection array.
@@ -44,9 +44,13 @@ abstract class AbstractCardGroup(var cardCollection: ArrayBuffer[ICard]) extends
 
     /** Add a given card to the card collection array.
      *
+     * If the card collection its full, it can´t add a new card
+     *
      * @param card the Card that´s going to be added.
      */
     override def addCard(card: ICard): Unit = {
-        this.cardCollection += card
+        if(!this.itsFull()) {
+            this.cardCollection += card
+        }
     }
 }

@@ -14,6 +14,7 @@ import scala.collection.mutable.ArrayBuffer
  * @param cardCollection its the card array
  */
 class Hand (cardCollection: ArrayBuffer[ICard]) extends AbstractCardGroup(cardCollection){
+    
     /**
      * the limit card of the array, for a deck it will always be 10
      */
