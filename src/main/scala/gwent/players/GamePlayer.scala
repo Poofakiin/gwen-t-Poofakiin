@@ -48,4 +48,10 @@ trait GamePlayer {
      *
      */
     def drawCard(): Unit
-    
+
+
+    /** Verify if the player's hand meet the requirements to draw a card.
+     *
+     */
+    def canDrawCard(): Boolean
+}

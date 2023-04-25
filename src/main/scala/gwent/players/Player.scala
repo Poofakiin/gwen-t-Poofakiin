@@ -19,7 +19,17 @@ import cardgroups._
 class Player(val name: String, var gemsCounter: Int, var deck: Deck,
              var hand: Hand) extends GamePlayer {
 
+    
 
+    /** Verifies if the player's hand and deck meet the requirements to draw a card.
+     *
+     * The player's hand must contain less than 10 cards and their deck must not be empty
+     * in order to be able to draw a card.
+     * @return true if the player is able to draw a card, false otherwise.
+     */
+    def canDrawCard(): Boolean = {
+        this.deck.cardCollection.nonEmpty && this.hand.itsFull()
+    }
 
     /**
      * Plays a given card from the player's hand and removes it from the hand.
@@ -29,8 +39,8 @@ class Player(val name: String, var gemsCounter: Int, var deck: Deck,
      * @see canPlayCard
      */
     def playCard(card: ICard): Unit = {
-        if(canPlayCard(card)) {
-            this.hand -= card
+        if(this.hand.hasCard(card)) {
+            this.hand.takeCard(card)
         }
         else{
             ()
@@ -52,11 +62,11 @@ class Player(val name: String, var gemsCounter: Int, var deck: Deck,
      */
     def drawCard(): Unit = {
         if(canDrawCard()){
-            this.hand += this.deck.head
-            this.deck -= this.deck.head
+            this.hand.addCard(this.deck.cardCollection.head)
+
         }
-        else if(this.deck.nonEmpty){
-            this.deck -= this.deck.head
+        else if(this.deck.cardCollection.nonEmpty){
+            this.deck.takeCard(this.deck.cardCollection.head)
         }
     }
 
@@ -77,8 +87,8 @@ class Player(val name: String, var gemsCounter: Int, var deck: Deck,
             (this eq other) ||
                 (other.name == this.name &&
                     other.gemsCounter == this.gemsCounter &&
-                    other.hand.sameElements(this.hand) &&
-                    other.deck.sameElements(this.deck))
+                    other.hand.equals(this.hand) &&
+                    other.deck.equals(this.deck))
         }
         else{
             false
@@ -99,25 +109,5 @@ class Player(val name: String, var gemsCounter: Int, var deck: Deck,
         result = prime * result + hand.##
         result = prime * result + deck.##
         result
-    }
-
-
-    /** Verifies if the player's hand meet the requirements to play a given card.
-     *
-     * @param card The card to be played
-     * @return true if the player's hand contains the specified card, false otherwise.
-     */
-    def canPlayCard(card: ICard): Boolean ={
-        this.hand.exists(c => {c == card})
-    }
-
-    /** Verifies if the player's hand and deck meet the requirements to draw a card.
-     *
-     * The player's hand must contain less than 10 cards and their deck must not be empty
-     * in order to be able to draw a card.
-     * @return true if the player is able to draw a card, false otherwise.
-     */
-    def canDrawCard(): Boolean = {
-        this.deck.nonEmpty && this.hand.size < 10
     }
 }

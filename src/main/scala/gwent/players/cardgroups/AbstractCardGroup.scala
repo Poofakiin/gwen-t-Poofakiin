@@ -6,11 +6,8 @@ import gwent.cards.ICard
 import scala.collection.mutable.ArrayBuffer
 
 
-abstract class AbstractCardGroup(var cardCollection: ArrayBuffer[ICard], limitCards: Int) extends ICardGroup{
-    
-    override def itsEmpty(): Boolean ={
-        !(this.cardCollection.nonEmpty)
-    }
+abstract class AbstractCardGroup(var cardCollection: ArrayBuffer[ICard]) extends ICardGroup{
+    val  limitCards: Int
 
     override def itsFull(): Boolean = {
         this.cardCollection.size > limitCards
