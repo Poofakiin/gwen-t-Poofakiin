@@ -1,6 +1,7 @@
 package cl.uchile.dcc
 package gwent.players
 
+import cardgroups._
 import gwent.cards.unitcards.effects._
 import gwent.cards.unitcards._
 import gwent.cards.weathercards.weathertype._
@@ -53,6 +54,11 @@ class PlayerTest extends FunSuite {
     var secondname: String = "Wild Hunt"
     var gems = 2
 
+    var deck1: Deck = _
+    var deck2: Deck = _
+    var hand1: Hand = _
+    var hand2: Hand = _
+
     var firstPlayer : Player = _
     var secondPlayer : Player = _
     var thirdPlayer : Player = _
@@ -60,17 +66,23 @@ class PlayerTest extends FunSuite {
     override def beforeEach(context: BeforeEach): Unit = {
         handArray1 = ArrayBuffer(forktail, fiend, ghoul, albrich,
             cockatrice, ballista, catapult, raincard, thaler)
+        hand1 = new Hand(handArray1)
+
         handArray2 = ArrayBuffer(griffin,geraltOfRivia,cynthia,
             milva,olaf,icegiant,trebuchet,fogcard,fogcard2)
+        hand2 = new Hand(handArray2)
 
         deckArray1 = ArrayBuffer(griffin,geraltOfRivia,cynthia,
             milva,olaf,icegiant,trebuchet,fogcard,fogcard2)
+        deck1 = new Deck(deckArray1)
+
         deckArray2 = ArrayBuffer(forktail, fiend, ghoul, albrich,
             cockatrice, ballista, catapult, raincard, thaler)
+        deck2 = new Deck(deckArray2)
 
-        firstPlayer = new Player(firstname, gems, deckArray1, handArray1)
-        secondPlayer = new Player(secondname, gems, deckArray2, handArray2)
-        thirdPlayer = new Player(firstname, gems, deckArray1,handArray1)
+        firstPlayer = new Player(firstname, gems, deck1, hand1)
+        secondPlayer = new Player(secondname, gems, deck2, hand2)
+        thirdPlayer = new Player(firstname, gems, deck1,hand1)
     }
 
     test("A Player should be created with a name") {
@@ -82,66 +94,91 @@ class PlayerTest extends FunSuite {
     }
 
     test("A Player should be created with a deck") {
-        assertEquals(firstPlayer.deck, deckArray1)
+        assertEquals(firstPlayer.deck, deck1)
     }
 
     test("A Player should be created with a hand") {
-        assertEquals(firstPlayer.hand, handArray1)
-    }
-    test("A PLayer can play a card if it is on his hand"){
-        assert(firstPlayer.canPlayCard(forktail))
-        firstPlayer.playCard(forktail)
-        assert(!firstPlayer.canPlayCard(forktail))
-    }
-    test("A Player cant play a card if it isn´t on his hand"){
-        assertEquals(firstPlayer.hand, handArray1)
-        assert(!firstPlayer.canPlayCard(griffin))
-        firstPlayer.playCard(griffin)
-        assertEquals(firstPlayer.hand, handArray1)
-    }
-    test("A Player wont be able to play a card if his hand its empty"){
-        firstPlayer.hand = emptyArray
-        assertEquals(firstPlayer.hand, emptyArray)
-        firstPlayer.playCard(forktail)
-        assertEquals(firstPlayer.hand, emptyArray)
+        assertEquals(firstPlayer.hand, hand1)
     }
 
-    test("A Player can draw a card if his deck "+
-        "isn´t empty and his hand has less than 10 cards"){
-        val newArray = ArrayBuffer(griffin,geraltOfRivia,cynthia,
-            milva,olaf,icegiant,trebuchet,fogcard,fogcard2)
+    test("A Player can draw a card if its hand is non full and its deck its non empty"){
+        assert(!firstPlayer.hand.itsFull())
+        assert(firstPlayer.deck.cardCollection.nonEmpty)
         assert(firstPlayer.canDrawCard())
-        assertEquals(firstPlayer.hand, handArray1)
-        assertEquals(firstPlayer.deck, newArray)
-        firstPlayer.drawCard()
-        assertEquals(firstPlayer.hand, handArray1)
-        assertNotEquals(firstPlayer.deck, newArray)
     }
-    test("A Player can´t draw a card if its deck its empty"){
-        firstPlayer.deck = emptyArray
-        assertEquals(firstPlayer.deck, emptyArray)
+
+    test("A Player cant draw a card if its hand is full"){
+        firstPlayer.drawCard()
+        assert(firstPlayer.hand.itsFull())
         assert(!firstPlayer.canDrawCard())
     }
-    test("If a Player drew a card with a hand with 10 cards"+
-        "and a non empty deck, the deck will lose a card but its hand will remain the same size"){
-        firstPlayer.drawCard()
-        assertEquals(firstPlayer.hand.size,10)
-        assertEquals(firstPlayer.deck.size, 8)
-        firstPlayer.drawCard()
-        assertEquals(firstPlayer.hand.size,10)
-        assertEquals(firstPlayer.deck.size,7)
+
+    test("A Player cant draw a card if its deck its empty"){
+        firstPlayer.deck.cardCollection = emptyArray
+        assert(!firstPlayer.deck.cardCollection.nonEmpty)
+        assert(!firstPlayer.canDrawCard())
     }
-    test("A Player can shuffle his deck"){
-        var newArray: ArrayBuffer[ICard] = ArrayBuffer(griffin,geraltOfRivia,cynthia,
-            milva,olaf,icegiant,trebuchet,fogcard,fogcard2)
-        assertEquals(firstPlayer.deck,newArray)
-        firstPlayer.shuffleDeck()
-        assert(!firstPlayer.deck.corresponds(newArray)(_==_))
+
+    test("A Player can play a card if it is on his hand"){
+        assert(firstPlayer.hand.hasCard(forktail))
+        assertEquals(firstPlayer.hand.cardCollection.size, 9)
+        firstPlayer.playCard(forktail)
+        assert(!firstPlayer.hand.hasCard(forktail))
+        assertEquals(firstPlayer.hand.cardCollection.size, 8)
     }
+    test("A Player wont play a card if it cant be played"){
+        assert(!firstPlayer.hand.hasCard(griffin))
+        assertEquals(firstPlayer.hand.cardCollection.size, 9)
+        firstPlayer.playCard(griffin)
+        assert(!firstPlayer.hand.hasCard(griffin))
+        assertEquals(firstPlayer.hand.cardCollection.size, 9)
+    }
+
+    test("A Player wont be able to play a card if his hand its empty"){
+        firstPlayer.hand.cardCollection = emptyArray
+        assertEquals(firstPlayer.hand.cardCollection, emptyArray)
+        firstPlayer.playCard(forktail)
+        assertEquals(firstPlayer.hand.cardCollection, emptyArray)
+    }
+
+    test("if a player can draw a card, when it draw it, his hand"+
+        "will gain a card and his deck will lose one"){
+        assert(secondPlayer.canDrawCard())
+        assertEquals(secondPlayer.hand.cardCollection.size, 9)
+        assertEquals(secondPlayer.deck.cardCollection.size, 9)
+        secondPlayer.drawCard()
+        assertEquals(secondPlayer.hand.cardCollection.size, 10)
+        assertEquals(secondPlayer.deck.cardCollection.size, 8)
+    }
+
+    test("if a player cant draw a card but his deck isnt empty,"+
+        "the deck will lose a card but its hand will remain the same size"){
+        secondPlayer.drawCard()
+        assert(!secondPlayer.canDrawCard())
+        assert(!secondPlayer.deck.cardCollection.isEmpty)
+        assertEquals(secondPlayer.hand.cardCollection.size, 10)
+        assertEquals(secondPlayer.deck.cardCollection.size, 8)
+        secondPlayer.drawCard()
+        assertEquals(secondPlayer.hand.cardCollection.size, 10)
+        assertEquals(secondPlayer.deck.cardCollection.size, 7)
+    }
+
+    test("if a player cant draw a card and has an empty deck"+
+        "the deck and the hand will remain the same size"){
+        secondPlayer.deck.cardCollection = emptyArray
+        assert(!secondPlayer.canDrawCard())
+        assert(secondPlayer.deck.cardCollection.isEmpty)
+        assertEquals(secondPlayer.hand.cardCollection.size, 9)
+        assertEquals(secondPlayer.deck.cardCollection.size, 0)
+        secondPlayer.drawCard()
+        assertEquals(secondPlayer.hand.cardCollection.size, 9)
+        assertEquals(secondPlayer.deck.cardCollection.size, 0)
+    }
+
 
     test("A Player should be equal to another Player with the"+
         "same attributes and it should have the same hashcode"){
-        val sameAsPlayer1: Player = new Player(firstname,gems,deckArray1,handArray1)
+        val sameAsPlayer1: Player = new Player(firstname,gems,deck1,hand1)
         assertEquals(firstPlayer, sameAsPlayer1)
         assertEquals(sameAsPlayer1, firstPlayer)
         assertEquals(firstPlayer.hashCode(),sameAsPlayer1.hashCode())

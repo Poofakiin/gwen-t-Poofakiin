@@ -28,7 +28,7 @@ class Player(val name: String, var gemsCounter: Int, var deck: Deck,
      * @return true if the player is able to draw a card, false otherwise.
      */
     def canDrawCard(): Boolean = {
-        this.deck.cardCollection.nonEmpty && this.hand.itsFull()
+        this.deck.cardCollection.nonEmpty && !this.hand.itsFull()
     }
 
     /**
@@ -63,7 +63,7 @@ class Player(val name: String, var gemsCounter: Int, var deck: Deck,
     def drawCard(): Unit = {
         if(canDrawCard()){
             this.hand.addCard(this.deck.cardCollection.head)
-
+            this.deck.takeCard(this.deck.cardCollection.head)
         }
         else if(this.deck.cardCollection.nonEmpty){
             this.deck.takeCard(this.deck.cardCollection.head)
