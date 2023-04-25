@@ -2,6 +2,10 @@ package cl.uchile.dcc
 package gwent.players
 
 import gwent.cards.ICard
+
+import cl.uchile.dcc.gwent.players.cardgroups.*
+
+import javax.net.ssl.SNIHostName
 import scala.collection.mutable.ArrayBuffer
 
 /** Represents a player in the gwent game.
@@ -27,12 +31,12 @@ trait GamePlayer {
     /**
      * The deck of the PLayer.
      */
-    var deck: ArrayBuffer[ICard]
+    var deck: Deck
 
     /**
      * The hand of the Player.
      */
-    var hand: ArrayBuffer[ICard]
+    var hand: Hand
 
     /** Pick a given card of Players hand of cards and remove it from the hand.
      *
@@ -44,19 +48,4 @@ trait GamePlayer {
      *
      */
     def drawCard(): Unit
-
-    /** Randomly shuffles the cards in the deck to change their order.
-     *
-     */
-    def shuffleDeck(): Unit
-
-    /** Verify if the player's hand and deck meet the requirements to draw a card.
-     *
-     */
-    def  canDrawCard(): Boolean
-
-    /** Verify if the player's hand meet the requirements to play given a card.
-     *
-     */
-    def canPlayCard(card: ICard): Boolean
-}
+    

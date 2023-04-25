@@ -5,6 +5,7 @@ package gwent.players
 import scala.util.Random
 import scala.collection.mutable.ArrayBuffer
 import gwent.cards.ICard
+import cardgroups._
 
 /** A class that describes a Player in the game.
  *
@@ -15,17 +16,10 @@ import gwent.cards.ICard
  * @param deck the deck of card of the player.
  * @param hand the hand of cards of the player.
  */
-class Player(val name: String, var gemsCounter: Int, var deck: ArrayBuffer[ICard],
-             var hand: ArrayBuffer[ICard]) extends GamePlayer {
+class Player(val name: String, var gemsCounter: Int, var deck: Deck,
+             var hand: Hand) extends GamePlayer {
 
-    /** Verifies if the player's hand meet the requirements to play a given card.
-     *
-     * @param card The card to be played
-     * @return true if the player's hand contains the specified card, false otherwise.
-     */
-    def canPlayCard(card: ICard): Boolean ={
-        this.hand.exists(c => {c == card})
-    }
+
 
     /**
      * Plays a given card from the player's hand and removes it from the hand.
@@ -43,15 +37,7 @@ class Player(val name: String, var gemsCounter: Int, var deck: ArrayBuffer[ICard
         }
     }
 
-    /** Verifies if the player's hand and deck meet the requirements to draw a card.
-     *
-     * The player's hand must contain less than 10 cards and their deck must not be empty
-     * in order to be able to draw a card.
-     * @return true if the player is able to draw a card, false otherwise.
-     */
-    def canDrawCard(): Boolean = {
-        this.deck.nonEmpty && this.hand.size < 10
-    }
+
 
     /** Draws the first card from the deck of cards and adds it to the player's hand.
      *
@@ -78,9 +64,6 @@ class Player(val name: String, var gemsCounter: Int, var deck: ArrayBuffer[ICard
      * This method uses the Random.shuffle method to shuffle the cards in the deck
      * in a random order.
      */
-    def shuffleDeck(): Unit = {
-        this.deck = Random.shuffle(this.deck)
-    }
 
     /** Checks if this Player is equal to another object.
      *
@@ -116,5 +99,25 @@ class Player(val name: String, var gemsCounter: Int, var deck: ArrayBuffer[ICard
         result = prime * result + hand.##
         result = prime * result + deck.##
         result
+    }
+
+
+    /** Verifies if the player's hand meet the requirements to play a given card.
+     *
+     * @param card The card to be played
+     * @return true if the player's hand contains the specified card, false otherwise.
+     */
+    def canPlayCard(card: ICard): Boolean ={
+        this.hand.exists(c => {c == card})
+    }
+
+    /** Verifies if the player's hand and deck meet the requirements to draw a card.
+     *
+     * The player's hand must contain less than 10 cards and their deck must not be empty
+     * in order to be able to draw a card.
+     * @return true if the player is able to draw a card, false otherwise.
+     */
+    def canDrawCard(): Boolean = {
+        this.deck.nonEmpty && this.hand.size < 10
     }
 }
