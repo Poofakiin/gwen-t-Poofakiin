@@ -1,6 +1,7 @@
 package cl.uchile.dcc
 package gwent.board
 
+
 /** A class that represents one siede of the board in the gwent game
  *
  * each side of a Board must have three sections, one for each type of unit card

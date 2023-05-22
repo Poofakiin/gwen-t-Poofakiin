@@ -37,5 +37,5 @@ trait BoardSection {
     /** Tries to change the weather card of the section
      *
      */
-    def ChangeWeatherCard(Card: IWeatherCard): Unit
+    def PlayWeatherCard(Card: IWeatherCard): Unit
 }
