@@ -22,6 +22,7 @@ class HalfBoard(var player: GamePlayer) {
     var PlayerSiegeSection: SiegeSection = new SiegeSection()
     var PlayerCloseCombatSection: CloseCombatSection = new CloseCombatSection()
     var PlayerangedSection: RangedSection = new RangedSection()
+    
     /** Plays a unit card in its corresponding section, dependeing of the unit card type
      *
      *
@@ -29,13 +30,5 @@ class HalfBoard(var player: GamePlayer) {
      */
     def playUnitCard(card:IUnitCard): Unit = {
         player.playCard(card,this)
-    }
-
-    /**
-     * 
-     * @param card
-     */
-    def playWeatherCard(card: IWeatherCard): Unit = {
-        player.playCard(card,)
     }
 }

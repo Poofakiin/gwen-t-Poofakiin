@@ -12,7 +12,7 @@ import scala.collection.mutable.ArrayBuffer
  * such as their unit cards and the total attack power of the unit cards.
  *
  */
-trait BoardSection {
+trait IBoardSection {
 
     /**
      * the unit cards group of the section

@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package gwent.board.sections
 
-import gwent.board.sections.BoardSection
+import gwent.board.sections.IBoardSection
 import gwent.cards.unitcards.IUnitCard
 import gwent.cards.weathercards.IWeatherCard
 
@@ -10,7 +10,7 @@ import scala.collection.mutable.ArrayBuffer
 /**
  * A class that represent a section where only ranged cards can be played
  */
-class RangedSection extends BoardSection{
+class RangedSection extends IBoardSection{
     /**
      * the ranged cards group of the section
      */
