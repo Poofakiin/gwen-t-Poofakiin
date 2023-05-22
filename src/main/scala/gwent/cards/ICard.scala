@@ -1,6 +1,8 @@
 package cl.uchile.dcc
 package gwent.cards
 
+import gwent.board.HalfBoard
+
 /**
  * Represents a card in the gwent game.
  * This trait defines the properties that all cards have in common,
@@ -16,4 +18,9 @@ trait ICard {
      * The type of the card.
      */
     val cardType: String
+
+    /**
+     * 
+     */
+    def getPlayed(board: Board): Unit
 }

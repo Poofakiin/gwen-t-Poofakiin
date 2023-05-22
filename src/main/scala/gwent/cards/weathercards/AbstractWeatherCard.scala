@@ -2,6 +2,8 @@ package cl.uchile.dcc
 package gwent.cards.weathercards
 
 import gwent.cards.ICard
+
+import cl.uchile.dcc.gwent.board.Board
 import weathertype.IWeatherType
 
 /** A class that represents an weather type of card in the Gwent game.
@@ -35,5 +37,13 @@ abstract class AbstractWeatherCard() extends IWeatherCard {
      */
     override def getWeatherType(): IWeatherType = {
         this.weatherType
+    }
+
+    /** Plays the card in a certain part of a board, dependending of the type of the card
+     *
+     * @param board
+     */
+    override def getPlayed(board: Board): Unit = {
+        ???
     }
 }

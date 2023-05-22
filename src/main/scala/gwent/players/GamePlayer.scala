@@ -3,6 +3,7 @@ package gwent.players
 
 import gwent.cards.ICard
 
+import cl.uchile.dcc.gwent.board.HalfBoard
 import cl.uchile.dcc.gwent.players.cardgroups.*
 
 import javax.net.ssl.SNIHostName
@@ -42,7 +43,7 @@ trait GamePlayer {
      *
      * @param card the Card that´s going to be played.
      */
-    def playCard(card: ICard): Unit
+    def playCard(card: ICard, board: HalfBoard): Unit
 
     /** Draws the first card from the deck of cards and adds it to the player's hand.
      *

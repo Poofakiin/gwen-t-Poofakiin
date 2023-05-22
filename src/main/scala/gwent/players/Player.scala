@@ -5,6 +5,7 @@ package gwent.players
 import scala.util.Random
 import scala.collection.mutable.ArrayBuffer
 import gwent.cards.ICard
+import gwent.board.HalfBoard
 import cardgroups._
 
 /** A class that describes a Player in the game.
@@ -36,7 +37,7 @@ class Player(val name: String, var gemsCounter: Int, var deck: Deck,
      * @param card The card to be played.
      * @see canPlayCard
      */
-    def playCard(card: ICard): Unit = {
+    def playCard(card: ICard, board: HalfBoard): Unit = {
         if(this.hand.hasCard(card)) {
             this.hand.takeCard(card)
         }
