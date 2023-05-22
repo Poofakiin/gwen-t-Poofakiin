@@ -1,17 +1,19 @@
 package cl.uchile.dcc
-package gwent.board
+package gwent.board.sections
 
+import gwent.board.sections.BoardSection
 import gwent.cards.unitcards.IUnitCard
 import gwent.cards.weathercards.IWeatherCard
 
 import scala.collection.mutable.ArrayBuffer
 
 /**
- * A class that represent a section where only ranged cards can be played
+ * A class that represent a section where only siege cards can be played
  */
-class RangedSection extends BoardSection{
+class SiegeSection extends BoardSection{
+
     /**
-     * the ranged cards group of the section
+     * the siege cards group of the section
      */
     var sectionCardGroup: ArrayBuffer[IUnitCard] = new ArrayBuffer[IUnitCard]()
     /**

@@ -1,18 +1,18 @@
 package cl.uchile.dcc
-package gwent.board
+package gwent.board.sections
 
+import gwent.board.sections.BoardSection
 import gwent.cards.unitcards.IUnitCard
 import gwent.cards.weathercards.IWeatherCard
 
 import scala.collection.mutable.ArrayBuffer
 
 /**
- * A class that represent a section where only siege cards can be played
+ * A class that represent a section where only close combat cards can be played
  */
-class SiegeSection extends BoardSection{
-
+class CloseCombatSection extends BoardSection{
     /**
-     * the siege cards group of the section
+     * the close combat cards group of the section
      */
     var sectionCardGroup: ArrayBuffer[IUnitCard] = new ArrayBuffer[IUnitCard]()
     /**
@@ -37,4 +37,6 @@ class SiegeSection extends BoardSection{
     override def PlayUnitCard(Card: IUnitCard): Unit = {
         ???
     }
+    
+    
 }

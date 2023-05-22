@@ -1,9 +1,8 @@
 package cl.uchile.dcc
-package gwent.board
+package gwent.board.sections
 
-
-import cl.uchile.dcc.gwent.cards.unitcards.IUnitCard
-import cl.uchile.dcc.gwent.cards.weathercards.IWeatherCard
+import gwent.cards.unitcards.IUnitCard
+import gwent.cards.weathercards.IWeatherCard
 
 import scala.collection.mutable.ArrayBuffer
 
@@ -14,26 +13,27 @@ import scala.collection.mutable.ArrayBuffer
  *
  */
 trait BoardSection {
-    
+
     /**
      * the unit cards group of the section
      */
     var sectionCardGroup: ArrayBuffer[IUnitCard]
-    
+
     /**
      * the weather card of the section
      */
     var weatherCard: Option[IWeatherCard]
-    
+
     /**
      * the summatory of the attack power of all unit cards of the section
      */
     var totalAttackPower: Int
 
     /** Tries to add a Unit Card to the sectionCardGroup
-     * 
+     *
      */
     def PlayUnitCard(Card: IUnitCard): Unit
+
     /** Tries to change the weather card of the section
      *
      */
