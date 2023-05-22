@@ -19,8 +19,6 @@ import cardgroups._
 class Player(val name: String, var gemsCounter: Int, var deck: Deck,
              var hand: Hand) extends GamePlayer {
 
-    
-
     /** Verifies if the player's hand and deck meet the requirements to draw a card.
      *
      * The player's hand must contain less than 10 cards and their deck must not be empty
