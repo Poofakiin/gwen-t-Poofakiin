@@ -29,7 +29,6 @@ class HalfBoard(var player: GamePlayer) {
      */
     def playUnitCard(card:IUnitCard): Unit = {
         player.playCard(card,this)
-        card.getPlayed();
     }
 
     /**
@@ -37,6 +36,6 @@ class HalfBoard(var player: GamePlayer) {
      * @param card
      */
     def playWeatherCard(card: IWeatherCard): Unit = {
-        ???
+        player.playCard(card,)
     }
 }

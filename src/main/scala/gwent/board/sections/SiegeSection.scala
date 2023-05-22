@@ -28,13 +28,6 @@ class SiegeSection extends BoardSection{
     /** Tries to add a Unit Card to the sectionCardGroup
      *
      */
-    override def PlayWeatherCard(Card: IWeatherCard): Unit = {
-        ???
-    }
-
-    /** Tries to change the weather card of the section
-     *
-     */
     override def PlayUnitCard(Card: IUnitCard): Unit = {
         ???
     }

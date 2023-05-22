@@ -1,6 +1,8 @@
 package cl.uchile.dcc
 package gwent.board
 
+import gwent.cards.weathercards.IWeatherCard
+
 
 /** A class that represents one siede of the board in the gwent game
  *
@@ -20,7 +22,41 @@ package gwent.board
  * 
  * @param playerBoard
  * @param enemyBoard
+ * @param siegeWeather
+ * @param closeCombatWeather
+ * @param rangedWeather
  */
 class Board(var playerBoard: HalfBoard, var enemyBoard: HalfBoard) {
-    
+    /**
+     * the weather card of the section
+     */
+    var siegeWeather: IWeatherCard
+
+    /**
+     * the weather card of the section
+     */
+    var closeCombatWeather: IWeatherCard
+
+    /**
+     * the weather card of the section
+     */
+    var rangedWeather: IWeatherCard
+
+
+    /** Tries to change the weather card of the section
+     *
+     */
+    def PlayerPlayWeatherCard(card: IWeatherCard): Unit = {
+        ???
+    }
+
+
+    /** Tries to change the weather card of the section
+     *
+     */
+    def EnemyPlayWeatherCard(card: IWeatherCard): Unit = {
+        ???
+    }
+        
+
 }
