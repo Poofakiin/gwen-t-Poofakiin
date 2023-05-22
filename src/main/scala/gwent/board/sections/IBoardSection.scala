@@ -9,7 +9,7 @@ import scala.collection.mutable.ArrayBuffer
 /**
  * Represents a board section in the gwent game.
  * This trait defines the properties that all board sections have in common,
- * such as their unit cards and the total attack power of the unit cards.
+ * such as their unit cards, its weatherCard and the total attack power of the unit cards.
  *
  */
 trait IBoardSection {
@@ -18,7 +18,12 @@ trait IBoardSection {
      * the unit cards group of the section
      */
     var sectionCardGroup: ArrayBuffer[IUnitCard]
-    
+
+    /**
+     * the weather card of the section
+     */
+    var weatherCard: Option[IWeatherCard]
+
     /**
      * the summatory of the attack power of all unit cards of the section
      */
@@ -28,4 +33,5 @@ trait IBoardSection {
      *
      */
     def PlayUnitCard(Card: IUnitCard): Unit
+    
 }

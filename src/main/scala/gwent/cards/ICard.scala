@@ -20,7 +20,7 @@ trait ICard {
     val cardType: String
 
     /**
-     * 
+     *
      */
-    def getPlayed(board: Board): Unit
+    def getPlayed(board: HalfBoard): Unit
 }

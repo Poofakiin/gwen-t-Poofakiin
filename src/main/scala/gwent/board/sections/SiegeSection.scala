@@ -16,10 +16,12 @@ class SiegeSection extends IBoardSection{
      * the siege cards group of the section
      */
     var sectionCardGroup: ArrayBuffer[IUnitCard] = new ArrayBuffer[IUnitCard]()
+
     /**
      * the weather card of the section
      */
     var weatherCard: Option[IWeatherCard] = None
+
     /**
      * the summatory of the attack power of all unit cards of the section
      */
