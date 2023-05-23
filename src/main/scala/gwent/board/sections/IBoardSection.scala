@@ -24,12 +24,6 @@ trait IBoardSection {
      */
     var totalAttackPower: Int
 
-    /** Tries to add a Unit Card to the sectionCardGroup
-     *
-     * @param card
-     */
-    def PlayUnitCard(card: IUnitCard): Unit
-
     /** Add a unit card to the card section group
      *
      * @param card the unit card thats going to be added

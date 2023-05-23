@@ -6,7 +6,7 @@ import cl.uchile.dcc.gwent.cards.weathercards.IWeatherCard
 
 import scala.collection.mutable.ArrayBuffer
 
-class AbstractBoardSection extends IBoardSection{
+abstract class AbstractBoardSection extends IBoardSection{
 
     /**
      * the unit cards group of the section
@@ -17,14 +17,6 @@ class AbstractBoardSection extends IBoardSection{
      * the summatory of the attack power of all unit cards of the section
      */
     var totalAttackPower: Int = 0
-
-    /** Tries to add a Unit Card to the sectionCardGroup
-     *
-     * @param card
-     */
-    override def PlayUnitCard(card: IUnitCard): Unit = {
-        ???
-    }
 
     /** Add a unit card to the card section group
      *

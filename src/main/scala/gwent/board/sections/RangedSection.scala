@@ -12,10 +12,35 @@ import scala.collection.mutable.ArrayBuffer
  */
 class RangedSection extends AbstractBoardSection {
 
-    /** Tries to add a Unit Card to the sectionCardGroup
+    /** Checks if this RangedSection is equal to another object.
      *
+     * @param obj The object to compare to.
+     * @return true if the object is a RangedSection and has the same totalAttackPower and
+     * sectionCardGroup, false otherwise.
      */
-    override def PlayUnitCard(Card: IUnitCard): Unit = {
-        ???
+    override def equals(obj: Any): Boolean = {
+        if(obj.isInstanceOf[RangedSection]){
+            val other = obj.asInstanceOf[RangedSection]
+            (this eq other) ||
+                (other.sectionCardGroup.sameElements(this.sectionCardGroup) &&
+                    other.totalAttackPower == this.totalAttackPower)
+        }
+        else{
+            false
+        }
     }
+
+    /** Returns the hash code of this RangedSection.
+     *
+     * @return The hash code of this RangedSection.
+     */
+    override def hashCode():Int = {
+        val prime = 31
+        var result= 1
+        result = prime * result + classOf[RangedSection].##
+        result = prime * result + sectionCardGroup.##
+        result = prime * result + totalAttackPower.##
+        result
+    }
+
 }
