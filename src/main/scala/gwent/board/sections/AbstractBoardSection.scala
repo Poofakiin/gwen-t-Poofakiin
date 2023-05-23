@@ -11,7 +11,7 @@ abstract class AbstractBoardSection extends IBoardSection{
     /**
      * the unit cards group of the section
      */
-    var sectionCardGroup: ArrayBuffer[IUnitCard] = new ArrayBuffer[IUnitCard]
+    var sectionCardGroup: ArrayBuffer[IUnitCard] = new ArrayBuffer[IUnitCard]()
 
     /**
      * the summatory of the attack power of all unit cards of the section

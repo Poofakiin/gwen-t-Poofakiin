@@ -11,7 +11,7 @@ import scala.collection.mutable.ArrayBuffer
  * A class that represent a section where only close combat cards can be played
  */
 class CloseCombatSection extends AbstractBoardSection{
-
+    
     /** Checks if this CloseCombatSection is equal to another object.
      *
      * @param obj The object to compare to.
