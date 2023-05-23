@@ -62,5 +62,35 @@ class Board(var playerBoard: HalfBoard, var enemyBoard: HalfBoard) {
         enemyBoard.playUnitCard(card)
     }
 
+    /** Checks if this Board is equal to another object.
+     *
+     * @param obj The object to compare to.
+     * @return true if the object is a Board and has the same playerBoard and
+     * enemyBoard, false otherwise.
+     */
+    override def equals(obj: Any): Boolean = {
+        if(obj.isInstanceOf[Board]){
+            val other = obj.asInstanceOf[Board]
+            (this eq other) ||
+                (other.playerBoard == this.playerBoard &&
+                    other.enemyBoard == this.enemyBoard)
+        }
+        else{
+            false
+        }
+    }
+
+    /** Returns the hash code of this Board.
+     *
+     * @return The hash code of this Board.
+     */
+    override def hashCode():Int = {
+        val prime = 31
+        var result= 1
+        result = prime * result + classOf[Board].##
+        result = prime * result + playerBoard.##
+        result = prime * result + enemyBoard.##
+        result
+    }
 
 }
