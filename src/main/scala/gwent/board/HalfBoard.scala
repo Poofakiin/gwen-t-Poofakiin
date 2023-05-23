@@ -35,13 +35,6 @@ class HalfBoard(var player: GamePlayer) {
         player.playCard(card,this)
     }
 
-
-    class HalfBoard(var player: GamePlayer) {
-
-        var siegeSection: SiegeSection = new SiegeSection()
-        var closeCombatSection: CloseCombatSection = new CloseCombatSection()
-        var rangedSection: RangedSection = new RangedSection()
-        var weatherCard: Option[IWeatherCard] = None
     /** Checks if this HalfBoard is equal to another object.
      *
      * @param obj The object to compare to.

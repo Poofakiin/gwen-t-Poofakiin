@@ -7,8 +7,10 @@ import gwent.cards.unitcards._
 import gwent.cards.weathercards.weathertype._
 import gwent.cards.weathercards._
 import gwent.cards.ICard
+import gwent.board.HalfBoard
 import munit.FunSuite
 import scala.collection.mutable.ArrayBuffer
+
 
 class PlayerTest extends FunSuite {
     /**
@@ -63,6 +65,7 @@ class PlayerTest extends FunSuite {
     var secondPlayer : Player = _
     var thirdPlayer : Player = _
 
+    var firstPlayerBoard: HalfBoard = _
     override def beforeEach(context: BeforeEach): Unit = {
         handArray1 = ArrayBuffer(forktail, fiend, ghoul, albrich,
             cockatrice, ballista, catapult, raincard, thaler)
@@ -83,6 +86,8 @@ class PlayerTest extends FunSuite {
         firstPlayer = new Player(firstname, gems, deck1, hand1)
         secondPlayer = new Player(secondname, gems, deck2, hand2)
         thirdPlayer = new Player(firstname, gems, deck1,hand1)
+
+        firstPlayerBoard = new HalfBoard(firstPlayer)
     }
 
     test("A Player should be created with a name") {
@@ -122,14 +127,14 @@ class PlayerTest extends FunSuite {
     test("A Player can play a card if it is on his hand"){
         assert(firstPlayer.hand.hasCard(forktail))
         assertEquals(firstPlayer.hand.cardCollection.size, 9)
-        firstPlayer.playCard(forktail)
+        firstPlayer.playCard(forktail,firstPlayerBoard)
         assert(!firstPlayer.hand.hasCard(forktail))
         assertEquals(firstPlayer.hand.cardCollection.size, 8)
     }
     test("A Player wont play a card if it cant be played"){
         assert(!firstPlayer.hand.hasCard(griffin))
         assertEquals(firstPlayer.hand.cardCollection.size, 9)
-        firstPlayer.playCard(griffin)
+        firstPlayer.playCard(griffin,firstPlayerBoard)
         assert(!firstPlayer.hand.hasCard(griffin))
         assertEquals(firstPlayer.hand.cardCollection.size, 9)
     }
@@ -137,7 +142,7 @@ class PlayerTest extends FunSuite {
     test("A Player wont be able to play a card if his hand its empty"){
         firstPlayer.hand.cardCollection = emptyArray
         assertEquals(firstPlayer.hand.cardCollection, emptyArray)
-        firstPlayer.playCard(forktail)
+        firstPlayer.playCard(forktail,firstPlayerBoard)
         assertEquals(firstPlayer.hand.cardCollection, emptyArray)
     }
 
