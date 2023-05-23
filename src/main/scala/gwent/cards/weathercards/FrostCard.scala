@@ -1,6 +1,7 @@
 package cl.uchile.dcc
 package gwent.cards.weathercards
 
+import weathertype.Frost
 
 /** A class that represent a Frost card in the game Gwent
  *

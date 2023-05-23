@@ -1,6 +1,7 @@
 package cl.uchile.dcc
 package gwent.cards.unitcards
-import effects._
+import cl.uchile.dcc.gwent.board.HalfBoard
+import effects.*
 
 /** A class that represents an unit type of card in the Gwent game.
  *
@@ -32,6 +33,10 @@ abstract class AbstractUnitCard(val name: String, var attackPower: Int) extends 
      */
     override def getSpecialAbility(): Option[ISpecialAbility] = {
         _specialAbility
+    }
+
+    override def getPlayed(board: HalfBoard): Unit = {
+        ???
     }
 }
 

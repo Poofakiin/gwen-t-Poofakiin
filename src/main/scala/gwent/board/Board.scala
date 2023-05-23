@@ -2,6 +2,7 @@ package cl.uchile.dcc
 package gwent.board
 
 import gwent.cards.weathercards.IWeatherCard
+import gwent.board.HalfBoard
 
 import cl.uchile.dcc.gwent.cards.unitcards.IUnitCard
 
@@ -26,31 +27,31 @@ import cl.uchile.dcc.gwent.cards.unitcards.IUnitCard
  * @param enemyBoard
  */
 class Board(var playerBoard: HalfBoard, var enemyBoard: HalfBoard) {
-    
+
     /** Tries to play a certain weather card
-     * 
+     *
      * @param card the weather card that wants to be played
      */
     def PlayerPlayWeatherCard(card: IWeatherCard): Unit = {
         playerBoard.player.playCard(card,playerBoard)
-        playerBoard.player.playCard(card,enemyBoard)
+        enemyBoard.weatherCard = playerBoard.weatherCard
     }
 
     /** Tries to play a unit card
-     * 
+     *
      * @param card the unit card that wants to be played
      */
     def PlayerPlayUnitCard(card: IUnitCard): Unit = {
         playerBoard.playUnitCard(card)
     }
-    
+
     /** Tries to play a certain weather card
      *
      * @param card the card that wants to be played
      */
     def EnemyPlayWeatherCard(card: IWeatherCard): Unit = {
         enemyBoard.player.playCard(card,enemyBoard)
-        enemyBoard.player.playCard(card,playerBoard)
+        playerBoard.weatherCard = enemyBoard.weatherCard
     }
 
     /** Tries to play a unit card
@@ -58,7 +59,7 @@ class Board(var playerBoard: HalfBoard, var enemyBoard: HalfBoard) {
      * @param card the unit card that wants to be played
      */
     def EnemyPlayUnitCard(card: IUnitCard): Unit = {
-        enemyBoard.playUnitCard(card,enemyBoard)
+        enemyBoard.playUnitCard(card)
     }
 
 

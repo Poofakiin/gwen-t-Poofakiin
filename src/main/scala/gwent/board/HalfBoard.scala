@@ -11,17 +11,20 @@ import cl.uchile.dcc.gwent.players.GamePlayer
  * each side of a Board must have three sections, one for each type of unit card
  * , and a Player who´s the one controlling the half.
  * 
- * @param siegeSection
- * @param closeCombatSection
- * @param rangedSection
- * @param player
+ * @param siegeSection the section of siege cards
+ * @param closeCombatSection the section of close combat cards
+ * @param rangedSection the section of ranged cards
+ * @param weatherCard the weather card of the section
+ * @param player the player who controlls the section
  * 
  */
 class HalfBoard(var player: GamePlayer) {
 
-    var PlayerSiegeSection: SiegeSection = new SiegeSection()
-    var PlayerCloseCombatSection: CloseCombatSection = new CloseCombatSection()
-    var PlayerangedSection: RangedSection = new RangedSection()
+    var siegeSection: SiegeSection = new SiegeSection()
+    var closeCombatSection: CloseCombatSection = new CloseCombatSection()
+    var rangedSection: RangedSection = new RangedSection()
+    var weatherCard: Option[IWeatherCard] = None
+    
     
     /** Plays a unit card in its corresponding section, dependeing of the unit card type
      *

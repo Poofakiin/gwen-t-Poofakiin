@@ -10,22 +10,7 @@ import scala.collection.mutable.ArrayBuffer
 /**
  * A class that represent a section where only siege cards can be played
  */
-class SiegeSection extends IBoardSection{
-
-    /**
-     * the siege cards group of the section
-     */
-    var sectionCardGroup: ArrayBuffer[IUnitCard] = new ArrayBuffer[IUnitCard]()
-
-    /**
-     * the weather card of the section
-     */
-    var weatherCard: Option[IWeatherCard] = None
-
-    /**
-     * the summatory of the attack power of all unit cards of the section
-     */
-    var totalAttackPower: Int = 0
+class SiegeSection extends AbstractBoardSection {
 
     /** Tries to add a Unit Card to the sectionCardGroup
      *

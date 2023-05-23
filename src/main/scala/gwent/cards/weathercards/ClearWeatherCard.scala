@@ -1,6 +1,9 @@
 package cl.uchile.dcc
 package gwent.cards.weathercards
 
+import cl.uchile.dcc.gwent.board.HalfBoard
+import weathertype.ClearWeather
+
 
 /** A class that represent a Clear Weather card in the game Gwent
  *

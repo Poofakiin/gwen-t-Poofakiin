@@ -1,7 +1,8 @@
 package cl.uchile.dcc
 package gwent.cards.unitcards
 
-import effects._
+import cl.uchile.dcc.gwent.board.HalfBoard
+import effects.*
 
 
 /** A class that represent a Ranged card in the game Gwent
@@ -24,7 +25,15 @@ class RangedCard (name: String, attackPower: Int) extends AbstractUnitCard(name,
         this(name,attackPower)
         _specialAbility = Some(specialAbility)
     }
-    
+
+    /** Adds a Ranged card to a Ranged Section in a Board
+     *
+     * @param board te board where the card its going to be added
+     */
+    override def getPlayed(board: HalfBoard): Unit = {
+        board.rangedSection.AddUnitCard(this)
+    }
+
     /** Checks if this RangedCard is equal to another object.
      *
      * @param obj The object to compare to.
