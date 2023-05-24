@@ -3,7 +3,6 @@ package gwent.players
 
 import gwent.cards.ICard
 
-import cl.uchile.dcc.gwent.board.HalfBoard
 import cl.uchile.dcc.gwent.players.cardgroups.*
 
 import javax.net.ssl.SNIHostName

@@ -23,7 +23,7 @@ class HalfBoard(var player: GamePlayer) {
     var siegeSection: SiegeSection = new SiegeSection()
     var closeCombatSection: CloseCombatSection = new CloseCombatSection()
     var rangedSection: RangedSection = new RangedSection()
-    
+
 
 
     /** Plays a unit card in its corresponding section, dependeing of the unit card type
@@ -32,7 +32,8 @@ class HalfBoard(var player: GamePlayer) {
      * @param card the card thats going to be played
      */
     def playUnitCard(card:IUnitCard): Unit = {
-        player.playCard(card,this)
+        if(player.playCard(card))
+            card.getPlayed(this)
     }
 
     /** Checks if this HalfBoard is equal to another object.
@@ -48,8 +49,7 @@ class HalfBoard(var player: GamePlayer) {
                 (other.player == this.player &&
                     other.siegeSection == this.siegeSection &&
                     other.closeCombatSection == this.closeCombatSection &&
-                    other.rangedSection == this.rangedSection &&
-                    other.weatherCard == this.weatherCard)
+                    other.rangedSection == this.rangedSection)
         }
         else{
             false
@@ -67,7 +67,6 @@ class HalfBoard(var player: GamePlayer) {
         result = prime * result + siegeSection.##
         result = prime * result + closeCombatSection.##
         result = prime * result + rangedSection.##
-        result = prime * result + weatherCard.##
         result
     }
 }

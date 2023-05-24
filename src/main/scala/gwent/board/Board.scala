@@ -26,15 +26,30 @@ import cl.uchile.dcc.gwent.cards.unitcards.IUnitCard
  * @param playerBoard
  * @param enemyBoard
  */
+
 class Board(var playerBoard: HalfBoard, var enemyBoard: HalfBoard) {
+
+    /**
+     * the weather card of the game, any of both players can change it
+     */
     var weatherCard: Option[IWeatherCard] = None
+    
     /** Tries to play a certain weather card
      *
      * @param card the weather card that wants to be played
      */
     def PlayerPlayWeatherCard(card: IWeatherCard): Unit = {
-        playerBoard.player.playCard(card,playerBoard)
-        enemyBoard.weatherCard = playerBoard.weatherCard
+        if(playerBoard.player.playCard(card))
+            card.getPlayed(this)
+    }
+
+    /** Tries to play a certain weather card
+     *
+     * @param card the card that wants to be played
+     */
+    def EnemyPlayWeatherCard(card: IWeatherCard): Unit = {
+        if(playerBoard.player.playCard(card))
+            card.getPlayed(this)
     }
 
     /** Tries to play a unit card
@@ -44,15 +59,7 @@ class Board(var playerBoard: HalfBoard, var enemyBoard: HalfBoard) {
     def PlayerPlayUnitCard(card: IUnitCard): Unit = {
         playerBoard.playUnitCard(card)
     }
-
-    /** Tries to play a certain weather card
-     *
-     * @param card the card that wants to be played
-     */
-    def EnemyPlayWeatherCard(card: IWeatherCard): Unit = {
-        enemyBoard.player.playCard(card,enemyBoard)
-        playerBoard.weatherCard = enemyBoard.weatherCard
-    }
+    
 
     /** Tries to play a unit card
      *
@@ -73,7 +80,8 @@ class Board(var playerBoard: HalfBoard, var enemyBoard: HalfBoard) {
             val other = obj.asInstanceOf[Board]
             (this eq other) ||
                 (other.playerBoard == this.playerBoard &&
-                    other.enemyBoard == this.enemyBoard)
+                    other.enemyBoard == this.enemyBoard &&
+                    other.weatherCard == this.weatherCard)
         }
         else{
             false
@@ -89,6 +97,7 @@ class Board(var playerBoard: HalfBoard, var enemyBoard: HalfBoard) {
         var result= 1
         result = prime * result + classOf[Board].##
         result = prime * result + playerBoard.##
+        result = prime * result + weatherCard.##
         result = prime * result + enemyBoard.##
         result
     }
