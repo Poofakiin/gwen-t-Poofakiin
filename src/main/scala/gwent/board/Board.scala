@@ -27,7 +27,7 @@ import cl.uchile.dcc.gwent.cards.unitcards.IUnitCard
  * @param enemyBoard
  */
 class Board(var playerBoard: HalfBoard, var enemyBoard: HalfBoard) {
-
+    var weatherCard: Option[IWeatherCard] = None
     /** Tries to play a certain weather card
      *
      * @param card the weather card that wants to be played

@@ -23,7 +23,7 @@ class HalfBoard(var player: GamePlayer) {
     var siegeSection: SiegeSection = new SiegeSection()
     var closeCombatSection: CloseCombatSection = new CloseCombatSection()
     var rangedSection: RangedSection = new RangedSection()
-    var weatherCard: Option[IWeatherCard] = None
+    
 
 
     /** Plays a unit card in its corresponding section, dependeing of the unit card type

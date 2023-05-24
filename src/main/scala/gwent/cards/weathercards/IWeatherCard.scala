@@ -2,6 +2,8 @@ package cl.uchile.dcc
 package gwent.cards.weathercards
 
 import gwent.cards.ICard
+
+import cl.uchile.dcc.gwent.board.Board
 import weathertype.IWeatherType
 
 
@@ -26,4 +28,6 @@ trait IWeatherCard extends ICard{
      * @return The weather type of the weather card.
      */
     def getWeatherType(): IWeatherType
+
+    def getPlayed(board: Board): Unit
 }

@@ -38,12 +38,14 @@ trait GamePlayer {
      * The hand of the Player.
      */
     var hand: Hand
+    
 
     /** Pick a given card of Players hand of cards and remove it from the hand.
-     *
+     * 
      * @param card the Card that´s going to be played.
+     * @return True if the card was removed, false otherwise
      */
-    def playCard(card: ICard, board: HalfBoard): Unit
+    def playCard(card: ICard): Boolean
 
     /** Draws the first card from the deck of cards and adds it to the player's hand.
      *
