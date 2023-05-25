@@ -3,6 +3,7 @@ package gwent.cards.weathercards
 
 import gwent.cards.ICard
 
+import cl.uchile.dcc.gwent.board.sections.IBoardSection
 import cl.uchile.dcc.gwent.board.{Board, HalfBoard}
 import weathertype.IWeatherType
 
@@ -39,15 +40,35 @@ abstract class AbstractWeatherCard() extends IWeatherCard {
         this.weatherType
     }
 
-    /** Play the weather card in the weather section
+    /** Try to play a card in to a Weather Section in a Board
      *
-     * @param board the board where the section going to be changed
+     * @param section te board where the card its going to be added
      */
-    override def getPlayed(board: Board): Unit = {
-        board.weatherCard = Some(this)
+    override def PlayinSectionWeather(section: IBoardSection): Unit ={
+        section.AddCard(this)
     }
 
-    override def getPlayed(board: HalfBoard): Unit = {
+    /** Try to play a card in to a Close Combat Section in a Board
+     *
+     * @param section te board where the card its going to be added
+     */
+    override def PlayinSectionCloseCombat(section: IBoardSection): Unit = {
+        ???
+    }
+
+    /** Try to play a card in to a Ranged Section in a Board
+     *
+     * @param section te board where the card its going to be added
+     */
+    override def PlayinSectionRanged(section: IBoardSection): Unit = {
+        ???
+    }
+
+    /** Try to play a card in to a Siege Section in a Board
+     *
+     * @param section te board where the card its going to be added
+     */
+    override def PlayinSectionSiege(section: IBoardSection): Unit = {
         ???
     }
 }

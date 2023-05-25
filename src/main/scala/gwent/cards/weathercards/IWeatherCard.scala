@@ -29,5 +29,11 @@ trait IWeatherCard extends ICard{
      */
     def getWeatherType(): IWeatherType
 
-    def getPlayed(board: Board): Unit
+    /** Aplies the weather ability to a board
+     * 
+     * the ability will depend on the weather type of the card
+     * 
+     * @param board
+     */
+    def useWeatherAbility(board: Board): Unit
 }
