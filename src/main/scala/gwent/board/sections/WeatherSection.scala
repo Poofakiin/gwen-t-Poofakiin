@@ -3,7 +3,7 @@ package gwent.board.sections
 
 import gwent.cards.weathercards.{ClearWeatherCard, IWeatherCard}
 
-import cl.uchile.dcc.gwent.cards.ICard
+import gwent.cards.ICard
 
 class WeatherSection extends IBoardSection {
     var weatherCard: ICard = new ClearWeatherCard
@@ -30,5 +30,33 @@ class WeatherSection extends IBoardSection {
      */
     override def RemoveCard(card: ICard): Unit = {
         weatherCard = new ClearWeatherCard
+    }
+
+    /** Checks if this WeatherSection is equal to another object.
+     *
+     * @param obj The object to compare to.
+     * @return true if the object is a WeatherSection and has the same weathercard, false otherwise.
+     */
+    override def equals(obj: Any): Boolean = {
+        if(obj.isInstanceOf[WeatherSection]){
+            val other = obj.asInstanceOf[WeatherSection]
+            (this eq other) ||
+                (other.weatherCard == this.weatherCard)
+        }
+        else{
+            false
+        }
+    }
+
+    /** Returns the hash code of this WeatherSection.
+     *
+     * @return The hash code of this WeatherSection.
+     */
+    override def hashCode():Int = {
+        val prime = 31
+        var result= 1
+        result = prime * result + classOf[WeatherSection].##
+        result = prime * result + weatherCard.##
+        result
     }
 }

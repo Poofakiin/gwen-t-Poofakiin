@@ -6,19 +6,6 @@ import gwent.board.HalfBoard
 import gwent.board.sections.{IBoardSection, WeatherSection}
 import gwent.cards.unitcards.IUnitCard
 
-
-/** A class that represents one siede of the board in the gwent game
- *
- * each side of a Board must have three sections, one for each type of unit card
- * , and a Player who´s the one controlling the half.
- *
- * @param siegeSection
- * @param closeCombatSection
- * @param rangedSection
- * @param player
- *
- */
-
 /** A class that represents a whole board in the gwent game
  *
  * A Gwent´s Board must have two sides, each one controlled by a Player
@@ -26,7 +13,6 @@ import gwent.cards.unitcards.IUnitCard
  * @param playerBoard
  * @param enemyBoard
  */
-
 class Board(var playerBoard: HalfBoard, var enemyBoard: HalfBoard) {
 
     /**
@@ -79,7 +65,7 @@ class Board(var playerBoard: HalfBoard, var enemyBoard: HalfBoard) {
             (this eq other) ||
                 (other.playerBoard == this.playerBoard &&
                     other.enemyBoard == this.enemyBoard &&
-                    other.weatherCard == this.weatherCard)
+                    other.weatherSection == this.weatherSection)
         }
         else{
             false
@@ -95,7 +81,7 @@ class Board(var playerBoard: HalfBoard, var enemyBoard: HalfBoard) {
         var result= 1
         result = prime * result + classOf[Board].##
         result = prime * result + playerBoard.##
-        result = prime * result + weatherCard.##
+        result = prime * result + weatherSection.##
         result = prime * result + enemyBoard.##
         result
     }
