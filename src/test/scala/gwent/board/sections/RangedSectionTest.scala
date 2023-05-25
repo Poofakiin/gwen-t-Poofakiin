@@ -31,71 +31,71 @@ class RangedSectionTest extends FunSuite{
 
     var array: ArrayBuffer[ICard] = new ArrayBuffer[ICard]()
     var arraywithcard: ArrayBuffer[ICard] = _
-    var firstCloseCombatSection: CloseCombatSection = _
-    var secondCloseCombatSection: CloseCombatSection = _
+    var firstRangedSection: RangedSection = _
+    var secondRangedSection: RangedSection = _
     override def beforeEach(context: BeforeEach): Unit = {
         closeCombatCard = new CloseCombatCard(firstCardName,firstCardAttkPwr, closeBond)
         rangedCard = new RangedCard(secondCardName,secondCardAttkPwr, moralboost)
         siegeCard = new SiegeCard(firstCardName,firstCardAttkPwr)
         weatherCard = new FogCard
 
-        arraywithcard = ArrayBuffer(closeCombatCard)
-        firstCloseCombatSection = new CloseCombatSection()
-        secondCloseCombatSection = new CloseCombatSection()
+        arraywithcard = ArrayBuffer(rangedCard)
+        firstRangedSection = new RangedSection()
+        secondRangedSection = new RangedSection()
 
     }
-    test("A CloseCombatSection must be created with a sectionCardGroup"){
-        assertEquals(array, firstCloseCombatSection.sectionCardGroup)
+    test("A RangedSection must be created with a sectionCardGroup"){
+        assertEquals(array, firstRangedSection.sectionCardGroup)
     }
-    test("A CloseCombatSection must be created with a totalAttackPower"){
-        assertEquals(atckpwr, firstCloseCombatSection.totalAttackPower)
+    test("A RangedSection must be created with a totalAttackPower"){
+        assertEquals(atckpwr, firstRangedSection.totalAttackPower)
     }
-    test("A Close combat card can be added to the sectionCardGroup of a CloseCombatSection"){
-        assertEquals(firstCloseCombatSection.sectionCardGroup,array)
-        assertNotEquals(firstCloseCombatSection.sectionCardGroup, arraywithcard)
+    test("A Rangedcard can be added to the sectionCardGroup of a RangedSection"){
+        assertEquals(firstRangedSection.sectionCardGroup,array)
+        assertNotEquals(firstRangedSection.sectionCardGroup, arraywithcard)
 
-        firstCloseCombatSection.PlayinSection(closeCombatCard)
+        firstRangedSection.PlayinSection(rangedCard)
 
-        assertNotEquals(firstCloseCombatSection.sectionCardGroup,array)
-        assertEquals(firstCloseCombatSection.sectionCardGroup, arraywithcard)
-    }
-
-    test("A Ranged card wont be played in a close combat section"){
-        assertEquals(firstCloseCombatSection.sectionCardGroup,array)
-        firstCloseCombatSection.PlayinSection(rangedCard)
-        assertEquals(firstCloseCombatSection.sectionCardGroup,array)
+        assertNotEquals(firstRangedSection.sectionCardGroup,array)
+        assertEquals(firstRangedSection.sectionCardGroup, arraywithcard)
     }
 
-    test("A Siege card wont be played in a close combat section"){
-        assertEquals(firstCloseCombatSection.sectionCardGroup,array)
-        firstCloseCombatSection.PlayinSection(siegeCard)
-        assertEquals(firstCloseCombatSection.sectionCardGroup,array)
+    test("A Close combat card wont be played in a RangedSection"){
+        assertEquals(firstRangedSection.sectionCardGroup,array)
+        firstRangedSection.PlayinSection(closeCombatCard)
+        assertEquals(firstRangedSection.sectionCardGroup,array)
     }
 
-    test("A weather type card wont be played in a close combat section"){
-        assertEquals(firstCloseCombatSection.sectionCardGroup,array)
-        firstCloseCombatSection.PlayinSection(weatherCard)
-        assertEquals(firstCloseCombatSection.sectionCardGroup,array)
+    test("A Siege card wont be played in a RangedSection"){
+        assertEquals(firstRangedSection.sectionCardGroup,array)
+        firstRangedSection.PlayinSection(siegeCard)
+        assertEquals(firstRangedSection.sectionCardGroup,array)
     }
 
-    test("A Close combat card can be removed from the sectionCardGroup of a CloseCombatSection"){
-        firstCloseCombatSection.PlayinSection(closeCombatCard)
-        assertEquals(firstCloseCombatSection.sectionCardGroup,arraywithcard)
-
-        firstCloseCombatSection.RemoveCard(closeCombatCard)
-
-        assertNotEquals(firstCloseCombatSection.sectionCardGroup,arraywithcard)
-        assertEquals(array, firstCloseCombatSection.sectionCardGroup)
+    test("A weather type card wont be played in a RangedSection"){
+        assertEquals(firstRangedSection.sectionCardGroup,array)
+        firstRangedSection.PlayinSection(weatherCard)
+        assertEquals(firstRangedSection.sectionCardGroup,array)
     }
-    test("A CloseCombatSection should be equal to another" +
+
+    test("A ranged card can be removed from the sectionCardGroup of a RangedSection"){
+        firstRangedSection.PlayinSection(rangedCard)
+        assertEquals(firstRangedSection.sectionCardGroup,arraywithcard)
+
+        firstRangedSection.RemoveCard(rangedCard)
+
+        assertNotEquals(firstRangedSection.sectionCardGroup,arraywithcard)
+        assertEquals(array, firstRangedSection.sectionCardGroup)
+    }
+    test("A RangedSection should be equal to another" +
         " of the same class with the same attributes and it should have the same hashcode"){
-        var notEqualtoFirst: CloseCombatSection = new CloseCombatSection()
-        notEqualtoFirst.PlayinSection(closeCombatCard)
-        assertEquals(firstCloseCombatSection, secondCloseCombatSection)
-        assertEquals(secondCloseCombatSection, firstCloseCombatSection)
-        assertEquals(firstCloseCombatSection.hashCode(), secondCloseCombatSection.hashCode())
-        assertNotEquals(firstCloseCombatSection, notEqualtoFirst)
-        assertNotEquals(notEqualtoFirst, firstCloseCombatSection)
-        assertNotEquals(firstCloseCombatSection.hashCode(), notEqualtoFirst.hashCode())
+        var notEqualtoFirst: RangedSection = new RangedSection()
+        notEqualtoFirst.PlayinSection(rangedCard)
+        assertEquals(firstRangedSection, secondRangedSection)
+        assertEquals(secondRangedSection, firstRangedSection)
+        assertEquals(firstRangedSection.hashCode(), secondRangedSection.hashCode())
+        assertNotEquals(firstRangedSection, notEqualtoFirst)
+        assertNotEquals(notEqualtoFirst, firstRangedSection)
+        assertNotEquals(firstRangedSection.hashCode(), notEqualtoFirst.hashCode())
     }
 }
