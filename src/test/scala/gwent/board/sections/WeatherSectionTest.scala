@@ -76,5 +76,5 @@ class WeatherSectionTest extends FunSuite{
         firstWeatherSection.PlayinSection(siegeCard)
         assertEquals(firstWeatherSection.weatherCard,clearWeatherCard)
     }
-    
+
 }

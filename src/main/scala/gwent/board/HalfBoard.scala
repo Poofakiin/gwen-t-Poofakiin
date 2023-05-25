@@ -66,6 +66,7 @@ class HalfBoard(var player: GamePlayer) {
         result = prime * result + siegeSection.##
         result = prime * result + closeCombatSection.##
         result = prime * result + rangedSection.##
+        result = prime * result + player.##
         result
     }
 }
