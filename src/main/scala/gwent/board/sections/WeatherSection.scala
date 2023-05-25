@@ -6,7 +6,7 @@ import gwent.cards.weathercards.{ClearWeatherCard, IWeatherCard}
 import gwent.cards.ICard
 
 class WeatherSection extends IBoardSection {
-    var weatherCard: ICard = new ClearWeatherCard
+    var weatherCard: ICard = ClearWeatherCard()
 
     /** Play a card in a siege section
      *
@@ -29,7 +29,8 @@ class WeatherSection extends IBoardSection {
      * @param card the card that´s going to be removed
      */
     override def RemoveCard(card: ICard): Unit = {
-        weatherCard = new ClearWeatherCard
+        if (card == this.weatherCard)
+            weatherCard = ClearWeatherCard()
     }
 
     /** Checks if this WeatherSection is equal to another object.
