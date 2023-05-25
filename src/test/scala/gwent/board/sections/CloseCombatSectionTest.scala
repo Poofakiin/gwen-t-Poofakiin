@@ -1,8 +1,11 @@
 package cl.uchile.dcc
 package gwent.board.sections
 
-import gwent.cards.unitcards.{CloseCombatCard, IUnitCard}
-import gwent.cards.unitcards.effects._
+import gwent.cards.unitcards.{CloseCombatCard, IUnitCard, RangedCard, SiegeCard}
+import gwent.cards.unitcards.effects.*
+
+import gwent.cards.ICard
+import gwent.cards.weathercards.FogCard
 
 import scala.collection.mutable.ArrayBuffer
 import munit.FunSuite
@@ -21,19 +24,22 @@ class CloseCombatSectionTest extends FunSuite{
     val moralboost: ISpecialAbility = new MoralBoost()
     val closeBond: ISpecialAbility = new CloseBond()
 
-    var card1: CloseCombatCard = _
-    var card2: CloseCombatCard = _
-    var card3: CloseCombatCard = _
+    var closeCombatCard: CloseCombatCard = _
+    var rangedCard: RangedCard = _
+    var siegeCard: SiegeCard = _
+    var weatherCard: FogCard = _
 
-    var array: ArrayBuffer[IUnitCard] = new ArrayBuffer[IUnitCard]()
-    var arraywithcard: ArrayBuffer[IUnitCard] = _
+    var array: ArrayBuffer[ICard] = new ArrayBuffer[ICard]()
+    var arraywithcard: ArrayBuffer[ICard] = _
     var firstCloseCombatSection: CloseCombatSection = _
     var secondCloseCombatSection: CloseCombatSection = _
     override def beforeEach(context: BeforeEach): Unit = {
-        card1 = new CloseCombatCard(firstCardName,firstCardAttkPwr, closeBond)
-        card2 = new CloseCombatCard(secondCardName,secondCardAttkPwr, moralboost)
-        card3 = new CloseCombatCard(firstCardName,firstCardAttkPwr)
-        arraywithcard = ArrayBuffer(card1)
+        closeCombatCard = new CloseCombatCard(firstCardName,firstCardAttkPwr, closeBond)
+        rangedCard = new RangedCard(secondCardName,secondCardAttkPwr, moralboost)
+        siegeCard = new SiegeCard(firstCardName,firstCardAttkPwr)
+        weatherCard = new FogCard
+
+        arraywithcard = ArrayBuffer(closeCombatCard)
         firstCloseCombatSection = new CloseCombatSection()
         secondCloseCombatSection = new CloseCombatSection()
 
@@ -48,17 +54,35 @@ class CloseCombatSectionTest extends FunSuite{
         assertEquals(firstCloseCombatSection.sectionCardGroup,array)
         assertNotEquals(firstCloseCombatSection.sectionCardGroup, arraywithcard)
 
-        firstCloseCombatSection.AddUnitCard(card1)
+        firstCloseCombatSection.PlayinSection(closeCombatCard)
 
         assertNotEquals(firstCloseCombatSection.sectionCardGroup,array)
         assertEquals(firstCloseCombatSection.sectionCardGroup, arraywithcard)
     }
 
+    test("A Ranged card wont be played in a close combat section"){
+        assertEquals(firstCloseCombatSection.sectionCardGroup,array)
+        firstCloseCombatSection.PlayinSection(rangedCard)
+        assertEquals(firstCloseCombatSection.sectionCardGroup,array)
+    }
+
+    test("A Siege card wont be played in a close combat section"){
+        assertEquals(firstCloseCombatSection.sectionCardGroup,array)
+        firstCloseCombatSection.PlayinSection(siegeCard)
+        assertEquals(firstCloseCombatSection.sectionCardGroup,array)
+    }
+
+    test("A weather type card wont be played in a close combat section"){
+        assertEquals(firstCloseCombatSection.sectionCardGroup,array)
+        firstCloseCombatSection.PlayinSection(weatherCard)
+        assertEquals(firstCloseCombatSection.sectionCardGroup,array)
+    }
+
     test("A Close combat card can be removed from the sectionCardGroup of a CloseCombatSection"){
-        firstCloseCombatSection.AddUnitCard(card1)
+        firstCloseCombatSection.PlayinSection(closeCombatCard)
         assertEquals(firstCloseCombatSection.sectionCardGroup,arraywithcard)
 
-        firstCloseCombatSection.RemoveUnitCard(card1)
+        firstCloseCombatSection.RemoveCard(closeCombatCard)
 
         assertNotEquals(firstCloseCombatSection.sectionCardGroup,arraywithcard)
         assertEquals(array, firstCloseCombatSection.sectionCardGroup)
@@ -66,7 +90,7 @@ class CloseCombatSectionTest extends FunSuite{
     test("A CloseCombatSection should be equal to another" +
         " of the same class with the same attributes and it should have the same hashcode"){
         var notEqualtoFirst: CloseCombatSection = new CloseCombatSection()
-        notEqualtoFirst.AddUnitCard(card1)
+        notEqualtoFirst.PlayinSection(closeCombatCard)
         assertEquals(firstCloseCombatSection, secondCloseCombatSection)
         assertEquals(secondCloseCombatSection, firstCloseCombatSection)
         assertEquals(firstCloseCombatSection.hashCode(), secondCloseCombatSection.hashCode())

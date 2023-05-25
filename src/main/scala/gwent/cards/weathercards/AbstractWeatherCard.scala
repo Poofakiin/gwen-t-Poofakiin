@@ -61,7 +61,7 @@ abstract class AbstractWeatherCard() extends IWeatherCard {
      * @param section te board where the card its going to be added
      */
     override def PlayinSectionCloseCombat(section: IBoardSection): Unit = {
-        ???
+        ()
     }
 
     /** Try to play a card in to a Ranged Section in a Board
@@ -69,7 +69,7 @@ abstract class AbstractWeatherCard() extends IWeatherCard {
      * @param section te board where the card its going to be added
      */
     override def PlayinSectionRanged(section: IBoardSection): Unit = {
-        ???
+        ()
     }
 
     /** Try to play a card in to a Siege Section in a Board
@@ -77,6 +77,6 @@ abstract class AbstractWeatherCard() extends IWeatherCard {
      * @param section te board where the card its going to be added
      */
     override def PlayinSectionSiege(section: IBoardSection): Unit = {
-        ???
+        ()
     }
 }

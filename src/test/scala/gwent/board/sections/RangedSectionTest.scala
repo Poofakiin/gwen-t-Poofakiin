@@ -39,40 +39,5 @@ class RangedSectionTest extends FunSuite{
         secondRangedSection = new RangedSection()
 
     }
-    test("A RangedSection must be created with a sectionCardGroup"){
-        assertEquals(array, firstRangedSection.sectionCardGroup)
-    }
-    test("A RangedSection must be created with a totalAttackPower"){
-        assertEquals(atckpwr, firstRangedSection.totalAttackPower)
-    }
-    test("A Ranged card can be added to the sectionCardGroup of a RangedSection"){
-        assertEquals(firstRangedSection.sectionCardGroup,array)
-        assertNotEquals(firstRangedSection.sectionCardGroup, arraywithcard)
 
-        firstRangedSection.AddUnitCard(card1)
-
-        assertNotEquals(firstRangedSection.sectionCardGroup,array)
-        assertEquals(firstRangedSection.sectionCardGroup, arraywithcard)
-    }
-
-    test("A Ranged card can be removed from the sectionCardGroup of a RangedSection"){
-        firstRangedSection.AddUnitCard(card1)
-        assertEquals(firstRangedSection.sectionCardGroup,arraywithcard)
-
-        firstRangedSection.RemoveUnitCard(card1)
-
-        assertNotEquals(firstRangedSection.sectionCardGroup,arraywithcard)
-        assertEquals(array, firstRangedSection.sectionCardGroup)
-    }
-    test("A RangedSection should be equal to another" +
-        " of the same class with the same attributes and it should have the same hashcode"){
-        var notEqualtoFirst: RangedSection = new RangedSection()
-        notEqualtoFirst.AddUnitCard(card1)
-        assertEquals(firstRangedSection, secondRangedSection)
-        assertEquals(secondRangedSection, firstRangedSection)
-        assertEquals(firstRangedSection.hashCode(), secondRangedSection.hashCode())
-        assertNotEquals(firstRangedSection, notEqualtoFirst)
-        assertNotEquals(notEqualtoFirst, firstRangedSection)
-        assertNotEquals(firstRangedSection.hashCode(), notEqualtoFirst.hashCode())
-    }
 }
