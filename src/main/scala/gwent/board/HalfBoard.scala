@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package gwent.board
 
-import cl.uchile.dcc.gwent.board.sections.{CloseCombatSection, RangedSection, SiegeSection}
+import cl.uchile.dcc.gwent.board.sections.{CloseCombatSection, IBoardSection, RangedSection, SiegeSection}
 import cl.uchile.dcc.gwent.cards.unitcards.IUnitCard
 import cl.uchile.dcc.gwent.cards.weathercards.IWeatherCard
 import cl.uchile.dcc.gwent.players.GamePlayer
@@ -31,9 +31,8 @@ class HalfBoard(var player: GamePlayer) {
      *
      * @param card the card thats going to be played
      */
-    def playUnitCard(card:IUnitCard): Unit = {
-        if(player.playCard(card))
-            card.getPlayed(this)
+    def playUnitCard(card:IUnitCard, section: IBoardSection): Unit = {
+        player.playCard(card, section)
     }
 
     /** Checks if this HalfBoard is equal to another object.

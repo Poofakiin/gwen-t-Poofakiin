@@ -5,8 +5,9 @@ package gwent.players
 import scala.util.Random
 import scala.collection.mutable.ArrayBuffer
 import gwent.cards.ICard
-import gwent.board.HalfBoard
-import cardgroups._
+
+import cardgroups.*
+import gwent.board.sections.IBoardSection
 
 /** A class that describes a Player in the game.
  *
@@ -31,16 +32,16 @@ class Player(val name: String, var gemsCounter: Int, var deck: Deck,
     }
 
     /**
-     * Plays a given card from the player's hand and removes it from the hand.
-     * If the player's hand contains the specified card, it will be removed from the hand.
+     * Plays a given card from the player's hand on to a certain section and removes it from the hand.
+     * If the player's hand contains the specified card, it will be removed from the hand and added to the section.
      * If the player's hand does not contain the specified card, this method has no effect.
      * @param card The card to be played.
-     * @see canPlayCard
+     * @param section The place where its going to be played.
+     * @see hasCard
      */
-    def playCard(card: ICard): Boolean = {
+    def playCard(card: ICard, section: IBoardSection): Unit = {
         if(this.hand.hasCard(card)) {
             this.hand.takeCard(card)
-            true
         }
         else{
             false

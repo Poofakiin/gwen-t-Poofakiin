@@ -3,8 +3,8 @@ package gwent.board
 
 import gwent.cards.weathercards.IWeatherCard
 import gwent.board.HalfBoard
-
-import cl.uchile.dcc.gwent.cards.unitcards.IUnitCard
+import gwent.board.sections.{IBoardSection, WeatherSection}
+import gwent.cards.unitcards.IUnitCard
 
 
 /** A class that represents one siede of the board in the gwent game
@@ -32,15 +32,14 @@ class Board(var playerBoard: HalfBoard, var enemyBoard: HalfBoard) {
     /**
      * the weather card of the game, any of both players can change it
      */
-    var weatherCard: Option[IWeatherCard] = None
+    var weatherSection: WeatherSection = new WeatherSection
     
     /** Tries to play a certain weather card
      *
      * @param card the weather card that wants to be played
      */
     def PlayerPlayWeatherCard(card: IWeatherCard): Unit = {
-        if(playerBoard.player.playCard(card))
-            card.getPlayed(this)
+        playerBoard.player.playCard(card,weatherSection)
     }
 
     /** Tries to play a certain weather card
@@ -48,16 +47,15 @@ class Board(var playerBoard: HalfBoard, var enemyBoard: HalfBoard) {
      * @param card the card that wants to be played
      */
     def EnemyPlayWeatherCard(card: IWeatherCard): Unit = {
-        if(playerBoard.player.playCard(card))
-            card.getPlayed(this)
+        playerBoard.player.playCard(card, weatherSection)
     }
 
     /** Tries to play a unit card
      *
      * @param card the unit card that wants to be played
      */
-    def PlayerPlayUnitCard(card: IUnitCard): Unit = {
-        playerBoard.playUnitCard(card)
+    def PlayerPlayUnitCard(card: IUnitCard, section: IBoardSection): Unit = {
+        playerBoard.playUnitCard(card, section)
     }
     
 
@@ -65,8 +63,8 @@ class Board(var playerBoard: HalfBoard, var enemyBoard: HalfBoard) {
      *
      * @param card the unit card that wants to be played
      */
-    def EnemyPlayUnitCard(card: IUnitCard): Unit = {
-        enemyBoard.playUnitCard(card)
+    def EnemyPlayUnitCard(card: IUnitCard, section: IBoardSection): Unit = {
+        enemyBoard.playUnitCard(card,section)
     }
 
     /** Checks if this Board is equal to another object.

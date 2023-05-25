@@ -3,8 +3,8 @@ package gwent.players
 
 import gwent.cards.ICard
 
-import cl.uchile.dcc.gwent.players.cardgroups.*
-
+import gwent.board.sections.IBoardSection
+import gwent.players.cardgroups.*
 import javax.net.ssl.SNIHostName
 import scala.collection.mutable.ArrayBuffer
 
@@ -42,9 +42,9 @@ trait GamePlayer {
     /** Pick a given card of Players hand of cards and remove it from the hand.
      * 
      * @param card the Card that´s going to be played.
-     * @return True if the card was removed, false otherwise
+     *             
      */
-    def playCard(card: ICard): Boolean
+    def playCard(card: ICard, section: IBoardSection): Unit
 
     /** Draws the first card from the deck of cards and adds it to the player's hand.
      *
