@@ -42,6 +42,7 @@ class Player(val name: String, var gemsCounter: Int, var deck: Deck,
     def playCard(card: ICard, section: IBoardSection): Unit = {
         if(this.hand.hasCard(card)) {
             this.hand.takeCard(card)
+            section.PlayinSection(card)
         }
         else{
             false

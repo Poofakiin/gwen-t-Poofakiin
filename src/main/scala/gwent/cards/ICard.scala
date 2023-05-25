@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package gwent.cards
 
-import gwent.board.HalfBoard
+import gwent.board.sections.IBoardSection
 
 /**
  * Represents a card in the gwent game.
@@ -22,5 +22,20 @@ trait ICard {
     /**
      *
      */
-    def getPlayed(board: HalfBoard): Unit
+    def PlayinSectionCloseCombat(section: IBoardSection): Unit
+
+    /**
+     *
+     */
+    def PlayinSectionRanged(section: IBoardSection): Unit
+
+    /**
+     *
+     */
+    def PlayinSectionSiege(section: IBoardSection): Unit
+
+    /**
+     *
+     */
+    def PlayinSectionWeather(section: IBoardSection): Unit
 }
