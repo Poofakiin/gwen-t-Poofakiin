@@ -40,6 +40,14 @@ abstract class AbstractWeatherCard() extends IWeatherCard {
         this.weatherType
     }
 
+    /** Aplies the weather ability to the board in the game
+     *
+     * @param board the board where´s going to be aplied the ability
+     */
+    override def useWeatherAbility(board: Board): Unit = {
+        ???
+    }
+
     /** Try to play a card in to a Weather Section in a Board
      *
      * @param section te board where the card its going to be added

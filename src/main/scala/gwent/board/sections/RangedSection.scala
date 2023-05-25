@@ -18,7 +18,7 @@ class RangedSection extends AbstractUnitBoardSection {
      * @param ICard the card that´s going to be played
      */
     override def PlayinSection(card: ICard): Unit = {
-        card.PlayCardinSectionRanged(this)
+        card.PlayinSectionRanged(this)
     }
     
     

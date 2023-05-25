@@ -4,7 +4,6 @@ package gwent.board.sections
 import gwent.cards.ICard
 import gwent.cards.unitcards.IUnitCard
 
-import cl.uchile.dcc.gwent.cards.weathercards.IWeatherCard
 
 import scala.collection.mutable.ArrayBuffer
 

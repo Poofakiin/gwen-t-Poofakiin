@@ -1,10 +1,7 @@
 package cl.uchile.dcc
 package gwent.board.sections
 
-import gwent.board.sections.AbstractUnitBoardSection
 import gwent.cards.unitcards.IUnitCard
-import gwent.cards.weathercards.IWeatherCard
-
 import cl.uchile.dcc.gwent.cards.ICard
 
 import scala.collection.mutable.ArrayBuffer

@@ -29,4 +29,5 @@ trait IUnitCard extends ICard{
      * @return The special ability of the unit card, if any.
      */
     def getSpecialAbility(): Option[ISpecialAbility]
+    
 }

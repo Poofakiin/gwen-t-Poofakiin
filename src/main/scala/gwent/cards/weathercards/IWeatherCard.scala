@@ -36,4 +36,6 @@ trait IWeatherCard extends ICard{
      * @param board
      */
     def useWeatherAbility(board: Board): Unit
+    
+    
 }

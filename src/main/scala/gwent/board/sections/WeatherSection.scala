@@ -13,7 +13,7 @@ class WeatherSection extends IBoardSection {
      * @param ICard the card that´s going to be played
      */
     override def PlayinSection(card: ICard): Unit = {
-        card.PlayCardinSectionWeather(this)
+        card.PlayinSectionWeather(this)
     }
 
     /** Add a Card to the card section group

@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package gwent.cards
 
-import gwent.board.sections.IBoardSection
+import cl.uchile.dcc.gwent.board.sections.IBoardSection
 
 /**
  * Represents a card in the gwent game.
