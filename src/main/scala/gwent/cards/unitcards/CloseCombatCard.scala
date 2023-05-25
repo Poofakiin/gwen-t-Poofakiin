@@ -1,6 +1,7 @@
 package cl.uchile.dcc
 package gwent.cards.unitcards
 import cl.uchile.dcc.gwent.board.HalfBoard
+import cl.uchile.dcc.gwent.board.sections.IBoardSection
 import effects.*
 
 /** A class that represent a Close Combat card in the game Gwent
@@ -25,11 +26,11 @@ class CloseCombatCard(name: String, attackPower: Int) extends AbstractUnitCard(n
     }
 
     /** Adds a Close Combat card to a Close Combat Section in a Board
-     * 
-     * @param board te board where the card its going to be added
+     *
+     * @param section the board section where the card its going to be added
      */
-    override def getPlayed(board: HalfBoard): Unit = {
-        board.closeCombatSection.AddUnitCard(this)
+    override def PlayinSectionCloseCombat(section: IBoardSection): Unit = {
+        section.AddCard(this)
     }
 
     /** Checks if this CloseCombatCard is equal to another object.
