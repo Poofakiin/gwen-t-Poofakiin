@@ -1,6 +1,7 @@
 package cl.uchile.dcc
 package gwent.board.sections
 
+import gwent.cards.ICard
 import gwent.board.sections.IBoardSection
 import gwent.cards.unitcards.IUnitCard
 import gwent.cards.weathercards.IWeatherCard
@@ -10,8 +11,17 @@ import scala.collection.mutable.ArrayBuffer
 /**
  * A class that represent a section where only ranged cards can be played
  */
-class RangedSection extends AbstractBoardSection {
+class RangedSection extends AbstractUnitBoardSection {
 
+    /** Play a card in a ranged section
+     *
+     * @param ICard the card that´s going to be played
+     */
+    override def PlayinSection(card: ICard): Unit = {
+        card.PlayCardinSectionRanged(this)
+    }
+    
+    
     /** Checks if this RangedSection is equal to another object.
      *
      * @param obj The object to compare to.

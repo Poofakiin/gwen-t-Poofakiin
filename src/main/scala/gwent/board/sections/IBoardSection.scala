@@ -1,8 +1,7 @@
 package cl.uchile.dcc
 package gwent.board.sections
 
-import gwent.cards.unitcards.IUnitCard
-import gwent.cards.weathercards.IWeatherCard
+import gwent.cards.ICard
 
 import scala.collection.mutable.ArrayBuffer
 
@@ -14,26 +13,23 @@ import scala.collection.mutable.ArrayBuffer
  */
 trait IBoardSection {
 
-    /**
-     * the unit cards group of the section
+    /** Play a card in a certain section
+     * 
+     * @param ICard the card that´s going to be played
      */
-    var sectionCardGroup: ArrayBuffer[IUnitCard]
+    def PlayinSection(card: ICard): Unit
+    
 
-    /**
-     * the summatory of the attack power of all unit cards of the section
-     */
-    var totalAttackPower: Int
-
-    /** Add a unit card to the card section group
+    /** Add a card to the card section group
      *
      * @param card the unit card thats going to be added
      */
-    def AddUnitCard(card: IUnitCard): Unit
+    def AddCard(card: ICard): Unit
 
-    /** Removes a currently Played Unit Card
+    /** Removes a currently Played Card
      *
      * @param card the card that´s going to be removed
      */
-    def RemoveUnitCard(card: IUnitCard): Unit
+    def RemoveCard(card: ICard): Unit
 
 }

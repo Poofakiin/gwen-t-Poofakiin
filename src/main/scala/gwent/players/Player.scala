@@ -37,7 +37,7 @@ class Player(val name: String, var gemsCounter: Int, var deck: Deck,
      * @param card The card to be played.
      * @see canPlayCard
      */
-    def playCard(card: ICard): Unit = {
+    def playCard(card: ICard): Boolean = {
         if(this.hand.hasCard(card)) {
             this.hand.takeCard(card)
             true

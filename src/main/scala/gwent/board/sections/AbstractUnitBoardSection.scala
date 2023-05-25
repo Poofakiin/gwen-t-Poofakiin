@@ -1,36 +1,46 @@
 package cl.uchile.dcc
+
 package gwent.board.sections
+import gwent.cards.ICard
 import gwent.cards.unitcards.IUnitCard
 
 import cl.uchile.dcc.gwent.cards.weathercards.IWeatherCard
 
 import scala.collection.mutable.ArrayBuffer
 
-abstract class AbstractBoardSection extends IBoardSection{
+abstract class AbstractUnitBoardSection extends IBoardSection{
 
     /**
      * the unit cards group of the section
      */
-    var sectionCardGroup: ArrayBuffer[IUnitCard] = new ArrayBuffer[IUnitCard]()
+    var sectionCardGroup: ArrayBuffer[ICard] = new ArrayBuffer[ICard]()
 
     /**
      * the summatory of the attack power of all unit cards of the section
      */
     var totalAttackPower: Int = 0
 
-    /** Add a unit card to the card section group
+    /** Add a Card to the card section group
      *
      * @param card the unit card thats going to be added
      */
-    override def AddUnitCard(card: IUnitCard): Unit = {
+    override def AddCard(card: ICard): Unit = {
         this.sectionCardGroup+=card
     }
 
-    /** Removes a currently Played Unit Card
+    /** Removes a currently Played Card
      *
      * @param card the card that´s going to be removed
      */
-    override def RemoveUnitCard(card: IUnitCard): Unit = {
+    override def RemoveCard(card: ICard): Unit = {
         this.sectionCardGroup-=card
+    }
+
+    /** Play a card in a certain section
+     *
+     * @param ICard the card that´s going to be played
+     */
+    override def PlayinSection(card: ICard): Unit = {
+        ???
     }
 }

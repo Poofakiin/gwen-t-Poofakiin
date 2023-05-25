@@ -4,14 +4,25 @@ package gwent.board.sections
 import gwent.board.sections.IBoardSection
 import gwent.cards.unitcards.IUnitCard
 import gwent.cards.weathercards.IWeatherCard
+import gwent.cards.ICard
 
 import scala.collection.mutable.ArrayBuffer
 
 /**
  * A class that represent a section where only siege cards can be played
  */
-class SiegeSection extends AbstractBoardSection {
+class SiegeSection extends AbstractUnitBoardSection {
 
+    /** Play a card in a siege section
+     *
+     * @param ICard the card that´s going to be played
+     */
+    override def PlayinSection(card: ICard): Unit = {
+        card.PlayCardinSectionSiege(this)
+    }
+    
+    
+    
     /** Checks if this SiegeSection is equal to another object.
      *
      * @param obj The object to compare to.

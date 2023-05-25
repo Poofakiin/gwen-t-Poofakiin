@@ -46,4 +46,8 @@ abstract class AbstractWeatherCard() extends IWeatherCard {
     override def getPlayed(board: Board): Unit = {
         board.weatherCard = Some(this)
     }
+
+    override def getPlayed(board: HalfBoard): Unit = {
+        ???
+    }
 }

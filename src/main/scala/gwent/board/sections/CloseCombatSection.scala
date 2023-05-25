@@ -1,16 +1,26 @@
 package cl.uchile.dcc
 package gwent.board.sections
 
-import gwent.board.sections.AbstractBoardSection
+import gwent.board.sections.AbstractUnitBoardSection
 import gwent.cards.unitcards.IUnitCard
 import gwent.cards.weathercards.IWeatherCard
+
+import cl.uchile.dcc.gwent.cards.ICard
 
 import scala.collection.mutable.ArrayBuffer
 
 /**
  * A class that represent a section where only close combat cards can be played
  */
-class CloseCombatSection extends AbstractBoardSection{
+class CloseCombatSection extends AbstractUnitBoardSection{
+
+    /** Play a card in a close combat section
+     *
+     * @param ICard the card that´s going to be played
+     */
+    override def PlayinSection(card: ICard): Unit = {
+        card.PlayinSectionCloseCombat(this)
+    }
     
     /** Checks if this CloseCombatSection is equal to another object.
      *
