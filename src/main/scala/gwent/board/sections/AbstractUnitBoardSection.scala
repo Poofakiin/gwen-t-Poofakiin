@@ -39,7 +39,7 @@ abstract class AbstractUnitBoardSection extends IBoardSection{
      *
      * @param ICard the card that´s going to be played
      */
-    override def PlayinSection(card: ICard): Unit = {
+    override def PlayinSection(card: ICard): Boolean = {
         ???
     }
 }

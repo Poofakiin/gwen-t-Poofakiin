@@ -17,7 +17,7 @@ class SiegeSection extends AbstractUnitBoardSection {
      *
      * @param ICard the card that´s going to be played
      */
-    override def PlayinSection(card: ICard): Unit = {
+    override def PlayinSection(card: ICard): Boolean = {
         card.PlayinSectionSiege(this)
     }
     

@@ -23,23 +23,23 @@ trait ICard {
      *
      * @param section te board where the card its going to be added
      */
-    def PlayinSectionCloseCombat(section: IBoardSection): Unit
+    def PlayinSectionCloseCombat(section: IBoardSection): Boolean
 
     /** Try to play a card in to a Ranged Section in a Board
      *
      * @param section te board where the card its going to be added
      */
-    def PlayinSectionRanged(section: IBoardSection): Unit
+    def PlayinSectionRanged(section: IBoardSection): Boolean
 
     /** Try to play a card in to a Siege Section in a Board
      *
      * @param section te board where the card its going to be added
      */
-    def PlayinSectionSiege(section: IBoardSection): Unit
+    def PlayinSectionSiege(section: IBoardSection): Boolean
 
     /** Try to play a card in to a Weather Section in a Board
      *
      * @param section te board where the card its going to be added
      */
-    def PlayinSectionWeather(section: IBoardSection): Unit
+    def PlayinSectionWeather(section: IBoardSection): Boolean
 }

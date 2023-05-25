@@ -31,8 +31,9 @@ class SiegeCard (name: String, attackPower: Int) extends AbstractUnitCard(name, 
      *
      * @param section the board section where the card its going to be added
      */
-    override def PlayinSectionSiege(section: IBoardSection): Unit = {
+    override def PlayinSectionSiege(section: IBoardSection): Boolean = {
         section.AddCard(this)
+        true
     }
 
     /** Checks if this SiegeCard is equal to another object.
