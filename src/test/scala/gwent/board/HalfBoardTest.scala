@@ -167,7 +167,7 @@ class HalfBoardTest extends FunSuite{
         assertEquals(halfBoardOne.siegeSection,fillranged)
     }
 
-    test("A HalfBoard should be equal to another Player with the"+
+    test("A HalfBoard should be equal to another Board with the"+
         "same attributes and it should have the same hashcode"){
         val sameAsHalfBoard1: HalfBoard = new HalfBoard(firstPlayer)
         assertEquals(halfBoardOne, sameAsHalfBoard1)
