@@ -29,8 +29,8 @@ class ClearWeather extends IWeatherType{
      * @return true if the object is a ClearWeather and has the same name, false otherwise.
      */
     override def equals(obj: Any): Boolean = {
-        if (obj.isInstanceOf[Frost]) {
-            val other = obj.asInstanceOf[Frost]
+        if (obj.isInstanceOf[ClearWeather]) {
+            val other = obj.asInstanceOf[ClearWeather]
             (this eq other) ||
                 (other.name == this.name)
         }

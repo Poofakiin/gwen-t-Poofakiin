@@ -42,7 +42,7 @@ class WeatherSectionTest extends FunSuite{
         firstWeatherSection = new WeatherSection()
         secondWeatherSection = new WeatherSection()
 
-        clearWeatherCard = firstWeatherSection.weatherCard
+        clearWeatherCard = new ClearWeatherCard()
 
     }
     test("A WeatherSection must be created with a weatherCard, and it should start as a Clear Weather Card"){
@@ -76,5 +76,6 @@ class WeatherSectionTest extends FunSuite{
         firstWeatherSection.PlayinSection(siegeCard)
         assertEquals(firstWeatherSection.weatherCard,clearWeatherCard)
     }
+
 
 }
