@@ -16,6 +16,7 @@ class RangedSection extends AbstractUnitBoardSection {
     /** Play a card in a ranged section
      *
      * @param ICard the card that´s going to be played
+     * @return True if the card was played, false otherwise
      */
     override def PlayinSection(card: ICard): Boolean = {
         card.PlayinSectionRanged(this)

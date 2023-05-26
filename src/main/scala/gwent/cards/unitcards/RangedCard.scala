@@ -33,7 +33,7 @@ class RangedCard (name: String, attackPower: Int) extends AbstractUnitCard(name,
      */
     override def PlayinSectionRanged(section: IBoardSection): Boolean = {
         section.AddCard(this)
-        true
+        return true
     }
 
     /** Checks if this RangedCard is equal to another object.

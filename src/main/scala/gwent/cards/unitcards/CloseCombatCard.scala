@@ -31,7 +31,7 @@ class CloseCombatCard(name: String, attackPower: Int) extends AbstractUnitCard(n
      */
     override def PlayinSectionCloseCombat(section: IBoardSection): Boolean = {
         section.AddCard(this)
-        true
+        return true
     }
 
     /** Checks if this CloseCombatCard is equal to another object.

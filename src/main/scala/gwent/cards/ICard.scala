@@ -22,24 +22,28 @@ trait ICard {
     /** Try to play a card in to a Close Combat Section in a Board
      *
      * @param section te board where the card its going to be added
+     * @return True if the card was played, false otherwise
      */
     def PlayinSectionCloseCombat(section: IBoardSection): Boolean
 
     /** Try to play a card in to a Ranged Section in a Board
      *
      * @param section te board where the card its going to be added
+     * @return True if the card was played, false otherwise
      */
     def PlayinSectionRanged(section: IBoardSection): Boolean
 
     /** Try to play a card in to a Siege Section in a Board
      *
      * @param section te board where the card its going to be added
+     * @return True if the card was played, false otherwise
      */
     def PlayinSectionSiege(section: IBoardSection): Boolean
 
     /** Try to play a card in to a Weather Section in a Board
      *
      * @param section te board where the card its going to be added
+     * @return True if the card was played, false otherwise
      */
     def PlayinSectionWeather(section: IBoardSection): Boolean
 }

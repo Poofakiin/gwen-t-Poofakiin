@@ -11,6 +11,7 @@ class WeatherSection extends IBoardSection {
     /** Play a card in a siege section
      *
      * @param ICard the card that´s going to be played
+     * @return True if the card was played, false otherwise
      */
     override def PlayinSection(card: ICard): Boolean = {
         card.PlayinSectionWeather(this)

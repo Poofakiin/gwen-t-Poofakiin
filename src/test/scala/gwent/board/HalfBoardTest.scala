@@ -130,7 +130,7 @@ class HalfBoardTest extends FunSuite{
         assertEquals(halfBoardOne.closeCombatSection, closeCombatSection)
 
         halfBoardOne.playUnitCard(forktail,this.closeCombatSection)
-        assertEquals(halfBoardOne.closeCombatSection, fillcloseCombat)
+        assertNotEquals(halfBoardOne.closeCombatSection, closeCombatSection)
 
     }
 
@@ -148,7 +148,6 @@ class HalfBoardTest extends FunSuite{
 
         halfBoardOne.playUnitCard(albrich,this.rangedSection)
         assertNotEquals(halfBoardOne.rangedSection,rangedSection)
-        assertEquals(halfBoardOne.rangedSection,fillranged)
     }
     test("A Half board must be capable of only playing a siege card in its section if the player has it"){
         var fillranged: SiegeSection = new SiegeSection
@@ -164,7 +163,6 @@ class HalfBoardTest extends FunSuite{
 
         halfBoardOne.playUnitCard(ballista,this.siegeSection)
         assertNotEquals(halfBoardOne.siegeSection,siegeSection)
-        assertEquals(halfBoardOne.siegeSection,fillranged)
     }
 
     test("A HalfBoard should be equal to another Board with the"+

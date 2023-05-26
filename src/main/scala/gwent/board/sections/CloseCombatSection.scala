@@ -14,9 +14,10 @@ class CloseCombatSection extends AbstractUnitBoardSection{
     /** Play a card in a close combat section
      *
      * @param ICard the card that´s going to be played
+     * @return true if the card was played, false otherwise
      */
     override def PlayinSection(card: ICard): Boolean = {
-        card.PlayinSectionCloseCombat(this)
+        return card.PlayinSectionCloseCombat(this)
     }
     
     /** Checks if this CloseCombatSection is equal to another object.
