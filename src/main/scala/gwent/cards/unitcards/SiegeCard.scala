@@ -4,7 +4,7 @@ package gwent.cards.unitcards
 import effects.*
 import gwent.cards.unitcards.AbstractUnitCard
 
-import cl.uchile.dcc.gwent.board.HalfBoard
+import cl.uchile.dcc.gwent.board.{Board, HalfBoard}
 import cl.uchile.dcc.gwent.board.sections.IBoardSection
 
 /** A class that represent a Siege card in the game Gwent
@@ -31,9 +31,8 @@ class SiegeCard (name: String, attackPower: Int) extends AbstractUnitCard(name, 
      *
      * @param section the board section where the card its going to be added
      */
-    override def PlayinSectionSiege(section: IBoardSection): Boolean = {
-        section.AddCard(this)
-        return true
+    override def getPlayed(board: Board, halfBoard: HalfBoard): Unit = {
+        halfBoard.siegeSection.AddCard(this)
     }
 
     /** Checks if this SiegeCard is equal to another object.

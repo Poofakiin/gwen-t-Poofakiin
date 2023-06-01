@@ -1,6 +1,6 @@
 package cl.uchile.dcc
 package gwent.cards.unitcards
-import cl.uchile.dcc.gwent.board.HalfBoard
+import cl.uchile.dcc.gwent.board.{Board, HalfBoard}
 import cl.uchile.dcc.gwent.board.sections.IBoardSection
 import effects.*
 
@@ -36,36 +36,8 @@ abstract class AbstractUnitCard(val name: String, var attackPower: Int) extends 
         _specialAbility
     }
 
-    /** Try to play a card in to a Ranged Section in a Board
-     *
-     * @param section te board where the card its going to be added
-     */
-    override def PlayinSectionRanged(section: IBoardSection): Boolean = {
-        return false
-    }
-
-    /** Try to play a card in to a Siege Section in a Board
-     *
-     * @param section te board where the card its going to be added
-     */
-    override def PlayinSectionSiege(section: IBoardSection): Boolean = {
-        return false
-    }
-
-    /** Try to play a card in to a Weather Section in a Board
-     *
-     * @param section te board where the card its going to be added
-     */
-    override def PlayinSectionWeather(section: IBoardSection): Boolean = {
-        return false
-    }
-
-    /** Try to play a card in to a Close Combat Section in a Board
-     *
-     * @param section te board where the card its going to be added
-     */
-    override def PlayinSectionCloseCombat(section: IBoardSection): Boolean = {
-        return true
+    override def getPlayed(board: Board, halfBoard: HalfBoard): Unit = {
+        ???
     }
 }
 

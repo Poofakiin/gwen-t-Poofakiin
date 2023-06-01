@@ -20,38 +20,22 @@ class Board(var playerBoard: HalfBoard, var enemyBoard: HalfBoard) {
      */
     var weatherSection: WeatherSection = new WeatherSection
     
-    /** Tries to play a certain weather card
+    /** Tries to play a certain card
      *
-     * @param card the weather card that wants to be played
+     * @param card the card that wants to be played
      */
-    def PlayerPlayWeatherCard(card: IWeatherCard): Unit = {
-        playerBoard.player.playCard(card,this)
+    def PlayerPlayCard(card: IWeatherCard): Unit = {
+        playerBoard.player.playCard(card,this, playerBoard)
     }
 
     /** Tries to play a certain weather card
      *
      * @param card the card that wants to be played
      */
-    def EnemyPlayWeatherCard(card: IWeatherCard): Unit = {
-        enemyBoard.player.playCard(card,this)
+    def EnemyPlayCard(card: IWeatherCard): Unit = {
+        enemyBoard.player.playCard(card,this,enemyBoard)
     }
 
-    /** Tries to play a unit card
-     *
-     * @param card the unit card that wants to be played
-     */
-    def PlayerPlayUnitCard(card: IUnitCard): Unit = {
-        playerBoard.playUnitCard(card)
-    }
-    
-
-    /** Tries to play a unit card
-     *
-     * @param card the unit card that wants to be played
-     */
-    def EnemyPlayUnitCard(card: IUnitCard): Unit = {
-        enemyBoard.playUnitCard(card)
-    }
 
     /** Checks if this Board is equal to another object.
      *

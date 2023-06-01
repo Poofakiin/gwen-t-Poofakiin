@@ -41,10 +41,10 @@ class Player(val name: String, var gemsCounter: Int, var deck: Deck,
      * @param section The place where its going to be played.
      * @see hasCard
      */
-    def playCard[T <:HalfBoard|Board](card: ICard, board: T):Unit = {
+    def playCard(card: ICard, board: Board, halfBoard: HalfBoard):Unit = {
         if(this.hand.hasCard(card)) {
             this.hand.takeCard(card)
-            card.getPlayed(board)
+            card.getPlayed(board,halfBoard)
         }
         else{
             ()

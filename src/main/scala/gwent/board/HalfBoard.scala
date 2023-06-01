@@ -24,17 +24,6 @@ class HalfBoard(var player: GamePlayer) {
     var closeCombatSection: CloseCombatSection = new CloseCombatSection()
     var rangedSection: RangedSection = new RangedSection()
 
-
-
-    /** Plays a unit card in its corresponding section, dependeing of the unit card type
-     *
-     *
-     * @param card the card thats going to be played
-     */
-    def playUnitCard(card:IUnitCard): Unit = {
-        this.player.playCard(card)
-    }
-
     /** Checks if this HalfBoard is equal to another object.
      *
      * @param obj The object to compare to.
