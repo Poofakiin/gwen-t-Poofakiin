@@ -2,9 +2,12 @@ package cl.uchile.dcc
 package gwent.players
 
 import gwent.cards.ICard
-
 import gwent.board.sections.IBoardSection
 import gwent.players.cardgroups.*
+
+import gwent.board.HalfBoard
+import gwent.board.Board
+
 import javax.net.ssl.SNIHostName
 import scala.collection.mutable.ArrayBuffer
 
@@ -44,7 +47,7 @@ trait GamePlayer {
      * @param card the Card that´s going to be played.
      *             
      */
-    def playCard(card: ICard, section: IBoardSection): Unit
+    def playCard[T <:HalfBoard|Board](card: ICard, board: T): Unit
 
     /** Draws the first card from the deck of cards and adds it to the player's hand.
      *

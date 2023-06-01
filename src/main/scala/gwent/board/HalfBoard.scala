@@ -31,8 +31,8 @@ class HalfBoard(var player: GamePlayer) {
      *
      * @param card the card thats going to be played
      */
-    def playUnitCard(card:IUnitCard, section: IBoardSection): Unit = {
-        this.player.playCard(card, section)
+    def playUnitCard(card:IUnitCard): Unit = {
+        this.player.playCard(card)
     }
 
     /** Checks if this HalfBoard is equal to another object.
