@@ -131,9 +131,10 @@ class PlayerTest extends FunSuite {
         assert(!firstPlayer.canDrawCard())
     }
 
-    test("A Player can play a card if it is on his hand"){
+    test("A Player can play a card if it is on his hand and it get played in the correct section"){
         assert(firstPlayer.hand.hasCard(forktail))
         assertEquals(firstPlayer.hand.cardCollection.size, 9)
+        assert(forktail.PlayinSectionCloseCombat(closeCombatSection))
         firstPlayer.playCard(forktail,closeCombatSection)
         assert(!firstPlayer.hand.hasCard(forktail))
         assertEquals(firstPlayer.hand.cardCollection.size, 8)

@@ -11,27 +11,18 @@ import scala.collection.mutable.ArrayBuffer
  * such as their unit cards, its weatherCard and the total attack power of the unit cards.
  *
  */
-trait IBoardSection {
-
-
-    /** Play a card in a certain section
-     * 
-     * @param card the card that´s going to be played
-     * @return True if the card was played, false otherwise
-     */
-    def PlayinSection(card: ICard): Boolean
-    
+trait IBoardSection[ T <: ICard] {
 
     /** Add a card to the card section group
      *
      * @param card the unit card thats going to be added
      */
-    def AddCard(card: ICard): Unit
+    def AddCard(card: T): Unit
 
     /** Removes a currently Played Card
      *
      * @param card the card that´s going to be removed
      */
-    def RemoveCard(card: ICard): Unit
+    def ClearSection(): Unit
 
 }

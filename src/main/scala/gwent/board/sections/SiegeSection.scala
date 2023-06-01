@@ -2,7 +2,7 @@ package cl.uchile.dcc
 package gwent.board.sections
 
 import gwent.board.sections.IBoardSection
-import gwent.cards.unitcards.IUnitCard
+import gwent.cards.unitcards.{IUnitCard, SiegeCard}
 import gwent.cards.weathercards.IWeatherCard
 import gwent.cards.ICard
 
@@ -11,18 +11,25 @@ import scala.collection.mutable.ArrayBuffer
 /**
  * A class that represent a section where only siege cards can be played
  */
-class SiegeSection extends AbstractUnitBoardSection {
-
-    /** Play a card in a siege section
-     *
-     * @param ICard the card that´s going to be played
-     * @return True if the card was played, false otherwise
+class SiegeSection extends IBoardSection[SiegeCard] {
+    /**
+     * the close combat group of the section
      */
-    override def PlayinSection(card: ICard): Boolean = {
-        card.PlayinSectionSiege(this)
+    var sectionCardGroup: ArrayBuffer[SiegeCard] = new ArrayBuffer[SiegeCard]()
+
+    /**
+     * the summatory of the attack power of all unit cards of the section
+     */
+    var totalAttackPower: Int = 0
+
+
+    override def AddCard(card: SiegeCard): Unit = {
+        this.sectionCardGroup += card
     }
-    
-    
+
+    override def ClearSection(): Unit = {
+        this.sectionCardGroup.clear()
+    }
     
     /** Checks if this SiegeSection is equal to another object.
      *

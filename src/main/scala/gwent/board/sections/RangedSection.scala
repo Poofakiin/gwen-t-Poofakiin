@@ -3,7 +3,7 @@ package gwent.board.sections
 
 import gwent.cards.ICard
 import gwent.board.sections.IBoardSection
-import gwent.cards.unitcards.IUnitCard
+import gwent.cards.unitcards.{IUnitCard, RangedCard}
 import gwent.cards.weathercards.IWeatherCard
 
 import scala.collection.mutable.ArrayBuffer
@@ -11,15 +11,25 @@ import scala.collection.mutable.ArrayBuffer
 /**
  * A class that represent a section where only ranged cards can be played
  */
-class RangedSection extends AbstractUnitBoardSection {
+class RangedSection extends IBoardSection[RangedCard] {
 
-    /** Play a card in a ranged section
-     *
-     * @param ICard the card that´s going to be played
-     * @return True if the card was played, false otherwise
+    /**
+     * the close combat group of the section
      */
-    override def PlayinSection(card: ICard): Boolean = {
-        card.PlayinSectionRanged(this)
+    var sectionCardGroup: ArrayBuffer[RangedCard] = new ArrayBuffer[RangedCard]()
+
+    /**
+     * the summatory of the attack power of all unit cards of the section
+     */
+    var totalAttackPower: Int = 0
+
+
+    override def AddCard(card: RangedCard): Unit = {
+        this.sectionCardGroup += card
+    }
+
+    override def ClearSection(): Unit = {
+        this.sectionCardGroup.clear()
     }
     
     

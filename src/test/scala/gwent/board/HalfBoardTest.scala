@@ -165,6 +165,17 @@ class HalfBoardTest extends FunSuite{
         assertNotEquals(halfBoardOne.siegeSection,siegeSection)
     }
 
+    test(""){
+        var fillranged: SiegeSection = new SiegeSection
+        var fillcombat: SiegeSection = new SiegeSection
+        var emptySiege: SiegeSection =  new SiegeSection
+
+        halfBoardOne.playUnitCard(ballista, fillranged)
+        fillcombat.PlayinSection(ballista)
+        assertEquals(fillcombat, fillranged)
+        assertNotEquals(emptySiege, fillcombat)
+    }
+
     test("A HalfBoard should be equal to another Board with the"+
         "same attributes and it should have the same hashcode"){
         val sameAsHalfBoard1: HalfBoard = new HalfBoard(firstPlayer)

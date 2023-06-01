@@ -1,7 +1,8 @@
 package cl.uchile.dcc
 package gwent.board.sections
 
-import gwent.cards.unitcards.IUnitCard
+import gwent.cards.unitcards.{CloseCombatCard, IUnitCard}
+
 import cl.uchile.dcc.gwent.cards.ICard
 
 import scala.collection.mutable.ArrayBuffer
@@ -9,15 +10,24 @@ import scala.collection.mutable.ArrayBuffer
 /**
  * A class that represent a section where only close combat cards can be played
  */
-class CloseCombatSection extends AbstractUnitBoardSection{
+class CloseCombatSection extends IBoardSection[CloseCombatCard] {
 
-    /** Play a card in a close combat section
-     *
-     * @param ICard the card that´s going to be played
-     * @return true if the card was played, false otherwise
+    /**
+     * the close combat group of the section
      */
-    override def PlayinSection(card: ICard): Boolean = {
-        return card.PlayinSectionCloseCombat(this)
+    var sectionCardGroup: ArrayBuffer[CloseCombatCard] = new ArrayBuffer[CloseCombatCard]()
+
+    /**
+     * the summatory of the attack power of all unit cards of the section
+     */
+    var totalAttackPower: Int = 0
+
+    override def AddCard(card: CloseCombatCard): Unit = {
+        this.sectionCardGroup += card
+    }
+
+    override def ClearSection(): Unit = {
+        this.sectionCardGroup.clear()
     }
     
     /** Checks if this CloseCombatSection is equal to another object.

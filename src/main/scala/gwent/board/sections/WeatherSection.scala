@@ -5,23 +5,14 @@ import gwent.cards.weathercards.{ClearWeatherCard, IWeatherCard}
 
 import gwent.cards.ICard
 
-class WeatherSection extends IBoardSection {
-    var weatherCard: ICard = ClearWeatherCard()
-
-    /** Play a card in a siege section
-     *
-     * @param ICard the card that´s going to be played
-     * @return True if the card was played, false otherwise
-     */
-    override def PlayinSection(card: ICard): Boolean = {
-        card.PlayinSectionWeather(this)
-    }
+class WeatherSection extends IBoardSection[IWeatherCard] {
+    var weatherCard: IWeatherCard = ClearWeatherCard()
 
     /** Add a Card to the card section group
      *
      * @param card the unit card thats going to be added
      */
-    override def AddCard(card: ICard): Unit = {
+    override def AddCard(card: IWeatherCard): Unit = {
         weatherCard = card
     }
 
@@ -29,9 +20,8 @@ class WeatherSection extends IBoardSection {
      *
      * @param card the card that´s going to be removed
      */
-    override def RemoveCard(card: ICard): Unit = {
-        if (card == this.weatherCard)
-            weatherCard = ClearWeatherCard()
+    override def ClearSection(): Unit = {
+        this.weatherCard = new ClearWeatherCard()
     }
 
     /** Checks if this WeatherSection is equal to another object.
