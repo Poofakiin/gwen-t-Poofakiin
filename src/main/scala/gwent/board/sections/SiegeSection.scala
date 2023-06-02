@@ -10,17 +10,51 @@ import scala.collection.mutable.ArrayBuffer
 
 /**
  * A class that represent a section where only siege cards can be played
+ * 
+ * A SiegeSection has a section of cards and the total attackpower of the cards
  */
 class SiegeSection extends IBoardSection[SiegeCard] {
     /**
-     * the close combat group of the section
+     * the siege card group of the section
      */
-    var sectionCardGroup: ArrayBuffer[SiegeCard] = new ArrayBuffer[SiegeCard]()
+    private var _sectionCardGroup: ArrayBuffer[SiegeCard] = new ArrayBuffer[SiegeCard]()
 
     /**
      * the summatory of the attack power of all unit cards of the section
      */
-    var totalAttackPower: Int = 0
+    private var _totalAttackPower: Int = 0
+
+    /** Delivers the section's siege card group.
+     *
+     * @return The section's siege card group.
+     */
+    def getSectionCardGroup: ArrayBuffer[SiegeCard] = {
+        _sectionCardGroup
+    }
+
+    /** Sets the section's siege card group.
+     *
+     * @param value The new siege card group.
+     */
+    def setSectionCardGroup(value: ArrayBuffer[SiegeCard]): Unit = {
+        _sectionCardGroup = value
+    }
+
+    /** Delivers the total attack power of all unit cards in the section.
+     *
+     * @return The total attack power.
+     */
+    def getTotalAttackPower: Int = {
+        _totalAttackPower
+    }
+
+    /** Sets the total attack power of all unit cards in the section.
+     *
+     * @param value The new total attack power.
+     */
+    def setTotalAttackPower(value: Int): Unit ={
+        _totalAttackPower = value
+    }
 
 
     /** Add a Siege Card to the card section group
@@ -28,14 +62,14 @@ class SiegeSection extends IBoardSection[SiegeCard] {
      * @param card the siege card thats going to be added
      */
     override def AddCard(card: SiegeCard): Unit = {
-        this.sectionCardGroup += card
+        this._sectionCardGroup += card
     }
 
     /** Removes all currently played cards from card section
      *
      */
     override def ClearSection(): Unit = {
-        this.sectionCardGroup.clear()
+        this._sectionCardGroup.clear()
     }
     
     /** Checks if this SiegeSection is equal to another object.
@@ -48,8 +82,8 @@ class SiegeSection extends IBoardSection[SiegeCard] {
         if(obj.isInstanceOf[SiegeSection]){
             val other = obj.asInstanceOf[SiegeSection]
             (this eq other) ||
-                (other.sectionCardGroup.sameElements(this.sectionCardGroup) &&
-                    other.totalAttackPower == this.totalAttackPower)
+                (other._sectionCardGroup.sameElements(this._sectionCardGroup) &&
+                    other._totalAttackPower == this._totalAttackPower)
         }
         else{
             false
@@ -64,8 +98,8 @@ class SiegeSection extends IBoardSection[SiegeCard] {
         val prime = 31
         var result= 1
         result = prime * result + classOf[SiegeSection].##
-        result = prime * result + sectionCardGroup.##
-        result = prime * result + totalAttackPower.##
+        result = prime * result + _sectionCardGroup.##
+        result = prime * result + _totalAttackPower.##
         result
     }
 }

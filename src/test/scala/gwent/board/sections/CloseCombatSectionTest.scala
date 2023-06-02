@@ -45,10 +45,10 @@ class CloseCombatSectionTest extends FunSuite{
 
     }
     test("A CloseCombatSection must be created with a sectionCardGroup"){
-        assertEquals(array, firstCloseCombatSection.sectionCardGroup)
+        assertEquals(array, firstCloseCombatSection.getSectionCardGroup)
     }
     test("A CloseCombatSection must be created with a totalAttackPower"){
-        assertEquals(atckpwr, firstCloseCombatSection.totalAttackPower)
+        assertEquals(atckpwr, firstCloseCombatSection.getTotalAttackPower)
     }
     test("A Close combat card can be added to the sectionCardGroup of a CloseCombatSection"){
         assertEquals(firstCloseCombatSection.sectionCardGroup,array)

@@ -5,22 +5,48 @@ import gwent.cards.weathercards.{ClearWeatherCard, IWeatherCard}
 
 import gwent.cards.ICard
 
-class WeatherSection extends IBoardSection[IWeatherCard] {
-    var weatherCard: IWeatherCard = ClearWeatherCard()
 
-    /** Add a Weather Card to the card section group
+/**
+ * A class that represent a section where only weather cards can be played
+ * 
+ * A weather section has a weatherCard
+ */
+class WeatherSection extends IBoardSection[IWeatherCard] {
+
+    /**
+     * the weather card of the section
+     */
+    private var _weatherCard: IWeatherCard = ClearWeatherCard()
+
+    /** Delivers the weather card of the section
+     *
+     * @return The weather card of the section
+     */
+    def getWeatherCard: IWeatherCard ={
+        _weatherCard
+    }
+
+    /** Sets a weather card as the weather card of the section.
+     *
+     * @param value The new weather card.
+     */
+    def setWeatherCard(value: IWeatherCard): Unit = {
+        _weatherCard = value
+    }
+
+    /** Add a weather card to the section, when a weather card its added it replaces the previous one
      *
      * @param card the weather card thats going to be added
      */
     override def AddCard(card: IWeatherCard): Unit = {
-        weatherCard = card
+        _weatherCard = card
     }
 
     /** Removes all currently played cards from card section
      *
      */
     override def ClearSection(): Unit = {
-        this.weatherCard = new ClearWeatherCard()
+        this._weatherCard = new ClearWeatherCard()
     }
 
     /** Checks if this WeatherSection is equal to another object.
@@ -32,7 +58,7 @@ class WeatherSection extends IBoardSection[IWeatherCard] {
         if(obj.isInstanceOf[WeatherSection]){
             val other = obj.asInstanceOf[WeatherSection]
             (this eq other) ||
-                (other.weatherCard == this.weatherCard)
+                (other._weatherCard == this._weatherCard)
         }
         else{
             false
@@ -47,7 +73,7 @@ class WeatherSection extends IBoardSection[IWeatherCard] {
         val prime = 31
         var result= 1
         result = prime * result + classOf[WeatherSection].##
-        result = prime * result + weatherCard.##
+        result = prime * result + _weatherCard.##
         result
     }
 }

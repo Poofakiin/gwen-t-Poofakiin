@@ -9,32 +9,66 @@ import scala.collection.mutable.ArrayBuffer
 
 /**
  * A class that represent a section where only close combat cards can be played
+ * 
+ * A CloseCombatSection has a section of cards and the total attackpower of the cards
  */
 class CloseCombatSection extends IBoardSection[CloseCombatCard] {
 
     /**
      * the close combat group of the section
      */
-    var sectionCardGroup: ArrayBuffer[CloseCombatCard] = new ArrayBuffer[CloseCombatCard]()
+    private var _sectionCardGroup: ArrayBuffer[CloseCombatCard] = new ArrayBuffer[CloseCombatCard]()
 
     /**
      * the summatory of the attack power of all unit cards of the section
      */
-    var totalAttackPower: Int = 0
+    private var _totalAttackPower: Int = 0
 
+    /** Delivers the section's close combat card group.
+     *
+     * @return The section's close combat card group.
+     */
+    def getSectionCardGroup: ArrayBuffer[CloseCombatCard] = {
+        _sectionCardGroup
+    }
+
+    /** Sets the section's close combat card group.
+     *
+     * @param value The new close combat card group.
+     */
+    def setSectionCardGroup(value: ArrayBuffer[CloseCombatCard]): Unit = {
+        _sectionCardGroup = value
+    }
+
+    /** Delivers the total attack power of all unit cards in the section.
+     *
+     * @return The total attack power.
+     */
+    def getTotalAttackPower: Int = {
+        _totalAttackPower
+    }
+
+    /** Sets the total attack power of all unit cards in the section.
+     *
+     * @param value The new total attack power.
+     */
+    def setTotalAttackPower(value: Int): Unit ={
+        _totalAttackPower = value
+    }
+    
     /** Add a close combat card to the card section group
      *
      * @param card the close combat card thats going to be added
      */
     override def AddCard(card: CloseCombatCard): Unit = {
-        this.sectionCardGroup += card
+        this._sectionCardGroup += card
     }
 
     /** Removes all currently played cards from card section
      *
      */
     override def ClearSection(): Unit = {
-        this.sectionCardGroup.clear()
+        this._sectionCardGroup.clear()
     }
     
     /** Checks if this CloseCombatSection is equal to another object.
@@ -47,8 +81,8 @@ class CloseCombatSection extends IBoardSection[CloseCombatCard] {
         if(obj.isInstanceOf[CloseCombatSection]){
             val other = obj.asInstanceOf[CloseCombatSection]
             (this eq other) ||
-                (other.sectionCardGroup.sameElements(this.sectionCardGroup) &&
-                    other.totalAttackPower == this.totalAttackPower)
+                (other._sectionCardGroup.sameElements(this._sectionCardGroup) &&
+                    other._totalAttackPower == this._totalAttackPower)
         }
         else{
             false
@@ -63,8 +97,8 @@ class CloseCombatSection extends IBoardSection[CloseCombatCard] {
         val prime = 31
         var result= 1
         result = prime * result + classOf[CloseCombatSection].##
-        result = prime * result + sectionCardGroup.##
-        result = prime * result + totalAttackPower.##
+        result = prime * result + _sectionCardGroup.##
+        result = prime * result + _totalAttackPower.##
         result
     }
 

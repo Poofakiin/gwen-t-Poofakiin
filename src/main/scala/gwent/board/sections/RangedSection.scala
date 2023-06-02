@@ -10,18 +10,52 @@ import scala.collection.mutable.ArrayBuffer
 
 /**
  * A class that represent a section where only ranged cards can be played
+ * 
+ * A RangedSection has a section of cards and the total attackpower of the cards
  */
 class RangedSection extends IBoardSection[RangedCard] {
 
     /**
-     * the close combat group of the section
+     * the ranged card group of the section
      */
-    var sectionCardGroup: ArrayBuffer[RangedCard] = new ArrayBuffer[RangedCard]()
+    private var _sectionCardGroup: ArrayBuffer[RangedCard] = new ArrayBuffer[RangedCard]()
 
     /**
      * the summatory of the attack power of all unit cards of the section
      */
-    var totalAttackPower: Int = 0
+    private var _totalAttackPower: Int = 0
+
+    /** Delivers the section's ranged card group.
+     *
+     * @return The section's ranged card group.
+     */
+    def getSectionCardGroup: ArrayBuffer[RangedCard] = {
+        _sectionCardGroup
+    }
+
+    /** Sets the section's ranged card group.
+     *
+     * @param value The new ranged card group.
+     */
+    def setSectionCardGroup(value: ArrayBuffer[RangedCard]): Unit = {
+        _sectionCardGroup = value
+    }
+
+    /** Delivers the total attack power of all unit cards in the section.
+     *
+     * @return The total attack power.
+     */
+    def getTotalAttackPower: Int = {
+        _totalAttackPower
+    }
+
+    /** Sets the total attack power of all unit cards in the section.
+     *
+     * @param value The new total attack power.
+     */
+    def setTotalAttackPower(value: Int): Unit ={
+        _totalAttackPower = value
+    }
 
 
     /** Add a Ranged Card to the card section group
@@ -29,7 +63,7 @@ class RangedSection extends IBoardSection[RangedCard] {
      * @param card the ranged card thats going to be added
      */
     override def AddCard(card: RangedCard): Unit = {
-        this.sectionCardGroup += card
+        this._sectionCardGroup += card
     }
 
 
@@ -37,7 +71,7 @@ class RangedSection extends IBoardSection[RangedCard] {
      *
      */
     override def ClearSection(): Unit = {
-        this.sectionCardGroup.clear()
+        this._sectionCardGroup.clear()
     }
     
     
@@ -51,8 +85,8 @@ class RangedSection extends IBoardSection[RangedCard] {
         if(obj.isInstanceOf[RangedSection]){
             val other = obj.asInstanceOf[RangedSection]
             (this eq other) ||
-                (other.sectionCardGroup.sameElements(this.sectionCardGroup) &&
-                    other.totalAttackPower == this.totalAttackPower)
+                (other._sectionCardGroup.sameElements(this._sectionCardGroup) &&
+                    other._totalAttackPower == this._totalAttackPower)
         }
         else{
             false
@@ -67,8 +101,8 @@ class RangedSection extends IBoardSection[RangedCard] {
         val prime = 31
         var result= 1
         result = prime * result + classOf[RangedSection].##
-        result = prime * result + sectionCardGroup.##
-        result = prime * result + totalAttackPower.##
+        result = prime * result + _sectionCardGroup.##
+        result = prime * result + _totalAttackPower.##
         result
     }
 
