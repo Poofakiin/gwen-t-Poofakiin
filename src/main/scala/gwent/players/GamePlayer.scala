@@ -47,7 +47,7 @@ trait GamePlayer {
      * @param card the Card that´s going to be played.
      *             
      */
-    def playCard(card: ICard,board: Board, halfBoard: HalfBoard): Unit
+    def playCard(card: ICard): Boolean
 
     /** Draws the first card from the deck of cards and adds it to the player's hand.
      *

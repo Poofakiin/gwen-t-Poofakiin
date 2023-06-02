@@ -4,7 +4,7 @@ package gwent.board
 import gwent.cards.weathercards.IWeatherCard
 import gwent.board.HalfBoard
 import gwent.board.sections.{IBoardSection, WeatherSection}
-import gwent.cards.unitcards.IUnitCard
+import gwent.cards.ICard
 
 /** A class that represents a whole board in the gwent game
  *
@@ -24,16 +24,26 @@ class Board(var playerBoard: HalfBoard, var enemyBoard: HalfBoard) {
      *
      * @param card the card that wants to be played
      */
-    def PlayerPlayCard(card: IWeatherCard): Unit = {
-        playerBoard.player.playCard(card,this, playerBoard)
+    def PlayerPlayCard(card: ICard): Unit = {
+        if(playerBoard.player.playCard(card)){
+            card.getPlayed(this,playerBoard)
+        }
+        else{
+            ()
+        }
     }
 
     /** Tries to play a certain weather card
      *
      * @param card the card that wants to be played
      */
-    def EnemyPlayCard(card: IWeatherCard): Unit = {
-        enemyBoard.player.playCard(card,this,enemyBoard)
+    def EnemyPlayCard(card: ICard): Unit = {
+        if(playerBoard.player.playCard(card)){
+            card.getPlayed(this,playerBoard)
+        }
+        else{
+            ()
+        }
     }
 
 
