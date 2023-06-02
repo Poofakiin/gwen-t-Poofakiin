@@ -131,18 +131,17 @@ class PlayerTest extends FunSuite {
         assert(!firstPlayer.canDrawCard())
     }
 
-    test("A Player can play a card if it is on his hand and it get played in the correct section"){
+    test("A Player can play a card if it is on his hand and it get removed from his hand"){
         assert(firstPlayer.hand.hasCard(forktail))
         assertEquals(firstPlayer.hand.cardCollection.size, 9)
-        assert(forktail.PlayinSectionCloseCombat(closeCombatSection))
-        firstPlayer.playCard(forktail,closeCombatSection)
+        firstPlayer.playCard(forktail)
         assert(!firstPlayer.hand.hasCard(forktail))
         assertEquals(firstPlayer.hand.cardCollection.size, 8)
     }
-    test("A Player wont play a card if it cant be played"){
+    test("A Player wont play a card if it cant be played(it isn´t on his hand)"){
         assert(!firstPlayer.hand.hasCard(griffin))
         assertEquals(firstPlayer.hand.cardCollection.size, 9)
-        firstPlayer.playCard(griffin,closeCombatSection)
+        firstPlayer.playCard(griffin)
         assert(!firstPlayer.hand.hasCard(griffin))
         assertEquals(firstPlayer.hand.cardCollection.size, 9)
     }
@@ -150,7 +149,7 @@ class PlayerTest extends FunSuite {
     test("A Player wont be able to play a card if his hand its empty"){
         firstPlayer.hand.cardCollection = emptyArray
         assertEquals(firstPlayer.hand.cardCollection, emptyArray)
-        firstPlayer.playCard(forktail,closeCombatSection)
+        firstPlayer.playCard(forktail)
         assertEquals(firstPlayer.hand.cardCollection, emptyArray)
     }
 
