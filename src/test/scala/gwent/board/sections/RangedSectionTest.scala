@@ -60,7 +60,23 @@ class RangedSectionTest extends FunSuite{
         assertEquals(firstRangedSection.getSectionCardGroup, arraywithcard)
     }
 
+    test("An ArrayBuffer of Ranged cards can be setted as the section card group of the section"){
+        var newRangedArray: ArrayBuffer[RangedCard] = ArrayBuffer(rangedCard)
+        assertEquals(firstRangedSection.getSectionCardGroup,array)
+        assertNotEquals(firstRangedSection.getSectionCardGroup,newRangedArray)
+        firstRangedSection.setSectionCardGroup(newRangedArray)
+        assertNotEquals(firstRangedSection.getSectionCardGroup, array)
+        assertEquals(firstRangedSection.getSectionCardGroup, newRangedArray)
+    }
 
+    test("An Int can be setted as the section totalattackpower"){
+        var newAttkPwr: Int = 4
+        assertEquals(firstRangedSection.getTotalAttackPower,atckpwr)
+        firstRangedSection.setTotalAttackPower(newAttkPwr)
+        assertNotEquals(firstRangedSection.getTotalAttackPower,atckpwr)
+        assertEquals(firstRangedSection.getTotalAttackPower, newAttkPwr)
+    }
+    
     test("A Ranged Section can be cleared, removing all cards from its card section"){
         firstRangedSection.AddCard(rangedCard)
         assertEquals(firstRangedSection.getSectionCardGroup,arraywithcard)

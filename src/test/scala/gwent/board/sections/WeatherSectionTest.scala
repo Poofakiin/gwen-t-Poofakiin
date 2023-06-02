@@ -69,6 +69,13 @@ class WeatherSectionTest extends FunSuite{
         assertEquals(firstWeatherSection.getWeatherCard,clearWeatherCard)
     }
 
+    test("A weather card can be setted as the weather card of the section"){
+        assertEquals(firstWeatherSection.getWeatherCard, clearWeatherCard)
+        firstWeatherSection.setWeatherCard(weatherCard)
+        assertNotEquals(firstWeatherSection.getWeatherCard, clearWeatherCard)
+        assertEquals(firstWeatherSection.getWeatherCard, weatherCard)
+    }
+    
     test("A WeatherSection should be equal to another" +
         " of the same class with the same attributes and it should have the same hashcode"){
         var notEqualtoFirst: WeatherSection = new WeatherSection()

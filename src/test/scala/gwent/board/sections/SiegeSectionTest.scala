@@ -69,6 +69,23 @@ class SiegeSectionTest extends FunSuite{
         assertNotEquals(firstSiegeSection.getSectionCardGroup,arraywithcard)
         assertEquals(array, firstSiegeSection.getSectionCardGroup)
     }
+
+    test("An ArrayBuffer of Siege cards can be setted as the section card group of the section"){
+        var newSiegeArray: ArrayBuffer[SiegeCard] = ArrayBuffer(siegeCard)
+        assertEquals(firstSiegeSection.getSectionCardGroup,array)
+        assertNotEquals(firstSiegeSection.getSectionCardGroup,newSiegeArray)
+        firstSiegeSection.setSectionCardGroup(newSiegeArray)
+        assertNotEquals(firstSiegeSection.getSectionCardGroup, array)
+        assertEquals(firstSiegeSection.getSectionCardGroup, newSiegeArray)
+    }
+
+    test("An Int can be setted as the section totalattackpower"){
+        var newAttkPwr: Int = 4
+        assertEquals(firstSiegeSection.getTotalAttackPower,atckpwr)
+        firstSiegeSection.setTotalAttackPower(newAttkPwr)
+        assertNotEquals(firstSiegeSection.getTotalAttackPower,atckpwr)
+        assertEquals(firstSiegeSection.getTotalAttackPower, newAttkPwr)
+    }
     test("A SiegeSection should be equal to another" +
         " of the same class with the same attributes and it should have the same hashcode"){
         var notEqualtoFirst: SiegeSection = new SiegeSection()

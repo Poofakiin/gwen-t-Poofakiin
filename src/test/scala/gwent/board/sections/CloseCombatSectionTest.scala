@@ -59,7 +59,23 @@ class CloseCombatSectionTest extends FunSuite{
         assertNotEquals(firstCloseCombatSection.getSectionCardGroup,array)
         assertEquals(firstCloseCombatSection.getSectionCardGroup, arraywithcard)
     }
-    
+
+    test("An ArrayBuffer of Closecombat cards can be setted as the section card group of the section"){
+        var newCloseCombatArray: ArrayBuffer[CloseCombatCard] = ArrayBuffer(closeCombatCard)
+        assertEquals(firstCloseCombatSection.getSectionCardGroup,array)
+        assertNotEquals(firstCloseCombatSection.getSectionCardGroup,newCloseCombatArray)
+        firstCloseCombatSection.setSectionCardGroup(newCloseCombatArray)
+        assertNotEquals(firstCloseCombatSection.getSectionCardGroup, array)
+        assertEquals(firstCloseCombatSection.getSectionCardGroup, newCloseCombatArray)
+    }
+
+    test("An Int number can be setted as the section totalattackpower"){
+        var newAttkPwr: Int = 4
+        assertEquals(firstCloseCombatSection.getTotalAttackPower,atckpwr)
+        firstCloseCombatSection.setTotalAttackPower(newAttkPwr)
+        assertNotEquals(firstCloseCombatSection.getTotalAttackPower,atckpwr)
+        assertEquals(firstCloseCombatSection.getTotalAttackPower, newAttkPwr)
+    }
     
     test("A Close combat section can be cleared, removing all cards from its card section"){
         firstCloseCombatSection.AddCard(closeCombatCard)
