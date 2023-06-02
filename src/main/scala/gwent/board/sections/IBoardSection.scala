@@ -19,9 +19,8 @@ trait IBoardSection[ T <: ICard] {
      */
     def AddCard(card: T): Unit
 
-    /** Removes a currently Played Card
+    /** Removes all currently played cards from card section
      *
-     * @param card the card that´s going to be removed
      */
     def ClearSection(): Unit
 

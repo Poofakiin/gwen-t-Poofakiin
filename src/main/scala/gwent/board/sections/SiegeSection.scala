@@ -23,10 +23,17 @@ class SiegeSection extends IBoardSection[SiegeCard] {
     var totalAttackPower: Int = 0
 
 
+    /** Add a Siege Card to the card section group
+     *
+     * @param card the siege card thats going to be added
+     */
     override def AddCard(card: SiegeCard): Unit = {
         this.sectionCardGroup += card
     }
 
+    /** Removes all currently played cards from card section
+     *
+     */
     override def ClearSection(): Unit = {
         this.sectionCardGroup.clear()
     }

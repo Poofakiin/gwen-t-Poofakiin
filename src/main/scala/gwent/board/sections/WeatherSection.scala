@@ -8,17 +8,16 @@ import gwent.cards.ICard
 class WeatherSection extends IBoardSection[IWeatherCard] {
     var weatherCard: IWeatherCard = ClearWeatherCard()
 
-    /** Add a Card to the card section group
+    /** Add a Weather Card to the card section group
      *
-     * @param card the unit card thats going to be added
+     * @param card the weather card thats going to be added
      */
     override def AddCard(card: IWeatherCard): Unit = {
         weatherCard = card
     }
 
-    /** Removes a currently Played Card
+    /** Removes all currently played cards from card section
      *
-     * @param card the card that´s going to be removed
      */
     override def ClearSection(): Unit = {
         this.weatherCard = new ClearWeatherCard()

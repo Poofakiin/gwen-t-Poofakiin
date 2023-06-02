@@ -24,10 +24,18 @@ class RangedSection extends IBoardSection[RangedCard] {
     var totalAttackPower: Int = 0
 
 
+    /** Add a Ranged Card to the card section group
+     *
+     * @param card the ranged card thats going to be added
+     */
     override def AddCard(card: RangedCard): Unit = {
         this.sectionCardGroup += card
     }
 
+
+    /** Removes all currently played cards from card section
+     *
+     */
     override def ClearSection(): Unit = {
         this.sectionCardGroup.clear()
     }

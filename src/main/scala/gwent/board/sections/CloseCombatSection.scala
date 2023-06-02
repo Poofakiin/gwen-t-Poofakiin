@@ -22,10 +22,17 @@ class CloseCombatSection extends IBoardSection[CloseCombatCard] {
      */
     var totalAttackPower: Int = 0
 
+    /** Add a close combat card to the card section group
+     *
+     * @param card the close combat card thats going to be added
+     */
     override def AddCard(card: CloseCombatCard): Unit = {
         this.sectionCardGroup += card
     }
 
+    /** Removes all currently played cards from card section
+     *
+     */
     override def ClearSection(): Unit = {
         this.sectionCardGroup.clear()
     }
