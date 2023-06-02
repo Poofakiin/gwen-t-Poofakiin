@@ -51,24 +51,24 @@ class CloseCombatSectionTest extends FunSuite{
         assertEquals(atckpwr, firstCloseCombatSection.getTotalAttackPower)
     }
     test("A Close combat card can be added to the sectionCardGroup of a CloseCombatSection"){
-        assertEquals(firstCloseCombatSection.sectionCardGroup,array)
-        assertNotEquals(firstCloseCombatSection.sectionCardGroup, arraywithcard)
+        assertEquals(firstCloseCombatSection.getSectionCardGroup,array)
+        assertNotEquals(firstCloseCombatSection.getSectionCardGroup, arraywithcard)
 
         firstCloseCombatSection.AddCard(closeCombatCard)
 
-        assertNotEquals(firstCloseCombatSection.sectionCardGroup,array)
-        assertEquals(firstCloseCombatSection.sectionCardGroup, arraywithcard)
+        assertNotEquals(firstCloseCombatSection.getSectionCardGroup,array)
+        assertEquals(firstCloseCombatSection.getSectionCardGroup, arraywithcard)
     }
     
     
     test("A Close combat section can be cleared, removing all cards from its card section"){
         firstCloseCombatSection.AddCard(closeCombatCard)
-        assertEquals(firstCloseCombatSection.sectionCardGroup,arraywithcard)
+        assertEquals(firstCloseCombatSection.getSectionCardGroup,arraywithcard)
 
         firstCloseCombatSection.ClearSection()
 
-        assertNotEquals(firstCloseCombatSection.sectionCardGroup,arraywithcard)
-        assertEquals(array, firstCloseCombatSection.sectionCardGroup)
+        assertNotEquals(firstCloseCombatSection.getSectionCardGroup,arraywithcard)
+        assertEquals(array, firstCloseCombatSection.getSectionCardGroup)
     }
     test("A CloseCombatSection should be equal to another" +
         " of the same class with the same attributes and it should have the same hashcode"){

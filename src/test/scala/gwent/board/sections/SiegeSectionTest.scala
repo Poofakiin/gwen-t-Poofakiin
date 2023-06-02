@@ -45,29 +45,29 @@ class SiegeSectionTest extends FunSuite{
 
     }
     test("A SiegeSection must be created with a sectionCardGroup"){
-        assertEquals(array, firstSiegeSection.sectionCardGroup)
+        assertEquals(array, firstSiegeSection.getSectionCardGroup)
     }
     test("A SiegeSection must be created with a totalAttackPower"){
-        assertEquals(atckpwr, firstSiegeSection.totalAttackPower)
+        assertEquals(atckpwr, firstSiegeSection.getTotalAttackPower)
     }
     test("A Siegecard can be added to the sectionCardGroup of a SiegeSection"){
-        assertEquals(firstSiegeSection.sectionCardGroup,array)
-        assertNotEquals(firstSiegeSection.sectionCardGroup, arraywithcard)
+        assertEquals(firstSiegeSection.getSectionCardGroup,array)
+        assertNotEquals(firstSiegeSection.getSectionCardGroup, arraywithcard)
 
         firstSiegeSection.AddCard(siegeCard)
 
-        assertNotEquals(firstSiegeSection.sectionCardGroup,array)
-        assertEquals(firstSiegeSection.sectionCardGroup, arraywithcard)
+        assertNotEquals(firstSiegeSection.getSectionCardGroup,array)
+        assertEquals(firstSiegeSection.getSectionCardGroup, arraywithcard)
     }
     
     test("A Siege Section can be cleared, removing all cards from its card section"){
         firstSiegeSection.AddCard(siegeCard)
-        assertEquals(firstSiegeSection.sectionCardGroup,arraywithcard)
+        assertEquals(firstSiegeSection.getSectionCardGroup,arraywithcard)
 
         firstSiegeSection.ClearSection()
 
-        assertNotEquals(firstSiegeSection.sectionCardGroup,arraywithcard)
-        assertEquals(array, firstSiegeSection.sectionCardGroup)
+        assertNotEquals(firstSiegeSection.getSectionCardGroup,arraywithcard)
+        assertEquals(array, firstSiegeSection.getSectionCardGroup)
     }
     test("A SiegeSection should be equal to another" +
         " of the same class with the same attributes and it should have the same hashcode"){

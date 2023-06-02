@@ -45,30 +45,30 @@ class RangedSectionTest extends FunSuite{
 
     }
     test("A RangedSection must be created with a sectionCardGroup"){
-        assertEquals(array, firstRangedSection.sectionCardGroup)
+        assertEquals(array, firstRangedSection.getSectionCardGroup)
     }
     test("A RangedSection must be created with a totalAttackPower"){
-        assertEquals(atckpwr, firstRangedSection.totalAttackPower)
+        assertEquals(atckpwr, firstRangedSection.getTotalAttackPower)
     }
     test("A Rangedcard can be added to the sectionCardGroup of a RangedSection"){
-        assertEquals(firstRangedSection.sectionCardGroup,array)
-        assertNotEquals(firstRangedSection.sectionCardGroup, arraywithcard)
+        assertEquals(firstRangedSection.getSectionCardGroup,array)
+        assertNotEquals(firstRangedSection.getSectionCardGroup, arraywithcard)
 
         firstRangedSection.AddCard(rangedCard)
 
-        assertNotEquals(firstRangedSection.sectionCardGroup,array)
-        assertEquals(firstRangedSection.sectionCardGroup, arraywithcard)
+        assertNotEquals(firstRangedSection.getSectionCardGroup,array)
+        assertEquals(firstRangedSection.getSectionCardGroup, arraywithcard)
     }
 
 
     test("A Ranged Section can be cleared, removing all cards from its card section"){
         firstRangedSection.AddCard(rangedCard)
-        assertEquals(firstRangedSection.sectionCardGroup,arraywithcard)
+        assertEquals(firstRangedSection.getSectionCardGroup,arraywithcard)
 
         firstRangedSection.ClearSection()
 
-        assertNotEquals(firstRangedSection.sectionCardGroup,arraywithcard)
-        assertEquals(array, firstRangedSection.sectionCardGroup)
+        assertNotEquals(firstRangedSection.getSectionCardGroup,arraywithcard)
+        assertEquals(array, firstRangedSection.getSectionCardGroup)
     }
     test("A RangedSection should be equal to another" +
         " of the same class with the same attributes and it should have the same hashcode"){

@@ -46,27 +46,27 @@ class WeatherSectionTest extends FunSuite{
 
     }
     test("A WeatherSection must be created with a weatherCard, and it should start as a Clear Weather Card"){
-        assertEquals(firstWeatherSection.weatherCard, clearWeatherCard)
+        assertEquals(firstWeatherSection.getWeatherCard, clearWeatherCard)
     }
 
     test("A Weather Card can change the weather card of a WeatherSection"){
-        assertEquals(firstWeatherSection.weatherCard,clearWeatherCard)
-        assertNotEquals(firstWeatherSection.weatherCard, fog)
+        assertEquals(firstWeatherSection.getWeatherCard,clearWeatherCard)
+        assertNotEquals(firstWeatherSection.getWeatherCard, fog)
 
         firstWeatherSection.AddCard(weatherCard)
 
-        assertNotEquals(firstWeatherSection.weatherCard,clearWeatherCard)
-        assertEquals(firstWeatherSection.weatherCard, fog)
+        assertNotEquals(firstWeatherSection.getWeatherCard,clearWeatherCard)
+        assertEquals(firstWeatherSection.getWeatherCard, fog)
     }
 
     test("A Weather Section can be cleared, changing it weather card to a Clear Weather card"){
-        assertEquals(firstWeatherSection.weatherCard,clearWeatherCard)
+        assertEquals(firstWeatherSection.getWeatherCard,clearWeatherCard)
         firstWeatherSection.AddCard(fog)
-        assertNotEquals(firstWeatherSection.weatherCard,clearWeatherCard)
-        assertEquals(firstWeatherSection.weatherCard,fog)
+        assertNotEquals(firstWeatherSection.getWeatherCard,clearWeatherCard)
+        assertEquals(firstWeatherSection.getWeatherCard,fog)
         firstWeatherSection.ClearSection()
-        assertNotEquals(firstWeatherSection.weatherCard,fog)
-        assertEquals(firstWeatherSection.weatherCard,clearWeatherCard)
+        assertNotEquals(firstWeatherSection.getWeatherCard,fog)
+        assertEquals(firstWeatherSection.getWeatherCard,clearWeatherCard)
     }
 
     test("A WeatherSection should be equal to another" +
