@@ -20,7 +20,7 @@ class Board(var playerBoard: HalfBoard, var enemyBoard: HalfBoard) {
      */
     var weatherSection: WeatherSection = new WeatherSection
     
-    /** Tries to play a certain card
+    /** Tries to play a certain card from the Player Hand
      *
      * @param card the card that wants to be played
      */
@@ -33,7 +33,7 @@ class Board(var playerBoard: HalfBoard, var enemyBoard: HalfBoard) {
         }
     }
 
-    /** Tries to play a certain weather card
+    /** Tries to play a certain card from the Enemy Hand
      *
      * @param card the card that wants to be played
      */

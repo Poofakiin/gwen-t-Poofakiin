@@ -45,7 +45,14 @@ trait GamePlayer {
     /** Pick a given card of Players hand of cards and remove it from the hand.
      * 
      * @param card the Card that´s going to be played.
-     *             
+     *          
+     */
+
+    /** Pick a given card of Players hand of cards and removes it from the hand, it returns true if
+     * it get removed, false otherwise
+     * 
+     * @param card the Card that´s going to be played
+     * @return true if the card was removed, false otherwise
      */
     def playCard(card: ICard): Boolean
 
