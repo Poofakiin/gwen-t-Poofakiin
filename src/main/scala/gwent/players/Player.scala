@@ -19,9 +19,20 @@ import cl.uchile.dcc.gwent.board.{Board, HalfBoard}
  * @param gemsCounter the gems of the player.
  * @param deck the deck of card of the player.
  * @param hand the hand of cards of the player.
+ * @throws IllegalArgumentException if `gemsCounter` is negative. In such case, the value is set to 0.
  */
 class Player(val name: String, var gemsCounter: Int, var deck: Deck,
              var hand: Hand) extends GamePlayer {
+
+    try{
+        if(gemsCounter < 0){
+            throw new IllegalArgumentException
+        }
+    } catch {
+        case e: IllegalArgumentException => {
+            gemsCounter = 0
+        }
+    }
 
     /** Verifies if the player's hand and deck meet the requirements to draw a card.
      *
