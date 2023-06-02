@@ -29,8 +29,8 @@ class RangedSectionTest extends FunSuite{
     var siegeCard: SiegeCard = _
     var weatherCard: FogCard = _
 
-    var array: ArrayBuffer[ICard] = new ArrayBuffer[ICard]()
-    var arraywithcard: ArrayBuffer[ICard] = _
+    var array: ArrayBuffer[RangedCard] = new ArrayBuffer[RangedCard]()
+    var arraywithcard: ArrayBuffer[RangedCard] = _
     var firstRangedSection: RangedSection = _
     var secondRangedSection: RangedSection = _
     override def beforeEach(context: BeforeEach): Unit = {
@@ -54,35 +54,18 @@ class RangedSectionTest extends FunSuite{
         assertEquals(firstRangedSection.sectionCardGroup,array)
         assertNotEquals(firstRangedSection.sectionCardGroup, arraywithcard)
 
-        firstRangedSection.PlayinSection(rangedCard)
+        firstRangedSection.AddCard(rangedCard)
 
         assertNotEquals(firstRangedSection.sectionCardGroup,array)
         assertEquals(firstRangedSection.sectionCardGroup, arraywithcard)
     }
 
-    test("A Close combat card wont be played in a RangedSection"){
-        assertEquals(firstRangedSection.sectionCardGroup,array)
-        firstRangedSection.PlayinSection(closeCombatCard)
-        assertEquals(firstRangedSection.sectionCardGroup,array)
-    }
 
-    test("A Siege card wont be played in a RangedSection"){
-        assertEquals(firstRangedSection.sectionCardGroup,array)
-        firstRangedSection.PlayinSection(siegeCard)
-        assertEquals(firstRangedSection.sectionCardGroup,array)
-    }
-
-    test("A weather type card wont be played in a RangedSection"){
-        assertEquals(firstRangedSection.sectionCardGroup,array)
-        firstRangedSection.PlayinSection(weatherCard)
-        assertEquals(firstRangedSection.sectionCardGroup,array)
-    }
-
-    test("A ranged card can be removed from the sectionCardGroup of a RangedSection"){
-        firstRangedSection.PlayinSection(rangedCard)
+    test("A Ranged Section can be cleared, removing all cards from its card section"){
+        firstRangedSection.AddCard(rangedCard)
         assertEquals(firstRangedSection.sectionCardGroup,arraywithcard)
 
-        firstRangedSection.RemoveCard(rangedCard)
+        firstRangedSection.ClearSection()
 
         assertNotEquals(firstRangedSection.sectionCardGroup,arraywithcard)
         assertEquals(array, firstRangedSection.sectionCardGroup)
@@ -90,7 +73,7 @@ class RangedSectionTest extends FunSuite{
     test("A RangedSection should be equal to another" +
         " of the same class with the same attributes and it should have the same hashcode"){
         var notEqualtoFirst: RangedSection = new RangedSection()
-        notEqualtoFirst.PlayinSection(rangedCard)
+        notEqualtoFirst.AddCard(rangedCard)
         assertEquals(firstRangedSection, secondRangedSection)
         assertEquals(secondRangedSection, firstRangedSection)
         assertEquals(firstRangedSection.hashCode(), secondRangedSection.hashCode())

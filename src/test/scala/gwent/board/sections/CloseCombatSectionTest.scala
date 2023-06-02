@@ -29,8 +29,8 @@ class CloseCombatSectionTest extends FunSuite{
     var siegeCard: SiegeCard = _
     var weatherCard: FogCard = _
 
-    var array: ArrayBuffer[ICard] = new ArrayBuffer[ICard]()
-    var arraywithcard: ArrayBuffer[ICard] = _
+    var array: ArrayBuffer[CloseCombatCard] = new ArrayBuffer[CloseCombatCard]()
+    var arraywithcard: ArrayBuffer[CloseCombatCard] = _
     var firstCloseCombatSection: CloseCombatSection = _
     var secondCloseCombatSection: CloseCombatSection = _
     override def beforeEach(context: BeforeEach): Unit = {
@@ -54,35 +54,18 @@ class CloseCombatSectionTest extends FunSuite{
         assertEquals(firstCloseCombatSection.sectionCardGroup,array)
         assertNotEquals(firstCloseCombatSection.sectionCardGroup, arraywithcard)
 
-        firstCloseCombatSection.PlayinSection(closeCombatCard)
+        firstCloseCombatSection.AddCard(closeCombatCard)
 
         assertNotEquals(firstCloseCombatSection.sectionCardGroup,array)
         assertEquals(firstCloseCombatSection.sectionCardGroup, arraywithcard)
     }
-
-    test("A Ranged card wont be played in a close combat section"){
-        assertEquals(firstCloseCombatSection.sectionCardGroup,array)
-        firstCloseCombatSection.PlayinSection(rangedCard)
-        assertEquals(firstCloseCombatSection.sectionCardGroup,array)
-    }
-
-    test("A Siege card wont be played in a close combat section"){
-        assertEquals(firstCloseCombatSection.sectionCardGroup,array)
-        firstCloseCombatSection.PlayinSection(siegeCard)
-        assertEquals(firstCloseCombatSection.sectionCardGroup,array)
-    }
-
-    test("A weather type card wont be played in a close combat section"){
-        assertEquals(firstCloseCombatSection.sectionCardGroup,array)
-        firstCloseCombatSection.PlayinSection(weatherCard)
-        assertEquals(firstCloseCombatSection.sectionCardGroup,array)
-    }
-
-    test("A Close combat card can be removed from the sectionCardGroup of a CloseCombatSection"){
-        firstCloseCombatSection.PlayinSection(closeCombatCard)
+    
+    
+    test("A Close combat section can be cleared, removing all cards from its card section"){
+        firstCloseCombatSection.AddCard(closeCombatCard)
         assertEquals(firstCloseCombatSection.sectionCardGroup,arraywithcard)
 
-        firstCloseCombatSection.RemoveCard(closeCombatCard)
+        firstCloseCombatSection.ClearSection()
 
         assertNotEquals(firstCloseCombatSection.sectionCardGroup,arraywithcard)
         assertEquals(array, firstCloseCombatSection.sectionCardGroup)
@@ -90,7 +73,7 @@ class CloseCombatSectionTest extends FunSuite{
     test("A CloseCombatSection should be equal to another" +
         " of the same class with the same attributes and it should have the same hashcode"){
         var notEqualtoFirst: CloseCombatSection = new CloseCombatSection()
-        notEqualtoFirst.PlayinSection(closeCombatCard)
+        notEqualtoFirst.AddCard(closeCombatCard)
         assertEquals(firstCloseCombatSection, secondCloseCombatSection)
         assertEquals(secondCloseCombatSection, firstCloseCombatSection)
         assertEquals(firstCloseCombatSection.hashCode(), secondCloseCombatSection.hashCode())

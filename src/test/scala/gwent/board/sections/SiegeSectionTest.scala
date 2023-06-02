@@ -29,8 +29,8 @@ class SiegeSectionTest extends FunSuite{
     var siegeCard: SiegeCard = _
     var weatherCard: FogCard = _
 
-    var array: ArrayBuffer[ICard] = new ArrayBuffer[ICard]()
-    var arraywithcard: ArrayBuffer[ICard] = _
+    var array: ArrayBuffer[SiegeCard] = new ArrayBuffer[SiegeCard]()
+    var arraywithcard: ArrayBuffer[SiegeCard] = _
     var firstSiegeSection: SiegeSection = _
     var secondSiegeSection: SiegeSection = _
     override def beforeEach(context: BeforeEach): Unit = {
@@ -54,35 +54,17 @@ class SiegeSectionTest extends FunSuite{
         assertEquals(firstSiegeSection.sectionCardGroup,array)
         assertNotEquals(firstSiegeSection.sectionCardGroup, arraywithcard)
 
-        firstSiegeSection.PlayinSection(siegeCard)
+        firstSiegeSection.AddCard(siegeCard)
 
         assertNotEquals(firstSiegeSection.sectionCardGroup,array)
         assertEquals(firstSiegeSection.sectionCardGroup, arraywithcard)
     }
-
-    test("A Close combat card wont be played in a SiegeSection"){
-        assertEquals(firstSiegeSection.sectionCardGroup,array)
-        firstSiegeSection.PlayinSection(closeCombatCard)
-        assertEquals(firstSiegeSection.sectionCardGroup,array)
-    }
-
-    test("A Ranged card wont be played in a SiegeSection"){
-        assertEquals(firstSiegeSection.sectionCardGroup,array)
-        firstSiegeSection.PlayinSection(rangedCard)
-        assertEquals(firstSiegeSection.sectionCardGroup,array)
-    }
-
-    test("A weather type card wont be played in a SiegeSection"){
-        assertEquals(firstSiegeSection.sectionCardGroup,array)
-        firstSiegeSection.PlayinSection(weatherCard)
-        assertEquals(firstSiegeSection.sectionCardGroup,array)
-    }
-
-    test("A siege card can be removed from the sectionCardGroup of a SiegeSection"){
-        firstSiegeSection.PlayinSection(siegeCard)
+    
+    test("A Siege Section can be cleared, removing all cards from its card section"){
+        firstSiegeSection.AddCard(siegeCard)
         assertEquals(firstSiegeSection.sectionCardGroup,arraywithcard)
 
-        firstSiegeSection.RemoveCard(siegeCard)
+        firstSiegeSection.ClearSection()
 
         assertNotEquals(firstSiegeSection.sectionCardGroup,arraywithcard)
         assertEquals(array, firstSiegeSection.sectionCardGroup)
@@ -90,7 +72,7 @@ class SiegeSectionTest extends FunSuite{
     test("A SiegeSection should be equal to another" +
         " of the same class with the same attributes and it should have the same hashcode"){
         var notEqualtoFirst: SiegeSection = new SiegeSection()
-        notEqualtoFirst.PlayinSection(siegeCard)
+        notEqualtoFirst.AddCard(siegeCard)
         assertEquals(firstSiegeSection, secondSiegeSection)
         assertEquals(secondSiegeSection, firstSiegeSection)
         assertEquals(firstSiegeSection.hashCode(), secondSiegeSection.hashCode())

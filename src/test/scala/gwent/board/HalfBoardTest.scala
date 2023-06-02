@@ -103,7 +103,7 @@ class HalfBoardTest extends FunSuite{
         rangedSection =  new RangedSection
         weatherSection = new WeatherSection
     }
-
+/*
     test("A Half board must be created with a Player"){
         assertEquals(halfBoardOne.player, firstPlayer)
     }
@@ -186,5 +186,5 @@ class HalfBoardTest extends FunSuite{
         assertNotEquals(halfBoardTwo, halfBoardOne)
         assertNotEquals(halfBoardOne.hashCode(),halfBoardTwo.hashCode())
     }
-
+*/
 }

@@ -29,8 +29,8 @@ class WeatherSectionTest extends FunSuite{
     var siegeCard: SiegeCard = _
     var weatherCard: FogCard = _
 
-    var fog: ICard = new FogCard
-    var clearWeatherCard: ICard = _
+    var fog: IWeatherCard = new FogCard
+    var clearWeatherCard: IWeatherCard = _
     var firstWeatherSection: WeatherSection = _
     var secondWeatherSection: WeatherSection = _
     override def beforeEach(context: BeforeEach): Unit = {
@@ -53,34 +53,26 @@ class WeatherSectionTest extends FunSuite{
         assertEquals(firstWeatherSection.weatherCard,clearWeatherCard)
         assertNotEquals(firstWeatherSection.weatherCard, fog)
 
-        firstWeatherSection.PlayinSection(weatherCard)
+        firstWeatherSection.AddCard(weatherCard)
 
         assertNotEquals(firstWeatherSection.weatherCard,clearWeatherCard)
         assertEquals(firstWeatherSection.weatherCard, fog)
     }
 
-    test("A Close combat card wont be played in a WeatherSection"){
+    test("A Weather Section can be cleared, changing it weather card to a Clear Weather card"){
         assertEquals(firstWeatherSection.weatherCard,clearWeatherCard)
-        firstWeatherSection.PlayinSection(closeCombatCard)
-        assertEquals(firstWeatherSection.weatherCard,clearWeatherCard)
-    }
-
-    test("A Ranged card wont be played in a WeatherSection"){
-        assertEquals(firstWeatherSection.weatherCard,clearWeatherCard)
-        firstWeatherSection.PlayinSection(rangedCard)
-        assertEquals(firstWeatherSection.weatherCard,clearWeatherCard)
-    }
-
-    test("A Siege card wont be played in a WeatherSection"){
-        assertEquals(firstWeatherSection.weatherCard,clearWeatherCard)
-        firstWeatherSection.PlayinSection(siegeCard)
+        firstWeatherSection.AddCard(fog)
+        assertNotEquals(firstWeatherSection.weatherCard,clearWeatherCard)
+        assertEquals(firstWeatherSection.weatherCard,fog)
+        firstWeatherSection.ClearSection()
+        assertNotEquals(firstWeatherSection.weatherCard,fog)
         assertEquals(firstWeatherSection.weatherCard,clearWeatherCard)
     }
 
     test("A WeatherSection should be equal to another" +
         " of the same class with the same attributes and it should have the same hashcode"){
         var notEqualtoFirst: WeatherSection = new WeatherSection()
-        notEqualtoFirst.PlayinSection(fog)
+        notEqualtoFirst.AddCard(fog)
         assertEquals(firstWeatherSection, secondWeatherSection)
         assertEquals(secondWeatherSection, firstWeatherSection)
         assertEquals(firstWeatherSection.hashCode(), secondWeatherSection.hashCode())
