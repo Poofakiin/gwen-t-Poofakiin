@@ -14,7 +14,7 @@ class ClearWeatherCard extends AbstractWeatherCard() {
     /**
      * The type name of the card. For Clear Weather cards, this will always be "Clear Weather".
      */
-    val name = "Clear Weather"
+    val name = "Clear Weather Card"
     /**
      * The weather type of the card. For Clear Weather cards, this will always be an IWeathertype, ClearWeather.
      */

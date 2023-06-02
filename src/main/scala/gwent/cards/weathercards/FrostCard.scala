@@ -12,7 +12,7 @@ class FrostCard extends AbstractWeatherCard() {
     /**
      * The type name of the card. For Frost Cards, this will always be " Frost Card".
      */
-    val name = " Frost Card"
+    val name = "Frost Card"
     /**
      * The weather type of the card. For Frost Cards, this will always be an IWeathertype, Frost.
      */
