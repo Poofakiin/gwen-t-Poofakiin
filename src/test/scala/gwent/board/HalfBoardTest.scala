@@ -103,7 +103,7 @@ class HalfBoardTest extends FunSuite{
         rangedSection =  new RangedSection
         weatherSection = new WeatherSection
     }
-/*
+
     test("A Half board must be created with a Player"){
         assertEquals(halfBoardOne.player, firstPlayer)
     }
@@ -117,65 +117,6 @@ class HalfBoardTest extends FunSuite{
         assertEquals(halfBoardOne.rangedSection, rangedSection)
     }
 
-    test("A Half board must be capable of only playing a close combat card in its section if the player has it"){
-        var fillcloseCombat: CloseCombatSection = new CloseCombatSection
-        fillcloseCombat.PlayinSection(forktail)
-        assertEquals(halfBoardOne.closeCombatSection, closeCombatSection)
-        assertNotEquals(halfBoardOne.closeCombatSection, fillcloseCombat)
-
-        halfBoardOne.playUnitCard(albrich, this.closeCombatSection)
-        assertEquals(halfBoardOne.closeCombatSection, closeCombatSection)
-
-        halfBoardOne.playUnitCard(ballista,this.closeCombatSection)
-        assertEquals(halfBoardOne.closeCombatSection, closeCombatSection)
-
-        halfBoardOne.playUnitCard(forktail,this.closeCombatSection)
-        assertNotEquals(halfBoardOne.closeCombatSection, closeCombatSection)
-
-    }
-
-    test("A Half board must be capable of only playing a ranged card in its section if the player has it"){
-        var fillranged: RangedSection = new RangedSection
-        fillranged.PlayinSection(albrich)
-        assertEquals(halfBoardOne.rangedSection,rangedSection)
-        assertNotEquals(halfBoardOne.rangedSection,fillranged)
-
-        halfBoardOne.playUnitCard(forktail, this.rangedSection)
-        assertEquals(halfBoardOne.rangedSection,rangedSection)
-
-        halfBoardOne.playUnitCard(ballista, this.rangedSection)
-        assertEquals(halfBoardOne.rangedSection,rangedSection)
-
-        halfBoardOne.playUnitCard(albrich,this.rangedSection)
-        assertNotEquals(halfBoardOne.rangedSection,rangedSection)
-    }
-    test("A Half board must be capable of only playing a siege card in its section if the player has it"){
-        var fillranged: SiegeSection = new SiegeSection
-        fillranged.PlayinSection(ballista)
-        assertEquals(halfBoardOne.siegeSection,siegeSection)
-        assertNotEquals(halfBoardOne.siegeSection,fillranged)
-
-        halfBoardOne.playUnitCard(forktail, this.siegeSection)
-        assertEquals(halfBoardOne.siegeSection,siegeSection)
-
-        halfBoardOne.playUnitCard(albrich, this.siegeSection)
-        assertEquals(halfBoardOne.siegeSection,siegeSection)
-
-        halfBoardOne.playUnitCard(ballista,this.siegeSection)
-        assertNotEquals(halfBoardOne.siegeSection,siegeSection)
-    }
-
-    test(""){
-        var fillranged: SiegeSection = new SiegeSection
-        var fillcombat: SiegeSection = new SiegeSection
-        var emptySiege: SiegeSection =  new SiegeSection
-
-        halfBoardOne.playUnitCard(ballista, fillranged)
-        fillcombat.PlayinSection(ballista)
-        assertEquals(fillcombat, fillranged)
-        assertNotEquals(emptySiege, fillcombat)
-    }
-
     test("A HalfBoard should be equal to another Board with the"+
         "same attributes and it should have the same hashcode"){
         val sameAsHalfBoard1: HalfBoard = new HalfBoard(firstPlayer)
@@ -186,5 +127,4 @@ class HalfBoardTest extends FunSuite{
         assertNotEquals(halfBoardTwo, halfBoardOne)
         assertNotEquals(halfBoardOne.hashCode(),halfBoardTwo.hashCode())
     }
-*/
 }

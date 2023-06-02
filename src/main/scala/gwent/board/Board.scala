@@ -38,8 +38,8 @@ class Board(var playerBoard: HalfBoard, var enemyBoard: HalfBoard) {
      * @param card the card that wants to be played
      */
     def EnemyPlayCard(card: ICard): Unit = {
-        if(playerBoard.player.playCard(card)){
-            card.getPlayed(this,playerBoard)
+        if(enemyBoard.player.playCard(card)){
+            card.getPlayed(this,enemyBoard)
         }
         else{
             ()
