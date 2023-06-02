@@ -20,10 +20,10 @@ trait ICard{
      */
     val cardType: String
 
-    /** Try to play a card in to a Close Combat Section in a Board
-     *
-     * @param section te board where the card its going to be added
-     * @return True if the card was played, false otherwise
+    /** Plays this card on a section of certain board and HalfBoard, depending on its type
+     * 
+     * @param board the whole board where its going to be played
+     * @param halfBoard the half of the board where the card can get played
      */
     def getPlayed(board:Board, halfBoard: HalfBoard): Unit
 }

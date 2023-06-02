@@ -35,9 +35,6 @@ abstract class AbstractUnitCard(val name: String, var attackPower: Int) extends 
     override def getSpecialAbility(): Option[ISpecialAbility] = {
         _specialAbility
     }
-
-    override def getPlayed(board: Board, halfBoard: HalfBoard): Unit = {
-        ???
-    }
+    
 }
 

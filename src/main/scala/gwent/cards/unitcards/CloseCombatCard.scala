@@ -25,9 +25,10 @@ class CloseCombatCard(name: String, attackPower: Int) extends AbstractUnitCard(n
         _specialAbility = Some(specialAbility)
     }
 
-    /** Adds a Close Combat card to a Close Combat Section in a Board
+    /** Plays this card on a certain board and HalfBoard close combat section
      *
-     * @param section the board section where the card its going to be added
+     * @param board the whole board where its going to be played
+     * @param halfBoard the half of the board where the card can get played
      */
     override def getPlayed(board: Board, halfBoard: HalfBoard): Unit = {
         halfBoard.closeCombatSection.AddCard(this)

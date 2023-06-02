@@ -48,6 +48,11 @@ abstract class AbstractWeatherCard() extends IWeatherCard {
         ???
     }
 
+    /** Plays this card on a certain board and HalfBoard weater section
+     *
+     * @param board the whole board where its going to be played
+     * @param halfBoard the half of the board where the card can get played
+     */
     def getPlayed(board: Board,halfBoard: HalfBoard): Unit = {
         board.weatherSection.AddCard(this)
     }
