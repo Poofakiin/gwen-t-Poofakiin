@@ -13,12 +13,12 @@ import scala.collection.mutable.ArrayBuffer
  *
  * @param cardCollection its the card array
  */
-class Hand (cardCollection: ArrayBuffer[ICard]) extends AbstractCardGroup(cardCollection){
+class Hand (_cardCollection: ArrayBuffer[ICard]) extends AbstractCardGroup(_cardCollection){
 
     /**
      * the limit card of the array, for a deck it will always be 10
      */
-    val limitCards: Int = 10
+    protected val _limitCards: Int = 10
 
     /** Checks if this Hand is equal to another object.
      *
@@ -29,8 +29,8 @@ class Hand (cardCollection: ArrayBuffer[ICard]) extends AbstractCardGroup(cardCo
         if(obj.isInstanceOf[Hand]){
             val other = obj.asInstanceOf[Hand]
             (this eq other) ||
-                (other.cardCollection.sameElements(this.cardCollection) &&
-                    other.limitCards == this.limitCards)
+                (other._cardCollection.sameElements(this._cardCollection) &&
+                    other._limitCards == this._limitCards)
         }
         else{
             false
@@ -45,9 +45,9 @@ class Hand (cardCollection: ArrayBuffer[ICard]) extends AbstractCardGroup(cardCo
     override def hashCode():Int = {
         val prime = 31
         var result= 1
-        result = prime * result + classOf[Deck].##
-        result = prime * result + cardCollection.##
-        result = prime * result + limitCards.##
+        result = prime * result + classOf[Hand].##
+        result = prime * result + _cardCollection.##
+        result = prime * result + _limitCards.##
         result
     }
 }

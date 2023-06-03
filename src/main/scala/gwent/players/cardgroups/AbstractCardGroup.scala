@@ -11,18 +11,30 @@ import scala.collection.mutable.ArrayBuffer
  *
  * @param cardCollection its the card array
  */
-abstract class AbstractCardGroup(var cardCollection: ArrayBuffer[ICard]) extends ICardGroup{
+abstract class AbstractCardGroup(protected var _cardCollection: ArrayBuffer[ICard]) extends ICardGroup{
     /**
      * the limit card of the array
      */
-    val  limitCards: Int
+    protected val  _limitCards: Int
 
+    def cardCollection(): ArrayBuffer[ICard] = {
+        _cardCollection.clone()
+    }
+    
+    protected def cardCollection_(value: ArrayBuffer[ICard]) = {
+        _cardCollection = value
+    }
+    
+    def limitCards(): Int ={
+        var cloneLimitCards: Int = _limitCards
+        cloneLimitCards
+    }
     /** Verify if the card collection list size its less than the limit card collection
      *
      * @return true if the card collection size its equals to the limit card, false otherwise.
      */
     override def itsFull(): Boolean = {
-        this.cardCollection.size >= limitCards
+        this._cardCollection.size >= _limitCards
     }
 
     /** Verify if a given card is in the card collection array.
@@ -31,7 +43,7 @@ abstract class AbstractCardGroup(var cardCollection: ArrayBuffer[ICard]) extends
      * @return true if the card is in the array, false otherwise.
      */
     override def hasCard(card: ICard): Boolean = {
-        this.cardCollection.exists(c => {c == card})
+        this._cardCollection.exists(c => {c == card})
     }
 
     /** Removes a given card from the card collection array.
@@ -39,7 +51,7 @@ abstract class AbstractCardGroup(var cardCollection: ArrayBuffer[ICard]) extends
      * @param card the Card that´s going to be removed.
      */
     override def takeCard(card: ICard): Unit = {
-        this.cardCollection -= card
+        this._cardCollection -= card
     }
 
     /** Add a given card to the card collection array.
@@ -50,7 +62,7 @@ abstract class AbstractCardGroup(var cardCollection: ArrayBuffer[ICard]) extends
      */
     override def addCard(card: ICard): Unit = {
         if(!this.itsFull()) {
-            this.cardCollection += card
+            this._cardCollection += card
         }
     }
 }

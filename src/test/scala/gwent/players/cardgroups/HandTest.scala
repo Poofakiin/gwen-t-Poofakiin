@@ -60,21 +60,21 @@ class HandTest extends FunSuite{
         hand3 = Hand(array3)
     }
     test("A Hand should be created with a card collection array"){
-        assertEquals(hand1.cardCollection, array1)
+        assertEquals(hand1.cardCollection(), array1)
     }
     test("A Hand should have a limit card, and it should be 10"){
-        assertEquals(hand1.limitCards, 10)
+        assertEquals(hand1.limitCards(), 10)
     }
 
     test("If a Hand is Empty, then its card collection size should be 0"){
         var emptyHand: Hand = new Hand(emptyArray)
-        assert(emptyHand.cardCollection.isEmpty)
-        assertEquals(emptyHand.cardCollection.size,0)
+        assert(emptyHand.cardCollection().isEmpty)
+        assertEquals(emptyHand.cardCollection().size,0)
     }
     test("If a Hand is full, the its card collection shouls be the same as its limit card"){
         hand1.addCard(geraltOfRivia)
         assert(hand1.itsFull())
-        assertEquals(hand1.cardCollection.size,hand1.limitCards)
+        assertEquals(hand1.cardCollection().size,hand1.limitCards())
     }
     test("A Card can be added to a hand that isn´t full"){
         assert(!hand1.itsFull())
@@ -87,41 +87,41 @@ class HandTest extends FunSuite{
         var arrayFull: ArrayBuffer[ICard] = ArrayBuffer(forktail, fiend, ghoul, albrich,
             cockatrice, ballista, catapult, raincard, thaler, geraltOfRivia)
         hand1.addCard(geraltOfRivia)
-        assertEquals(hand1.cardCollection, arrayFull)
-        assert(hand1.cardCollection.size == 10)
+        assertEquals(hand1.cardCollection(), arrayFull)
+        assert(hand1.cardCollection().size == 10)
         hand1.addCard(icegiant)
-        assertEquals(hand1.cardCollection, arrayFull)
-        assert(hand1.cardCollection.size == 10)
+        assertEquals(hand1.cardCollection(), arrayFull)
+        assert(hand1.cardCollection().size == 10)
     }
 
     test("A Hand should have a card if it is in its card collection"){
-        assertEquals(hand2.cardCollection(0),griffin)
+        assertEquals(hand2.cardCollection()(0),griffin)
         assert(hand2.hasCard(griffin))
     }
 
     test("A Hand should not have a card if it isn´t in its card collection"){
-        assert(!hand1.cardCollection(0).equals(griffin))
+        assert(!hand1.cardCollection()(0).equals(griffin))
         assert(!hand1.hasCard(griffin))
     }
     test("A Hand can take a card out of it if it isn´t empty"){
-        assert(!hand1.cardCollection.isEmpty)
-        assertEquals(hand1.cardCollection.size,9)
+        assert(!hand1.cardCollection().isEmpty)
+        assertEquals(hand1.cardCollection().size,9)
         hand1.takeCard(forktail)
-        assertNotEquals(hand1.cardCollection.size,9)
+        assertNotEquals(hand1.cardCollection().size,9)
     }
 
     test("A Deck card collection size wont change if its empty and tries to take out a card"){
         var emptyHand: Hand = new Hand(emptyArray)
-        assertEquals(emptyHand.cardCollection.size,0)
-        assert(emptyHand.cardCollection.isEmpty)
+        assertEquals(emptyHand.cardCollection().size,0)
+        assert(emptyHand.cardCollection().isEmpty)
         emptyHand.takeCard(geraltOfRivia)
-        assertEquals(emptyHand.cardCollection.size,0)
-        assert(emptyHand.cardCollection.isEmpty)
+        assertEquals(emptyHand.cardCollection().size,0)
+        assert(emptyHand.cardCollection().isEmpty)
     }
 
     test("A Hand with the same card collection size as its limit cards should be Full"){
         hand1.addCard(geraltOfRivia)
-        assertEquals(hand1.cardCollection.size,hand1.limitCards)
+        assertEquals(hand1.cardCollection().size,hand1.limitCards())
         assert(hand1.itsFull())
     }
 

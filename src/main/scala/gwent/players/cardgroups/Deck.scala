@@ -14,18 +14,18 @@ import scala.collection.mutable.ArrayBuffer
  * 
  * @param cardCollection its the card array
  */
-class Deck(cardCollection: ArrayBuffer[ICard]) extends AbstractCardGroup(cardCollection){
+class Deck(_cardCollection: ArrayBuffer[ICard]) extends AbstractCardGroup(_cardCollection){
     /**
      * the limit card of the array, for a deck it will always be 10
      */
-    val limitCards: Int=10
+    protected val _limitCards: Int=10
     
     /** Randomly shuffles the cards in the deck to change their order.
      * This method uses the Random.shuffle method to shuffle the cards in the deck
      * in a random order.
      */
     def shuffleDeck(): Unit = {
-        this.cardCollection = Random.shuffle(this.cardCollection)
+        cardCollection_(Random.shuffle(this.cardCollection()))
     }
     /** Checks if this Deck is equal to another object.
      *
@@ -36,8 +36,8 @@ class Deck(cardCollection: ArrayBuffer[ICard]) extends AbstractCardGroup(cardCol
         if(obj.isInstanceOf[Deck]){
             val other = obj.asInstanceOf[Deck]
             (this eq other) ||
-                (other.cardCollection.sameElements(this.cardCollection) &&
-                    other.limitCards == this.limitCards)
+                (other._cardCollection.sameElements(this._cardCollection) &&
+                    other._limitCards == this._limitCards)
         }
         else{
             false
@@ -53,8 +53,8 @@ class Deck(cardCollection: ArrayBuffer[ICard]) extends AbstractCardGroup(cardCol
         val prime = 31
         var result= 1
         result = prime * result + classOf[Deck].##
-        result = prime * result + cardCollection.##
-        result = prime * result + limitCards.##
+        result = prime * result + _cardCollection.##
+        result = prime * result + _limitCards.##
         result
     }
 }

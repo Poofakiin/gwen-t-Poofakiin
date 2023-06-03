@@ -19,12 +19,12 @@ trait ICardGroup {
     /**
      * limit of cards in the collection
      */
-    val limitCards: Int
+    protected val _limitCards: Int
 
     /**
      * the array of the cards in the collection
      */
-    var cardCollection: ArrayBuffer[ICard]
+    protected var _cardCollection: ArrayBuffer[ICard]
     
     /** Verify if the card collection list size its less than the limit card collection
      *

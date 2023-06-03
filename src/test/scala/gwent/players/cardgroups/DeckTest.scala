@@ -60,21 +60,21 @@ class DeckTest extends FunSuite {
         deck3 = Deck(array3)
     }
     test("A Deck should be created with a card collection array"){
-        assertEquals(deck1.cardCollection, array1)
+        assertEquals(deck1.cardCollection(), array1)
     }
     test("A Deck should have a limit card, and it should be 10"){
-        assertEquals(deck1.limitCards, 10)
+        assertEquals(deck1.limitCards(), 10)
     }
     
     test("If a Deck is Empty, then its card collection size should be 0"){
         var emptyDeck: Deck = new Deck(emptyArray)
-        assert(emptyDeck.cardCollection.isEmpty)
-        assertEquals(emptyDeck.cardCollection.size,0)
+        assert(emptyDeck.cardCollection().isEmpty)
+        assertEquals(emptyDeck.cardCollection().size,0)
     }
     test("If a Deck is full, the its card collection shouls be the same as its limit card"){
         deck1.addCard(geraltOfRivia)
         assert(deck1.itsFull())
-        assertEquals(deck1.cardCollection.size,deck1.limitCards)
+        assertEquals(deck1.cardCollection().size,deck1.limitCards())
     }
     test("A Card can be added to a deck that isn´t full"){
         assert(!deck1.itsFull())
@@ -87,50 +87,50 @@ class DeckTest extends FunSuite {
         var arrayFull: ArrayBuffer[ICard] = ArrayBuffer(forktail, fiend, ghoul, albrich,
             cockatrice, ballista, catapult, raincard, thaler, geraltOfRivia)
         deck1.addCard(geraltOfRivia)
-        assertEquals(deck1.cardCollection, arrayFull)
-        assert(deck1.cardCollection.size == 10)
+        assertEquals(deck1.cardCollection(), arrayFull)
+        assert(deck1.cardCollection().size == 10)
         deck1.addCard(icegiant)
-        assertEquals(deck1.cardCollection, arrayFull)
-        assert(deck1.cardCollection.size == 10)
+        assertEquals(deck1.cardCollection(), arrayFull)
+        assert(deck1.cardCollection().size == 10)
     }
     
     test("A Deck should have a card if it is in its card collection"){
-        assertEquals(deck2.cardCollection(0),griffin)
+        assertEquals(deck2.cardCollection()(0),griffin)
         assert(deck2.hasCard(griffin))
     }
     
     test("A Deck should not have a card if it isn´t in its card collection"){
-        assert(!deck1.cardCollection(0).equals(griffin))
+        assert(!deck1.cardCollection()(0).equals(griffin))
         assert(!deck1.hasCard(griffin))
     }
     test("A Deck can take a card out of it if it isn´t empty"){
-        assert(!deck1.cardCollection.isEmpty)
-        assertEquals(deck1.cardCollection.size,9)
+        assert(!deck1.cardCollection().isEmpty)
+        assertEquals(deck1.cardCollection().size,9)
         deck1.takeCard(forktail)
-        assertNotEquals(deck1.cardCollection.size,9)
+        assertNotEquals(deck1.cardCollection().size,9)
     }
     
     test("A Deck card collection size wont change if its empty and tries to take out a card"){
         var emptyDeck: Deck = new Deck(emptyArray)
-        assertEquals(emptyDeck.cardCollection.size,0)
-        assert(emptyDeck.cardCollection.isEmpty)
+        assertEquals(emptyDeck.cardCollection().size,0)
+        assert(emptyDeck.cardCollection().isEmpty)
         emptyDeck.takeCard(geraltOfRivia)
-        assertEquals(emptyDeck.cardCollection.size,0)
-        assert(emptyDeck.cardCollection.isEmpty)
+        assertEquals(emptyDeck.cardCollection().size,0)
+        assert(emptyDeck.cardCollection().isEmpty)
     }
     
     test("A Deck with the same card collection size as its limit cards should be Full"){
         deck1.addCard(geraltOfRivia)
-        assertEquals(deck1.cardCollection.size,deck1.limitCards)
+        assertEquals(deck1.cardCollection().size,deck1.limitCards())
         assert(deck1.itsFull())
     }
 
     test("A Deck can be shuffled"){
         var newArray: ArrayBuffer[ICard] = ArrayBuffer(griffin,geraltOfRivia,cynthia,
             milva,olaf,icegiant,trebuchet,fogcard,fogcard2)
-        assertEquals(deck2.cardCollection,newArray)
+        assertEquals(deck2.cardCollection(),newArray)
         deck2.shuffleDeck()
-        assert(!deck2.cardCollection.corresponds(newArray)(_==_))
+        assert(!deck2.cardCollection().corresponds(newArray)(_==_))
     }
     test("A Deck should be equal to another Deck with the"+
         "same attributes and it should have the same hashcode"){
