@@ -35,18 +35,23 @@ class Player(val name: String, var gemsCounter: Int, protected var _deck: Deck,
         }
     }
 
+
+    /** Return a copy of the player´s deck
+     *
+     * @return the copy of the player´s deck
+     */
     def getDeck(): Deck={
-        _deck
-    }
-    def setDeck(value: Deck): Unit ={
-        _deck = value
+        var cloneDeck: Deck = _deck
+        cloneDeck
     }
 
+    /** Return a copy of the player´s hand
+     *
+     * @return the copy of the player´s hand
+     */
     def getHand(): Hand={
-        _hand
-    }
-    def setHand(value: Hand): Unit ={
-        _hand = value
+        var cloneHand: Hand = _hand
+        cloneHand
     }
 
     /** Verifies if the player's hand and deck meet the requirements to draw a card.
