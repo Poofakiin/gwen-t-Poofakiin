@@ -30,23 +30,17 @@ class RangedSection extends IBoardSection[RangedCard] {
      * @return The section's ranged card group.
      */
     def getSectionCardGroup: ArrayBuffer[RangedCard] = {
-        _sectionCardGroup
+        _sectionCardGroup.clone()
     }
 
-    /** Sets the section's ranged card group.
-     *
-     * @param value The new ranged card group.
-     */
-    def setSectionCardGroup(value: ArrayBuffer[RangedCard]): Unit = {
-        _sectionCardGroup = value
-    }
 
     /** Delivers the total attack power of all unit cards in the section.
      *
      * @return The total attack power.
      */
     def getTotalAttackPower: Int = {
-        _totalAttackPower
+        var deliver:Int = _totalAttackPower
+        deliver
     }
 
     /** Sets the total attack power of all unit cards in the section.

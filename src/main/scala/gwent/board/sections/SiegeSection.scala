@@ -29,15 +29,7 @@ class SiegeSection extends IBoardSection[SiegeCard] {
      * @return The section's siege card group.
      */
     def getSectionCardGroup: ArrayBuffer[SiegeCard] = {
-        _sectionCardGroup
-    }
-
-    /** Sets the section's siege card group.
-     *
-     * @param value The new siege card group.
-     */
-    def setSectionCardGroup(value: ArrayBuffer[SiegeCard]): Unit = {
-        _sectionCardGroup = value
+        _sectionCardGroup.clone()
     }
 
     /** Delivers the total attack power of all unit cards in the section.
@@ -45,7 +37,8 @@ class SiegeSection extends IBoardSection[SiegeCard] {
      * @return The total attack power.
      */
     def getTotalAttackPower: Int = {
-        _totalAttackPower
+        var deliver:Int = _totalAttackPower
+        deliver
     }
 
     /** Sets the total attack power of all unit cards in the section.

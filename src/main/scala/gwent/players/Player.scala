@@ -21,8 +21,9 @@ import cl.uchile.dcc.gwent.board.{Board, HalfBoard}
  * @param hand the hand of cards of the player.
  * @throws IllegalArgumentException if `gemsCounter` is negative. In such case, the value is set to 0.
  */
-class Player(val name: String, var gemsCounter: Int, var deck: Deck,
-             var hand: Hand) extends GamePlayer {
+class Player(val name: String, var gemsCounter: Int, protected var _deck: Deck,
+             protected var _hand: Hand) extends GamePlayer {
+
 
     try{
         if(gemsCounter < 0){
@@ -34,6 +35,20 @@ class Player(val name: String, var gemsCounter: Int, var deck: Deck,
         }
     }
 
+    def getDeck(): Deck={
+        _deck
+    }
+    def setDeck(value: Deck): Unit ={
+        _deck = value
+    }
+
+    def getHand(): Hand={
+        _hand
+    }
+    def setHand(value: Hand): Unit ={
+        _hand = value
+    }
+
     /** Verifies if the player's hand and deck meet the requirements to draw a card.
      *
      * The player's hand must contain less than 10 cards and their deck must not be empty
@@ -41,7 +56,7 @@ class Player(val name: String, var gemsCounter: Int, var deck: Deck,
      * @return true if the player is able to draw a card, false otherwise.
      */
     def canDrawCard(): Boolean = {
-        this.deck.cardCollection.nonEmpty && !this.hand.itsFull()
+        this._deck.cardCollection.nonEmpty && !this._hand.itsFull()
     }
 
 
@@ -53,8 +68,8 @@ class Player(val name: String, var gemsCounter: Int, var deck: Deck,
      * @see hasCard
      */
     def playCard(card: ICard):Boolean = {
-        if(this.hand.hasCard(card)) {
-            this.hand.takeCard(card)
+        if(this._hand.hasCard(card)) {
+            this._hand.takeCard(card)
             return true
         }
         else{
@@ -77,11 +92,11 @@ class Player(val name: String, var gemsCounter: Int, var deck: Deck,
      */
     def drawCard(): Unit = {
         if(canDrawCard()){
-            this.hand.addCard(this.deck.cardCollection.head)
-            this.deck.takeCard(this.deck.cardCollection.head)
+            this._hand.addCard(this._deck.cardCollection.head)
+            this._deck.takeCard(this._deck.cardCollection.head)
         }
-        else if(this.deck.cardCollection.nonEmpty){
-            this.deck.takeCard(this.deck.cardCollection.head)
+        else if(this._deck.cardCollection.nonEmpty){
+            this._deck.takeCard(this._deck.cardCollection.head)
         }
     }
     
@@ -98,8 +113,8 @@ class Player(val name: String, var gemsCounter: Int, var deck: Deck,
             (this eq other) ||
                 (other.name == this.name &&
                     other.gemsCounter == this.gemsCounter &&
-                    other.hand.equals(this.hand) &&
-                    other.deck.equals(this.deck))
+                    other._hand.equals(this._hand) &&
+                    other._deck.equals(this._deck))
         }
         else{
             false
@@ -117,8 +132,8 @@ class Player(val name: String, var gemsCounter: Int, var deck: Deck,
         result = prime * result + classOf[Player].##
         result = prime * result + name.##
         result = prime * result + gemsCounter.##
-        result = prime * result + hand.##
-        result = prime * result + deck.##
+        result = prime * result + _hand.##
+        result = prime * result + _deck.##
         result
     }
 }

@@ -14,7 +14,7 @@ import scala.collection.mutable.ArrayBuffer
 /** Represents a player in the gwent game.
  *
  * This trait defines the properties that all cards have in common,
- * such as their name, gems, deck and hand. Also it defines
+ * such as their name, gems, _deck and _hand. Also it defines
  * the methods that a Player must have such as playCard, drawCard, shuffleDeck,
  * canDrawCard and canPlayCard
  *
@@ -34,12 +34,12 @@ trait GamePlayer {
     /**
      * The deck of the PLayer.
      */
-    var deck: Deck
+    protected var _deck: Deck
 
     /**
      * The hand of the Player.
      */
-    var hand: Hand
+    protected var _hand: Hand
     
 
     /** Pick a given card of Players hand of cards and remove it from the hand.

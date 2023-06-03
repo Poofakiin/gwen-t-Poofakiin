@@ -23,16 +23,10 @@ class WeatherSection extends IBoardSection[IWeatherCard] {
      * @return The weather card of the section
      */
     def getWeatherCard: IWeatherCard ={
-        _weatherCard
+        val clonedCard: IWeatherCard = _weatherCard
+        clonedCard
     }
 
-    /** Sets a weather card as the weather card of the section.
-     *
-     * @param value The new weather card.
-     */
-    def setWeatherCard(value: IWeatherCard): Unit = {
-        _weatherCard = value
-    }
 
     /** Add a weather card to the section, when a weather card its added it replaces the previous one
      *

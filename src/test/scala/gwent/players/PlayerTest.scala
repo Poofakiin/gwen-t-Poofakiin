@@ -106,85 +106,85 @@ class PlayerTest extends FunSuite {
     }
 
     test("A Player should be created with a deck") {
-        assertEquals(firstPlayer.deck, deck1)
+        assertEquals(firstPlayer.getDeck(), deck1)
     }
 
     test("A Player should be created with a hand") {
-        assertEquals(firstPlayer.hand, hand1)
+        assertEquals(firstPlayer.getHand(), hand1)
     }
 
     test("A Player can draw a card if its hand is non full and its deck its non empty"){
-        assert(!firstPlayer.hand.itsFull())
-        assert(firstPlayer.deck.cardCollection.nonEmpty)
+        assert(!firstPlayer.getHand().itsFull())
+        assert(firstPlayer.getDeck().cardCollection.nonEmpty)
         assert(firstPlayer.canDrawCard())
     }
 
     test("A Player cant draw a card if its hand is full"){
         firstPlayer.drawCard()
-        assert(firstPlayer.hand.itsFull())
+        assert(firstPlayer.getHand().itsFull())
         assert(!firstPlayer.canDrawCard())
     }
 
     test("A Player cant draw a card if its deck its empty"){
-        firstPlayer.deck.cardCollection = emptyArray
-        assert(!firstPlayer.deck.cardCollection.nonEmpty)
+        firstPlayer.getDeck().cardCollection = emptyArray
+        assert(!firstPlayer.getDeck().cardCollection.nonEmpty)
         assert(!firstPlayer.canDrawCard())
     }
 
     test("A Player can play a card if it is on his hand and it get removed from his hand"){
-        assert(firstPlayer.hand.hasCard(forktail))
-        assertEquals(firstPlayer.hand.cardCollection.size, 9)
+        assert(firstPlayer.getHand().hasCard(forktail))
+        assertEquals(firstPlayer.getHand().cardCollection.size, 9)
         firstPlayer.playCard(forktail)
-        assert(!firstPlayer.hand.hasCard(forktail))
-        assertEquals(firstPlayer.hand.cardCollection.size, 8)
+        assert(!firstPlayer.getHand().hasCard(forktail))
+        assertEquals(firstPlayer.getHand().cardCollection.size, 8)
     }
     test("A Player wont play a card if it cant be played(it isn´t on his hand)"){
-        assert(!firstPlayer.hand.hasCard(griffin))
-        assertEquals(firstPlayer.hand.cardCollection.size, 9)
+        assert(!firstPlayer.getHand().hasCard(griffin))
+        assertEquals(firstPlayer.getHand().cardCollection.size, 9)
         firstPlayer.playCard(griffin)
-        assert(!firstPlayer.hand.hasCard(griffin))
-        assertEquals(firstPlayer.hand.cardCollection.size, 9)
+        assert(!firstPlayer.getHand().hasCard(griffin))
+        assertEquals(firstPlayer.getHand().cardCollection.size, 9)
     }
 
     test("A Player wont be able to play a card if his hand its empty"){
-        firstPlayer.hand.cardCollection = emptyArray
-        assertEquals(firstPlayer.hand.cardCollection, emptyArray)
+        firstPlayer.getHand().cardCollection = emptyArray
+        assertEquals(firstPlayer.getHand().cardCollection, emptyArray)
         firstPlayer.playCard(forktail)
-        assertEquals(firstPlayer.hand.cardCollection, emptyArray)
+        assertEquals(firstPlayer.getHand().cardCollection, emptyArray)
     }
 
     test("if a player can draw a card, when it draw it, his hand"+
         "will gain a card and his deck will lose one"){
         assert(secondPlayer.canDrawCard())
-        assertEquals(secondPlayer.hand.cardCollection.size, 9)
-        assertEquals(secondPlayer.deck.cardCollection.size, 9)
+        assertEquals(secondPlayer.getHand().cardCollection.size, 9)
+        assertEquals(secondPlayer.getDeck().cardCollection.size, 9)
         secondPlayer.drawCard()
-        assertEquals(secondPlayer.hand.cardCollection.size, 10)
-        assertEquals(secondPlayer.deck.cardCollection.size, 8)
+        assertEquals(secondPlayer.getHand().cardCollection.size, 10)
+        assertEquals(secondPlayer.getDeck().cardCollection.size, 8)
     }
 
     test("if a player cant draw a card but his deck isnt empty,"+
         "the deck will lose a card but its hand will remain the same size"){
         secondPlayer.drawCard()
         assert(!secondPlayer.canDrawCard())
-        assert(!secondPlayer.deck.cardCollection.isEmpty)
-        assertEquals(secondPlayer.hand.cardCollection.size, 10)
-        assertEquals(secondPlayer.deck.cardCollection.size, 8)
+        assert(!secondPlayer.getDeck().cardCollection.isEmpty)
+        assertEquals(secondPlayer.getHand().cardCollection.size, 10)
+        assertEquals(secondPlayer.getDeck().cardCollection.size, 8)
         secondPlayer.drawCard()
-        assertEquals(secondPlayer.hand.cardCollection.size, 10)
-        assertEquals(secondPlayer.deck.cardCollection.size, 7)
+        assertEquals(secondPlayer.getHand().cardCollection.size, 10)
+        assertEquals(secondPlayer.getDeck().cardCollection.size, 7)
     }
 
     test("if a player cant draw a card and has an empty deck"+
         "the deck and the hand will remain the same size"){
-        secondPlayer.deck.cardCollection = emptyArray
+        secondPlayer.getDeck().cardCollection = emptyArray
         assert(!secondPlayer.canDrawCard())
-        assert(secondPlayer.deck.cardCollection.isEmpty)
-        assertEquals(secondPlayer.hand.cardCollection.size, 9)
-        assertEquals(secondPlayer.deck.cardCollection.size, 0)
+        assert(secondPlayer.getDeck().cardCollection.isEmpty)
+        assertEquals(secondPlayer.getHand().cardCollection.size, 9)
+        assertEquals(secondPlayer.getDeck().cardCollection.size, 0)
         secondPlayer.drawCard()
-        assertEquals(secondPlayer.hand.cardCollection.size, 9)
-        assertEquals(secondPlayer.deck.cardCollection.size, 0)
+        assertEquals(secondPlayer.getHand().cardCollection.size, 9)
+        assertEquals(secondPlayer.getDeck().cardCollection.size, 0)
     }
 
 

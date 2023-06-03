@@ -29,23 +29,17 @@ class CloseCombatSection extends IBoardSection[CloseCombatCard] {
      * @return The section's close combat card group.
      */
     def getSectionCardGroup: ArrayBuffer[CloseCombatCard] = {
-        _sectionCardGroup
+        _sectionCardGroup.clone()
     }
-
-    /** Sets the section's close combat card group.
-     *
-     * @param value The new close combat card group.
-     */
-    def setSectionCardGroup(value: ArrayBuffer[CloseCombatCard]): Unit = {
-        _sectionCardGroup = value
-    }
+    
 
     /** Delivers the total attack power of all unit cards in the section.
      *
      * @return The total attack power.
      */
     def getTotalAttackPower: Int = {
-        _totalAttackPower
+        var deliver:Int = _totalAttackPower
+        deliver
     }
 
     /** Sets the total attack power of all unit cards in the section.
