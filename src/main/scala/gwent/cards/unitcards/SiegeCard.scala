@@ -15,7 +15,7 @@ import cl.uchile.dcc.gwent.board.sections.IBoardSection
  * @param name the name of the unit card.
  * @param attackPower the attack power of the unit card.
  */
-class SiegeCard (name: String, attackPower: Int) extends AbstractUnitCard(name, attackPower){
+class SiegeCard (_name: String, _attackPower: Int) extends AbstractUnitCard(_name, _attackPower){
     /** Creates a new SiegeCard with a name, an attack power, and a special ability.
      *
      * @param name
@@ -24,7 +24,7 @@ class SiegeCard (name: String, attackPower: Int) extends AbstractUnitCard(name, 
      */
     def this(name:String, attackPower: Int, specialAbility: ISpecialAbility)={
         this(name,attackPower)
-        _specialAbility = Some(specialAbility)
+        specialAbility_(specialAbility)
     }
 
     /** Plays this card on a certain board and HalfBoard siege section

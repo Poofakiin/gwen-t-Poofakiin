@@ -12,17 +12,17 @@ import effects.*
  * @param name the name of the unit card.
  * @param attackPower the attack power of the unit card.
  */
-class CloseCombatCard(name: String, attackPower: Int) extends AbstractUnitCard(name, attackPower) {
+class CloseCombatCard(_name: String, _attackPower: Int) extends AbstractUnitCard(_name, _attackPower) {
 
     /** Creates a new CloseCombatCard with a name, an attack power, and a special ability.
      *
-     * @param name
-     * @param attackPower
-     * @param specialAbility
+     * @param _name
+     * @param _attackPower
+     * @param _specialAbility
      */
     def this(name:String, attackPower: Int, specialAbility: ISpecialAbility)={
         this(name,attackPower)
-        _specialAbility = Some(specialAbility)
+        specialAbility_(specialAbility)
     }
 
     /** Plays this card on a certain board and HalfBoard close combat section

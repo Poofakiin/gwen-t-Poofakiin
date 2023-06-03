@@ -14,11 +14,11 @@ trait ICard{
     /**
      * The name of the card.
      */
-    val name: String
+    protected val _name: String
     /**
      * The type of the card.
      */
-    val cardType: String
+    protected val _cardType: String
 
     /** Plays this card on a section of certain board and HalfBoard, depending on its type
      * 

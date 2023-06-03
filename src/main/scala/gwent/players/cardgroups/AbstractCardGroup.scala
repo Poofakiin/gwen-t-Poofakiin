@@ -17,14 +17,26 @@ abstract class AbstractCardGroup(protected var _cardCollection: ArrayBuffer[ICar
      */
     protected val  _limitCards: Int
 
+    /** Gives a copy of the cardcollection
+     * 
+     * @return the copy of the card collection
+     */
     def cardCollection(): ArrayBuffer[ICard] = {
         _cardCollection.clone()
     }
-    
+
+    /** Sets a new value for the cardCollection
+     * 
+     * @param value the new cardCollection
+     */
     protected def cardCollection_(value: ArrayBuffer[ICard]) = {
         _cardCollection = value
     }
-    
+
+    /** Gives a copy of the limitCards
+     * 
+     * @return the copy of the limitCards
+     */
     def limitCards(): Int ={
         var cloneLimitCards: Int = _limitCards
         cloneLimitCards

@@ -15,7 +15,7 @@ import effects.*
  * @param name the name of the unit card.
  * @param attackPower the attack power of the unit card.
  */
-class RangedCard (name: String, attackPower: Int) extends AbstractUnitCard(name, attackPower){
+class RangedCard (_name: String, _attackPower: Int) extends AbstractUnitCard(_name, _attackPower){
 
     /** Creates a new RangedCard with a name, an attack power, and a special ability.
      *
@@ -25,7 +25,7 @@ class RangedCard (name: String, attackPower: Int) extends AbstractUnitCard(name,
      */
     def this(name:String, attackPower: Int, specialAbility: ISpecialAbility)={
         this(name,attackPower)
-        _specialAbility = Some(specialAbility)
+        specialAbility_(specialAbility)
     }
 
     /** Plays this card on a certain board and HalfBoard ranged section

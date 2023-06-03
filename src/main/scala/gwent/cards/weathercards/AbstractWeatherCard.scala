@@ -17,7 +17,7 @@ abstract class AbstractWeatherCard() extends IWeatherCard {
     /**
      * The name of the card.
      */
-    val name:String
+    protected val _name:String
     
     /**
      * The weather type of the card.
@@ -27,7 +27,25 @@ abstract class AbstractWeatherCard() extends IWeatherCard {
     /**
      * The type of the card. For unit cards, this will always be "Weather Card".
      */
-    val cardType: String = "Weather Card"
+    protected val _cardType: String = "Weather Card"
+
+    /** Gives a copy of the name of the card
+     *
+     * @return the copy of the name
+     */
+    def name: String ={
+       var cloneName:String = _name
+       cloneName
+    }
+
+    /** Gives a copy of the card type of the card
+     *
+     * @return the copy of the card type
+     */
+    def cardType: String = {
+        var cloneCardType: String = _cardType
+        cloneCardType
+    }
 
     /** Returns the weather type of the weather card.
      *
