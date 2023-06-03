@@ -24,12 +24,12 @@ trait GamePlayer {
     /**
      * The name of the Player.
      */
-    val name: String
+    protected val _name: String
 
     /**
      * The gems of the Player
      */
-    var gemsCounter: Int
+    protected var _gemsCounter: Int
 
     /**
      * The deck of the PLayer.

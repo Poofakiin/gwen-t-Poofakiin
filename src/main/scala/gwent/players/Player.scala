@@ -11,6 +11,8 @@ import gwent.board.sections.IBoardSection
 
 import cl.uchile.dcc.gwent.board.{Board, HalfBoard}
 
+import java.awt.geom.AffineTransform
+
 /** A class that describes a Player in the game.
  *
  * The player is defined by his name, gems counter, deck of cards & hand of cards.
@@ -21,20 +23,38 @@ import cl.uchile.dcc.gwent.board.{Board, HalfBoard}
  * @param hand the hand of cards of the player.
  * @throws IllegalArgumentException if `gemsCounter` is negative. In such case, the value is set to 0.
  */
-class Player(val name: String, var gemsCounter: Int, protected var _deck: Deck,
+class Player(protected val _name: String,protected var _gemsCounter: Int, protected var _deck: Deck,
              protected var _hand: Hand) extends GamePlayer {
 
 
     try{
-        if(gemsCounter < 0){
+        if(_gemsCounter < 0){
             throw new IllegalArgumentException
         }
     } catch {
         case e: IllegalArgumentException => {
-            gemsCounter = 0
+            _gemsCounter = 0
         }
     }
 
+
+    /** Gives a copy of the PLayer´s name
+     *
+     * @return the copy of the name
+     */
+    def name: String = {
+        var cloneName: String = _name
+        cloneName
+    }
+
+    /** Gives a copy of the PLayer´s gems counter
+     *
+     * @return the copy of the gems Counter
+     */
+    def gemsCounter: Int = {
+        var cloneGemsCounter: Int = _gemsCounter
+        cloneGemsCounter
+    }
 
     /** Return a copy of the player´s deck
      *

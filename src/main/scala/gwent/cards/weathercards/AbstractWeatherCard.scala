@@ -63,7 +63,7 @@ abstract class AbstractWeatherCard() extends IWeatherCard {
      * @param board the board where´s going to be aplied the ability
      */
     override def useWeatherAbility(board: Board): Unit = {
-        ???
+        ()
     }
 
     /** Plays this card on a certain board and HalfBoard weater section
