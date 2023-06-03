@@ -18,7 +18,7 @@ trait IWeatherCard extends ICard{
     /**
      * The weather type of the Weather Card
      */
-    val weatherType: IWeatherType
+    protected val _weatherType: IWeatherType
     
     /** Returns the weather type of the weather card.
      *
@@ -28,7 +28,7 @@ trait IWeatherCard extends ICard{
      * @return The weather type of the weather card.
      */
     def getWeatherType(): IWeatherType
-
+    
     /** Aplies the weather ability to a board
      * 
      * the ability will depend on the weather type of the card

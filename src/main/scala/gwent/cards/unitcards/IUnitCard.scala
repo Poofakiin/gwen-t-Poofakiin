@@ -15,6 +15,7 @@ trait IUnitCard extends ICard{
      * The attack power of the unit card
      */
     var attackPower: Int
+    
     /**
      * The special ability of the unit card
      */

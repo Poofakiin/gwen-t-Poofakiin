@@ -22,7 +22,7 @@ abstract class AbstractWeatherCard() extends IWeatherCard {
     /**
      * The weather type of the card.
      */
-    val weatherType: IWeatherType
+    protected val _weatherType: IWeatherType
     
     /**
      * The type of the card. For unit cards, this will always be "Weather Card".
@@ -37,7 +37,7 @@ abstract class AbstractWeatherCard() extends IWeatherCard {
      * @return The weather type of the weather card.
      */
     override def getWeatherType(): IWeatherType = {
-        this.weatherType
+        this._weatherType
     }
 
     /** Aplies the weather ability to the board in the game

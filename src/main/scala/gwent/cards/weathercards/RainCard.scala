@@ -16,7 +16,7 @@ class RainCard() extends AbstractWeatherCard() {
     /**
      * The weather type of the card. For rain cards, this will always be an IWeathertype, Rain.
      */
-    val weatherType = new Rain()
+    protected val _weatherType = new Rain()
     
     /** Checks if this RainCard is equal to another object.
      *
@@ -30,7 +30,7 @@ class RainCard() extends AbstractWeatherCard() {
             (this eq other) ||
                 (other.name == this.name &&
                     other.cardType == this.cardType &&
-                    other.weatherType == this.weatherType)
+                    other._weatherType == this._weatherType)
         }
         else {
             false
@@ -47,7 +47,7 @@ class RainCard() extends AbstractWeatherCard() {
         result = prime * result + classOf[RainCard].##
         result = prime * result + name.##
         result = prime * result + cardType.##
-        result = prime * result + weatherType.##
+        result = prime * result + _weatherType.##
         result
     }
 }

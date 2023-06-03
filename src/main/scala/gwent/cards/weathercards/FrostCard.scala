@@ -16,7 +16,7 @@ class FrostCard extends AbstractWeatherCard() {
     /**
      * The weather type of the card. For Frost Cards, this will always be an IWeathertype, Frost.
      */
-    val weatherType = new Frost()
+    protected val _weatherType = new Frost()
 
     /** Checks if this Frost Card is equal to another object.
      *
@@ -30,7 +30,7 @@ class FrostCard extends AbstractWeatherCard() {
             (this eq other) ||
                 (other.name == this.name &&
                     other.cardType == this.cardType &&
-                    other.weatherType == this.weatherType)
+                    other._weatherType == this._weatherType)
         }
         else {
             false
@@ -47,7 +47,7 @@ class FrostCard extends AbstractWeatherCard() {
         result = prime * result + classOf[FrostCard].##
         result = prime * result + name.##
         result = prime * result + cardType.##
-        result = prime * result + weatherType.##
+        result = prime * result + _weatherType.##
         result
     }
 }
